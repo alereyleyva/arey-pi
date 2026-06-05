@@ -21,4 +21,5 @@ They are intentionally normative: agents should treat them as project delivery r
 13. `12-test-quality.md`
 14. `13-engineering-quality.md`
 15. `14-quality-tooling.md`
-16. `15-project-readiness.md`
+16. `15-ai-harness.md`
+17. `16-project-readiness.md`

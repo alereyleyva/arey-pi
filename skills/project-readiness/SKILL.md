@@ -1,22 +1,22 @@
 ---
 name: project-readiness
-description: Evaluate whether a repository is aligned with Pi Framework and whether its AI harness is ready for reliable agent work. Use when assessing specs, tests, quality tooling, AGENTS.md, skills, prompts, subagents, or project readiness.
+description: Evaluate whether a repository is aligned with Pi Framework rules, including the AI Harness rule. Use when assessing specs, tests, quality tooling, AGENTS.md, skills, prompts, subagents, or project readiness.
 ---
 
 # Project Readiness
 
 Use this skill to assess whether a project is ready to operate under Pi Framework.
 
-Project readiness has two connected dimensions:
+Project readiness evaluates alignment with Pi Framework rules.
 
-1. **Framework Alignment** — specs, tests, quality tooling, architecture/code quality, spec sync, DoD, commits.
-2. **AI Harness Readiness** — AGENTS.md, Pi Framework setup, project skills/prompts/subagents, technology guidance, command discoverability, safety rules.
+AI Harness is one first-class framework rule alongside specs, TDD, quality tooling, architecture/code quality, spec sync, DoD, and commits.
 
 ## Required Reading
 
 Read these policy files when available in the framework package or project:
 
-- `rules/15-project-readiness.md`
+- `rules/16-project-readiness.md`
+- `rules/15-ai-harness.md`
 - `rules/00-framework-principles.md`
 - `rules/09-definition-of-done.md`
 - `rules/12-test-quality.md`
@@ -51,30 +51,26 @@ Produce:
 # Pi Framework Project Readiness Report
 
 ## Overall
-- Framework Alignment: N/5
-- AI Harness Readiness: N/5
 - Overall Readiness: N/5
+- Lowest Rule Scores:
+- Highest Rule Scores:
 
 ## Blockers
 
 ## Quick Wins
 
-## Framework Alignment
+## Rule Scores
 - Canonical Specs
+- Gherkin Authoring
 - Tests/TDD
 - Test Quality
 - Quality Tooling
-- Architecture/Code Quality
-- Spec Sync/Process
-- Commits/Process
-
-## AI Harness Readiness
-- AGENTS.md
-- Pi Framework Setup
-- Skills/Prompts/Subagents
-- Technology-Specific Guidance
-- Command Discoverability
-- Agent Safety
+- Engineering Quality
+- Spec Sync
+- Rebuildability
+- Architecture Memory
+- Incremental Commits
+- AI Harness
 
 ## Recommended Plan
 
