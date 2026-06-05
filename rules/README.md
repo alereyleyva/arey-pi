@@ -19,3 +19,4 @@ They are intentionally normative: agents should treat them as project delivery r
 11. `10-conflict-resolution.md`
 12. `11-incremental-commits.md`
 13. `12-test-quality.md`
+14. `13-engineering-quality.md`

@@ -17,6 +17,7 @@ A change is complete when:
 - bug fixes include regression tests;
 - tests pass, or any inability to run them is clearly documented;
 - weak, shallow, or unvalidated generated tests are not accepted as sufficient evidence;
+- architecture and code quality meet the senior engineering standard defined by the framework;
 - specs, tests, and code agree;
 - architecture docs or ADRs are updated when durable decisions changed;
 - glossary is updated when domain language changed;
@@ -33,6 +34,7 @@ A change is not done if:
 - production code was written without TDD evidence;
 - failing tests remain unresolved without explicit blocker status;
 - code contradicts canonical specs;
+- implementation is correct but architecturally weak, brittle, overcomplicated, or low quality;
 - important decisions only exist in chat or implementation comments;
 - unrelated cleanup is mixed into the change without approval.
 
@@ -46,6 +48,7 @@ Done summary:
 - Tests/TDD:
 - Validation:
 - Spec sync:
+- Architecture/code quality:
 - Architecture/ADR/glossary:
 - Commits:
 - Residual risks:

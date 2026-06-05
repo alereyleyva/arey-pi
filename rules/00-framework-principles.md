@@ -10,6 +10,8 @@ Its central premise is:
 
 The framework optimizes for preserving intent outside the current implementation so that code can be refactored, replaced, or fully rewritten without losing product or domain knowledge.
 
+Rebuildability never lowers the quality bar. Pi Framework expects architecture and code to be designed and written at an exceptional senior engineering standard.
+
 ## Core Model
 
 A project using this framework is governed by three synchronized layers:
@@ -38,11 +40,12 @@ Production code may contain useful local explanations, but it must not be the on
 Every completed change must preserve these guarantees:
 
 1. **Canonical behavior is represented in specs.**
-2. **Production behavior is covered by tests.**
+2. **Production behavior is covered by meaningful tests.**
 3. **TDD is followed for production behavior.**
-4. **Specs, tests, and code are synchronized before completion.**
-5. **Durable decisions are persisted outside implementation code.**
-6. **The resulting system remains rebuildable from durable knowledge.**
+4. **Architecture and code meet a high senior engineering standard.**
+5. **Specs, tests, and code are synchronized before completion.**
+6. **Durable decisions are persisted outside implementation code.**
+7. **The resulting system remains rebuildable from durable knowledge.**
 
 ## Work Modes
 
