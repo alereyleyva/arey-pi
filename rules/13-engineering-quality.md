@@ -24,7 +24,7 @@ When implementing, agents should optimize for:
 4. Rebuildability from durable knowledge.
 5. Delivery speed.
 
-Speed is valuable only when it does not undermine correctness, test quality, architecture, or maintainability.
+Speed is valuable only when it does not undermine correctness, test quality, architecture, maintainability, or validation tooling.
 
 ## Architecture Quality
 
@@ -46,6 +46,8 @@ Agents should prefer designs that make invalid states hard to represent, importa
 
 Production code should be:
 
+- consistently formatted by project tooling;
+- free of lint/static-analysis violations;
 - clear;
 - minimal;
 - readable;

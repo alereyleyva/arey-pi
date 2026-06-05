@@ -18,6 +18,8 @@ A change is complete when:
 - tests pass, or any inability to run them is clearly documented;
 - weak, shallow, or unvalidated generated tests are not accepted as sufficient evidence;
 - architecture and code quality meet the senior engineering standard defined by the framework;
+- formatting, linting/static analysis, type checking where applicable, and relevant dynamic analysis have passed or are explicitly blocked with evidence;
+- if the project lacks required quality tooling, tooling selection/configuration has been discussed with the user and captured as follow-up or implementation work;
 - specs, tests, and code agree;
 - architecture docs or ADRs are updated when durable decisions changed;
 - glossary is updated when domain language changed;
@@ -35,6 +37,8 @@ A change is not done if:
 - failing tests remain unresolved without explicit blocker status;
 - code contradicts canonical specs;
 - implementation is correct but architecturally weak, brittle, overcomplicated, or low quality;
+- formatter, linter/static analyzer, type checker, or required dynamic analysis fails without explicit blocker status;
+- the project lacks quality tooling and the gap has not been surfaced to the user;
 - important decisions only exist in chat or implementation comments;
 - unrelated cleanup is mixed into the change without approval.
 
@@ -47,6 +51,7 @@ Done summary:
 - Behavior/spec impact:
 - Tests/TDD:
 - Validation:
+- Quality tooling:
 - Spec sync:
 - Architecture/code quality:
 - Architecture/ADR/glossary:
