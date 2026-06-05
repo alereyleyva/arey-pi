@@ -1,9 +1,18 @@
 {
   "name": "pi-framework",
   "version": "0.1.0",
-  "description": "A Pi package for canonical Gherkin specs, non-negotiable TDD, spec synchronization, and rebuildable software delivery.",
+  "description": "A Pi package for canonical Gherkin specs, non-negotiable TDD, spec synchronization, AI harness readiness, and senior-quality software delivery.",
   "license": "MIT",
+  "author": "Alejandro Rey Leyva",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/alereyleyva/pi-framework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alereyleyva/pi-framework/issues"
+  },
+  "homepage": "https://github.com/alereyleyva/pi-framework#readme",
   "keywords": [
     "pi-package",
     "pi",
@@ -18,7 +27,8 @@
     "prompts/",
     "rules/",
     "templates/",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "pi": {
     "skills": [
@@ -29,6 +39,10 @@
     ]
   },
   "scripts": {
-    "check": "node -e \"JSON.parse(require('fs').readFileSync('package.json', 'utf8'))\""
+    "check": "node -e \"JSON.parse(require('fs').readFileSync('package.json', 'utf8'))\"",
+    "prepublishOnly": "npm run check && npm pack --dry-run"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
