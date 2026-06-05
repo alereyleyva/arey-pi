@@ -1,6 +1,6 @@
 # Framework Rules
 
-These documents define the operating policies of the Pi Spec TDD Framework.
+These documents define the operating policies of Pi Framework.
 
 They are intentionally normative: agents should treat them as project delivery rules, not optional documentation.
 

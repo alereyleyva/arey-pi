@@ -1,4 +1,4 @@
-# Pi Spec TDD Framework
+# Pi Framework
 
 A Pi package for software delivery where canonical Gherkin specs are the source of truth, tests are executable truth, and production code is replaceable.
 

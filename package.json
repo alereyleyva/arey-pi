@@ -1,5 +1,5 @@
 {
-  "name": "pi-spec-tdd-framework",
+  "name": "pi-framework",
   "version": "0.1.0",
   "description": "A Pi package for canonical Gherkin specs, non-negotiable TDD, spec synchronization, and rebuildable software delivery.",
   "license": "MIT",
