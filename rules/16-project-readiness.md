@@ -123,7 +123,8 @@ Evaluate AI Harness as a normal framework rule.
 
 Check whether:
 
-- `AGENTS.md` exists and is useful;
+- root `AGENTS.md` exists and is useful;
+- nested `AGENTS.md` files exist for subtrees that need local technology, domain, command, or safety instructions;
 - Pi Framework installation/reference is discoverable;
 - project-local skills, prompts, and subagents exist where useful;
 - technology-specific guidance is available;

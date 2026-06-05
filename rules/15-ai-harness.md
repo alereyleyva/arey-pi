@@ -40,6 +40,24 @@ Projects should provide an `AGENTS.md` file with:
 
 `AGENTS.md` is the bootstrap context for agents. It should be concise enough to read at startup and specific enough to prevent repeated rediscovery.
 
+### Nested AGENTS.md
+
+Large or multi-domain repositories may use nested `AGENTS.md` files to provide local instructions for a subtree.
+
+Use nested files when different areas have meaningfully different:
+
+- technology stacks;
+- validation commands;
+- architecture boundaries;
+- domain language;
+- safety constraints;
+- generated file rules;
+- ownership or review expectations.
+
+Nested `AGENTS.md` files should refine or specialize the root instructions, not contradict them. If local instructions conflict with root framework rules, the conflict must be explicit and resolved by the user or project maintainers.
+
+Because Pi loads context files from parent directories and the current working directory at startup, nested `AGENTS.md` works best when agents are launched from the relevant subtree or when the root `AGENTS.md` tells agents which nested files to read for specific areas.
+
 ### Pi Configuration
 
 Projects should document or configure how Pi Framework is loaded, for example through:

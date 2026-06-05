@@ -35,7 +35,7 @@ Inspect the repository and produce a readiness report. Do not modify files, inst
 
 Look for:
 
-- `AGENTS.md`, `CLAUDE.md`, `.pi/settings.json`, `.pi/`, `.agents/`
+- root and nested `AGENTS.md`, `CLAUDE.md`, `.pi/settings.json`, `.pi/`, `.agents/`
 - `specs/features/`, `specs/architecture/`, `specs/decisions/`, glossary
 - test directories and test runner config
 - quality tooling config: formatter, linter, typecheck, coverage, mutation testing

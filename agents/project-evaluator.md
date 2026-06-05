@@ -35,7 +35,7 @@ If those files are not present, infer against Pi Framework principles from your 
 
 Inspect, when present:
 
-- `AGENTS.md`, `CLAUDE.md`, `.pi/settings.json`, `.pi/`, `.agents/`
+- root and nested `AGENTS.md`, `CLAUDE.md`, `.pi/settings.json`, `.pi/`, `.agents/`
 - `specs/features/`, `specs/architecture/`, `specs/decisions/`, `specs/glossary.md`
 - package/build config such as `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `Makefile`, `justfile`, CI configs
 - test directories and test runner configuration
@@ -110,7 +110,7 @@ Return:
 - Findings:
 - Recommendations:
 
-Include AGENTS.md, Pi Framework setup, skills/prompts/subagents, technology-specific guidance, command discoverability, and agent safety under this rule.
+Include root and nested AGENTS.md, Pi Framework setup, skills/prompts/subagents, technology-specific guidance, command discoverability, and agent safety under this rule.
 
 ## Recommended Plan
 1. ...
