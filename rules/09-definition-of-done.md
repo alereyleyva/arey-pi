@@ -11,10 +11,12 @@ Completion is not based only on code compiling or tests passing. The durable pro
 A change is complete when:
 
 - relevant Gherkin specs exist or are explicitly confirmed unaffected;
-- production behavior is covered by tests;
+- production behavior is covered by meaningful tests;
+- test quality has been assessed with mutation testing, coverage, or explicit review appropriate to risk;
 - TDD was followed for production behavior;
 - bug fixes include regression tests;
 - tests pass, or any inability to run them is clearly documented;
+- weak, shallow, or unvalidated generated tests are not accepted as sufficient evidence;
 - specs, tests, and code agree;
 - architecture docs or ADRs are updated when durable decisions changed;
 - glossary is updated when domain language changed;
