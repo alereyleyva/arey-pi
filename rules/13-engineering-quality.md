@@ -18,8 +18,8 @@ Agents must not use rebuildability as an excuse for rushed, sloppy, overcomplica
 
 When implementing, agents should optimize for:
 
-1. Correct behavior according to canonical specs.
-2. High-quality tests that protect the behavior.
+1. Correct behaviour according to canonical specs.
+2. High-quality tests that protect the behaviour.
 3. Excellent architecture and code quality.
 4. Rebuildability from durable knowledge.
 5. Delivery speed.
@@ -57,9 +57,9 @@ Production code should be:
 - free of unnecessary cleverness;
 - free of unrelated cleanup;
 - consistent with the surrounding codebase;
-- structured around domain behavior rather than incidental mechanics.
+- structured around domain behaviour rather than incidental mechanics.
 
-Good code should make the intended behavior obvious and make incorrect changes harder.
+Good code should make the intended behaviour obvious and make incorrect changes harder.
 
 ## Senior Engineer Standard
 
@@ -76,12 +76,12 @@ Agents should behave like a highly experienced software engineer who:
 - documents durable decisions outside code;
 - challenges low-quality requirements or designs respectfully.
 
-## Prohibited Behavior
+## Prohibited Behaviour
 
 Agents must not:
 
 - generate code that merely satisfies tests while being poorly designed;
-- hard-code behavior just to turn tests green;
+- hard-code behaviour just to turn tests green;
 - create broad abstractions without demonstrated need;
 - hide complexity behind vague helpers;
 - introduce global state casually;

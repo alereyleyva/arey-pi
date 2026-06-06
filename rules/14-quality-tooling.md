@@ -13,7 +13,7 @@ Every project must have explicit quality tooling for its language and stack.
 At minimum, a project should define:
 
 - a formatter;
-- a linter or static analyzer;
+- a linter or static analyser;
 - type checking where the language supports it;
 - relevant dynamic analysis or runtime validation where practical;
 - commands that agents can run consistently.
@@ -75,7 +75,7 @@ Formatting should be automated and deterministic.
 
 Agents should not hand-format large code changes when a formatter exists. They should run the formatter or formatting check according to project convention.
 
-Formatting-only changes should be isolated from behavior changes unless explicitly approved.
+Formatting-only changes should be isolated from behaviour changes unless explicitly approved.
 
 ## Static Analysis
 
@@ -117,7 +117,7 @@ If formatting, linting, type checking, or dynamic analysis already fails before 
 
 Do not claim validation success when quality tooling fails.
 
-## Agent Behavior
+## Agent Behaviour
 
 Before changing code, agents should inspect available tooling.
 

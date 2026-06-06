@@ -14,7 +14,7 @@ A coherent unit may be:
 
 - specs added or updated;
 - tests added or updated;
-- implementation of a focused behavior;
+- implementation of a focused behaviour;
 - refactor after green tests;
 - spec sync updates;
 - architecture/ADR updates;
@@ -30,11 +30,11 @@ Use Conventional Commits format:
 
 Common types:
 
-- `feat`: new behavior or capability;
+- `feat`: new behaviour or capability;
 - `fix`: bug fix;
 - `test`: tests only;
 - `docs`: specs, rules, architecture docs, ADRs, glossary;
-- `refactor`: behavior-preserving code change;
+- `refactor`: behaviour-preserving code change;
 - `chore`: package/config/maintenance;
 - `ci`: CI or automation;
 - `build`: build system or dependencies.
@@ -59,7 +59,7 @@ Each commit should be:
 - aligned with the TDD/spec workflow;
 - free from unrelated cleanup.
 
-## Agent Behavior
+## Agent Behaviour
 
 Agents should commit incrementally when asked to perform repository work and the current environment allows commits.
 
@@ -72,9 +72,9 @@ If there are pre-existing uncommitted changes not made by the agent, stop and as
 For SDD/TDD work:
 
 ```txt
-docs(specs): add or update Gherkin behavior
-test(scope): add failing behavior/regression tests
-feat/fix(scope): implement behavior
+docs(specs): add or update Gherkin behaviour
+test(scope): add failing behaviour/regression tests
+feat/fix(scope): implement behaviour
 refactor(scope): improve implementation after green tests
 docs(specs): synchronize canonical specs and decisions
 ```

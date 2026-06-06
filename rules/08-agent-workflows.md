@@ -33,7 +33,7 @@ Review, research, planning, and validation can run in parallel. Normal implement
 - Reviewers validate alignment between specs, tests, code, and policies.
 - Tech leads choose change mode, scope, sequencing, and conflict escalation.
 
-## Review Behavior
+## Review Behaviour
 
 Reviewers should be adversarial but practical.
 
@@ -42,7 +42,7 @@ They should focus on:
 - spec drift;
 - missing or weak tests;
 - TDD violations;
-- behavior/spec mismatches;
+- behaviour/spec mismatches;
 - rebuildability gaps;
 - architecture memory gaps;
 - unnecessary scope expansion.
@@ -64,7 +64,7 @@ Implementation agents must report:
 Agents must stop or ask for clarification when:
 
 - user intent conflicts with canonical specs;
-- product behavior is ambiguous;
+- product behaviour is ambiguous;
 - tests and specs disagree;
 - architecture decisions are required but not approved;
 - a direct change grows into SDD-level scope.

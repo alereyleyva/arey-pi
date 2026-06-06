@@ -23,3 +23,4 @@ They are intentionally normative: agents should treat them as project delivery r
 15. `14-quality-tooling.md`
 16. `15-ai-harness.md`
 17. `16-project-readiness.md`
+18. `17-language-style.md`

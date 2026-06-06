@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Canonical specs are the source of truth for intended project behavior and durable project knowledge.
+Canonical specs are the source of truth for intended project behaviour and durable project knowledge.
 
 They are not secondary documentation. They are the contract that allows the implementation to be safely changed, discarded, or rebuilt.
 
@@ -12,7 +12,7 @@ The framework recognizes these canonical sources:
 
 | Source | Purpose |
 | --- | --- |
-| Gherkin feature specs | Observable behavior, workflows, business rules, API/CLI contracts, important edge cases |
+| Gherkin feature specs | Observable behaviour, workflows, business rules, API/CLI contracts, important edge cases |
 | Tests | Executable verification of the specs and regression protection |
 | Architecture docs | System boundaries, constraints, major components, integration models |
 | ADRs | Important technical decisions, tradeoffs, accepted consequences |
@@ -21,17 +21,17 @@ The framework recognizes these canonical sources:
 
 ## Authority
 
-Canonical specs define intended behavior by default.
+Canonical specs define intended behaviour by default.
 
 If existing code disagrees with canonical specs, agents must not assume the code is correct. They must either:
 
 - align the implementation with the specs;
-- update the specs if the user explicitly approves the new behavior;
+- update the specs if the user explicitly approves the new behaviour;
 - or stop and ask for clarification when intent is unclear.
 
 ## Required Persistence
 
-A behavior, rule, decision, or constraint should be persisted canonically when it is:
+A behaviour, rule, decision, or constraint should be persisted canonically when it is:
 
 - user-visible;
 - externally observable;
@@ -52,7 +52,7 @@ The following are not sufficient as durable sources of truth by themselves:
 - temporary plans;
 - stale README prose;
 - agent assumptions;
-- inferred behavior from current implementation.
+- inferred behaviour from current implementation.
 
 They may inform updates, but durable knowledge must be promoted into canonical specs, tests, ADRs, architecture docs, or glossary entries.
 

@@ -4,7 +4,7 @@
 
 Project Readiness evaluates whether a repository is aligned with Pi Framework.
 
-It is a meta-assessment across the framework rules. AI Harness is evaluated as one first-class rule alongside specs, TDD, test quality, quality tooling, architecture, spec sync, rebuildability, and process.
+It is a meta-assessment across the framework rules. AI Harness and Language Style are evaluated as first-class rules alongside specs, TDD, test quality, quality tooling, architecture, spec sync, rebuildability, and process.
 
 ## Core Rule
 
@@ -21,7 +21,7 @@ Evaluate the project across these framework areas.
 Check whether:
 
 - `specs/features/` exists where applicable;
-- Gherkin specs describe meaningful observable behavior;
+- Gherkin specs describe meaningful observable behaviour;
 - specs avoid incidental implementation details;
 - important domains, APIs, CLIs, errors, permissions, and edge cases are covered;
 - glossary, architecture docs, and ADRs exist when project complexity requires them.
@@ -53,8 +53,8 @@ Check whether:
 
 - coverage is available or intentionally absent;
 - mutation testing is configured for critical code or proposed as an improvement;
-- tests assert behavior rather than implementation mechanics;
-- edge cases and failure paths are covered for important behavior;
+- tests assert behaviour rather than implementation mechanics;
+- edge cases and failure paths are covered for important behaviour;
 - surviving mutants or weak assertions are triaged when evidence exists.
 
 ### Quality Tooling
@@ -62,7 +62,7 @@ Check whether:
 Check whether the project defines:
 
 - formatter;
-- linter/static analyzer;
+- linter/static analyser;
 - type checking where applicable;
 - test command;
 - composed check/validation command;
@@ -86,7 +86,7 @@ Check whether:
 Check whether:
 
 - specs, tests, and code appear aligned;
-- behavior changes have corresponding Gherkin updates or no-impact reasoning;
+- behaviour changes have corresponding Gherkin updates or no-impact reasoning;
 - architecture/ADR/glossary updates exist when durable knowledge changed;
 - Definition of Done expectations are documented.
 
@@ -94,7 +94,7 @@ Check whether:
 
 Check whether:
 
-- important behavior can be reconstructed from specs and tests;
+- important behaviour can be reconstructed from specs and tests;
 - durable decisions are outside code;
 - modules are not understandable only by reading implementation;
 - architecture and domain knowledge are persisted.
@@ -132,6 +132,17 @@ Check whether:
 - safety rails for agents are documented.
 
 Missing AI harness setup is a framework alignment gap because it prevents agents from applying the other rules consistently.
+
+### Language Style
+
+Evaluate Language Style as a normal framework rule.
+
+Check whether:
+
+- project-facing prose uses UK English by default;
+- specs, docs, prompts, skills, reports, and harness instructions are consistent;
+- US spellings are avoided unless required by identifiers, APIs, quoted material, tooling, or customer terminology;
+- widespread inconsistency is captured as a follow-up rather than silently expanded.
 
 ## Scoring
 

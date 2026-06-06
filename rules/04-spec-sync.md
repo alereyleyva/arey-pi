@@ -26,21 +26,21 @@ Specs unaffected: <reason>
 
 At task completion, agents must consider each canonical dimension:
 
-- **Gherkin:** Did observable behavior, API/CLI contracts, rules, errors, permissions, or edge cases change?
-- **Tests:** Do tests represent the intended behavior and trace to relevant specs where practical?
+- **Gherkin:** Did observable behaviour, API/CLI contracts, rules, errors, permissions, or edge cases change?
+- **Tests:** Do tests represent the intended behaviour and trace to relevant specs where practical?
 - **Architecture:** Did boundaries, dependencies, storage, integrations, or system constraints change?
 - **ADRs:** Was a non-trivial decision made that future agents/developers need to know?
 - **Glossary:** Was a new domain term introduced or an existing meaning changed?
 
-## Required Behavior
+## Required Behaviour
 
-If behavior changed, update Gherkin.
+If behaviour changed, update Gherkin.
 
 If architecture changed, update architecture docs or create/update an ADR.
 
 If durable domain language changed, update the glossary.
 
-If only implementation changed and behavior stayed the same, explain why specs are unaffected and name the coverage relied on where practical.
+If only implementation changed and behaviour stayed the same, explain why specs are unaffected and name the coverage relied on where practical.
 
 ## Conflict Handling
 

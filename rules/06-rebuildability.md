@@ -6,7 +6,7 @@ The framework treats production code as replaceable. A healthy project can disca
 
 ## Core Rule
 
-A module is rebuildable when another agent or developer can understand and recreate its intended behavior from:
+A module is rebuildable when another agent or developer can understand and recreate its intended behaviour from:
 
 - Gherkin specs;
 - tests;
@@ -27,8 +27,8 @@ Agents should actively move durable knowledge out of implementation-only places 
 
 A module may not be rebuildable when:
 
-- behavior is only discoverable by reading implementation code;
-- tests assert mechanics but not intended behavior;
+- behaviour is only discoverable by reading implementation code;
+- tests assert mechanics but not intended behaviour;
 - Gherkin specs are missing or stale;
 - architectural constraints are implicit;
 - domain terms are undefined;
@@ -40,7 +40,7 @@ A rewrite should start from canonical specs and tests, not by copying the previo
 
 The previous code can be inspected for migration clues, edge cases, and compatibility risks, but canonical specs/tests define the target.
 
-## Agent Behavior
+## Agent Behaviour
 
 When working on a module, agents should ask:
 

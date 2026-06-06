@@ -14,11 +14,11 @@ Default authority order:
 4. Existing code.
 5. Agent inference.
 
-This order does not mean every user instruction should silently overwrite specs. If a user instruction changes intended behavior, specs must be updated explicitly.
+This order does not mean every user instruction should silently overwrite specs. If a user instruction changes intended behaviour, specs must be updated explicitly.
 
 ## Spec vs Code
 
-If canonical specs and code disagree, specs define intended behavior by default.
+If canonical specs and code disagree, specs define intended behaviour by default.
 
 Agents should either align code with specs or ask whether the spec should change.
 
@@ -34,9 +34,9 @@ Possible outcomes:
 
 ## User Request vs Specs
 
-If the user requests behavior that conflicts with canonical specs, the agent must treat it as a possible spec change.
+If the user requests behaviour that conflicts with canonical specs, the agent must treat it as a possible spec change.
 
-The task should include spec updates unless the user explicitly says not to persist the new behavior, in which case the agent should clarify the intended lifecycle of the change.
+The task should include spec updates unless the user explicitly says not to persist the new behaviour, in which case the agent should clarify the intended lifecycle of the change.
 
 ## Code vs Tests
 

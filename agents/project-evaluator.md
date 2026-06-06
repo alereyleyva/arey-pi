@@ -125,7 +125,7 @@ Cite concrete file paths as evidence. If something is missing, say what you insp
 
 - Missing quality tooling is a readiness gap.
 - Missing AGENTS.md is an AI Harness rule gap.
-- Missing specs may be acceptable only for trivial/non-behavioral projects; otherwise it is a Canonical Specs rule gap.
+- Missing specs may be acceptable only for trivial/non-behavioural projects; otherwise it is a Canonical Specs rule gap.
 - Tests that exist but are shallow should not receive high test quality scores.
 - Strong AI Harness instructions can improve agent reliability but cannot compensate for absent tests/specs/tooling.
 - A project is not ready for autonomous agent work if agents cannot discover commands, constraints, and safety rules.

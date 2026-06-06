@@ -9,13 +9,13 @@ The framework supports both full Spec-Driven Development and direct changes. The
 Use Spec-Driven Mode for:
 
 - new features;
-- non-trivial behavior changes;
+- non-trivial behaviour changes;
 - ambiguous requirements;
 - business rule changes;
 - public API or CLI changes;
 - architectural changes;
 - module rewrites;
-- security, permission, persistence, or integration behavior;
+- security, permission, persistence, or integration behaviour;
 - work where future rebuildability depends on capturing intent first.
 
 Default flow:
@@ -33,7 +33,7 @@ Use Direct Change Mode for:
 - mechanical refactors;
 - formatting or naming changes;
 - changes fully covered by existing specs/tests;
-- low-risk internal changes with no observable behavior change.
+- low-risk internal changes with no observable behaviour change.
 
 Default flow:
 
@@ -45,7 +45,7 @@ Intent → Test/Coverage Check → Code → Validation → Spec Sync Check → D
 
 Direct Change Mode does not allow agents to skip:
 
-- TDD for production behavior;
+- TDD for production behaviour;
 - regression tests for bug fixes;
 - final spec sync;
 - conflict resolution;
@@ -56,7 +56,7 @@ Direct Change Mode does not allow agents to skip:
 Switch from Direct Change Mode to Spec-Driven Mode when:
 
 - intent becomes ambiguous;
-- behavior changes more than expected;
+- behaviour changes more than expected;
 - specs are missing or stale;
 - tests are inadequate for the risk;
 - architectural or domain decisions appear;

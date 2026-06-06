@@ -13,7 +13,7 @@ Use:
 - architecture docs for current system structure and constraints;
 - ADRs for decisions, tradeoffs, and consequences;
 - glossary for domain language;
-- Gherkin for observable behavior affected by architecture.
+- Gherkin for observable behaviour affected by architecture.
 
 Recommended locations:
 
@@ -52,7 +52,7 @@ An ADR should capture:
 - consequences;
 - status.
 
-## Agent Behavior
+## Agent Behaviour
 
 Agents must not leave important architecture decisions only in code comments, task summaries, or chat history.
 

@@ -11,9 +11,9 @@ Completion is not based only on code compiling or tests passing. The durable pro
 A change is complete when:
 
 - relevant Gherkin specs exist or are explicitly confirmed unaffected;
-- production behavior is covered by meaningful tests;
+- production behaviour is covered by meaningful tests;
 - test quality has been assessed with mutation testing, coverage, or explicit review appropriate to risk;
-- TDD was followed for production behavior;
+- TDD was followed for production behaviour;
 - bug fixes include regression tests;
 - tests pass, or any inability to run them is clearly documented;
 - weak, shallow, or unvalidated generated tests are not accepted as sufficient evidence;
@@ -23,7 +23,8 @@ A change is complete when:
 - specs, tests, and code agree;
 - architecture docs or ADRs are updated when durable decisions changed;
 - glossary is updated when domain language changed;
-- code changes are scoped and minimal for the intended behavior;
+- code changes are scoped and minimal for the intended behaviour;
+- project-facing prose follows the configured language style, UK English by default;
 - residual risks are reported;
 - incremental Conventional Commits are created when work spans meaningful steps.
 
@@ -31,15 +32,16 @@ A change is complete when:
 
 A change is not done if:
 
-- behavior changed but Gherkin was not updated or justified unaffected;
+- behaviour changed but Gherkin was not updated or justified unaffected;
 - tests were skipped silently;
 - production code was written without TDD evidence;
 - failing tests remain unresolved without explicit blocker status;
 - code contradicts canonical specs;
 - implementation is correct but architecturally weak, brittle, overcomplicated, or low quality;
-- formatter, linter/static analyzer, type checker, or required dynamic analysis fails without explicit blocker status;
+- formatter, linter/static analyser, type checker, or required dynamic analysis fails without explicit blocker status;
 - the project lacks quality tooling and the gap has not been surfaced to the user;
 - important decisions only exist in chat or implementation comments;
+- project-facing prose mixes language styles without reason;
 - unrelated cleanup is mixed into the change without approval.
 
 ## Completion Report
@@ -48,7 +50,7 @@ Agents should close with:
 
 ```txt
 Done summary:
-- Behavior/spec impact:
+- Behaviour/spec impact:
 - Tests/TDD:
 - Validation:
 - Quality tooling:

@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Gherkin feature specs persist canonical behavior in a format that is readable by humans, usable by agents, and traceable to tests.
+Gherkin feature specs persist canonical behaviour in a format that is readable by humans, usable by agents, and traceable to tests.
 
-Gherkin is the default format for functional and behavioral specs.
+Gherkin is the default format for functional and behavioural specs.
 
 ## Location
 
@@ -26,17 +26,17 @@ specs/features/api/users.feature
 
 Use Gherkin for:
 
-- user-visible behavior;
+- user-visible behaviour;
 - business rules;
 - domain workflows;
-- API behavior;
-- CLI behavior;
+- API behaviour;
+- CLI behaviour;
 - validation rules;
 - permission rules;
 - error states;
 - externally observable side effects;
 - important edge cases;
-- bug regressions when they clarify intended behavior.
+- bug regressions when they clarify intended behaviour.
 
 ## What Does Not Belong in Gherkin
 
@@ -54,7 +54,7 @@ Avoid encoding incidental implementation details such as:
 
 Gherkin should be written in domain language.
 
-Prefer clear behavioral structure:
+Prefer clear behavioural structure:
 
 ```gherkin
 Feature: Account login
@@ -78,7 +78,7 @@ A good scenario is:
 - testable;
 - specific;
 - written in business/domain language;
-- focused on one behavior or rule;
+- focused on one behaviour or rule;
 - free of incidental implementation detail.
 
 A scenario should be easy to map to one or more tests.
@@ -92,7 +92,7 @@ Feature specs should normally include:
 - important edge cases;
 - permission or validation boundaries when applicable.
 
-Do not add scenarios only for quantity. Each scenario should clarify intended behavior.
+Do not add scenarios only for quantity. Each scenario should clarify intended behaviour.
 
 ## Traceability
 
@@ -109,9 +109,9 @@ or equivalent test naming.
 
 ## Update Rule
 
-Every observable behavior change must either:
+Every observable behaviour change must either:
 
 1. add a Gherkin scenario;
 2. update an existing scenario;
-3. explicitly state that existing scenarios already cover the behavior;
+3. explicitly state that existing scenarios already cover the behaviour;
 4. stop for clarification if the change conflicts with existing Gherkin.

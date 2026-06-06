@@ -2,19 +2,19 @@
 
 ## Purpose
 
-TDD is mandatory for production behavior.
+TDD is mandatory for production behaviour.
 
 Tests are the executable truth that verifies canonical specs and makes rebuildable code possible.
 
 ## Core Rule
 
-Production behavior must be introduced or changed through:
+Production behaviour must be introduced or changed through:
 
 ```txt
 Red → Green → Refactor
 ```
 
-This applies to features, bug fixes, behavior changes, risky refactors, API/CLI behavior, validation, permissions, persistence, and error handling.
+This applies to features, bug fixes, behaviour changes, risky refactors, API/CLI behaviour, validation, permissions, persistence, and error handling.
 
 ## Red
 
@@ -24,10 +24,10 @@ Valid Red evidence includes:
 
 - a newly added failing test;
 - an updated failing test;
-- an existing failing test that already captures the intended behavior;
+- an existing failing test that already captures the intended behaviour;
 - a documented inability to run the test, including the exact intended command and reason.
 
-A failure caused by setup, syntax, environment, or unrelated behavior does not count as valid Red evidence.
+A failure caused by setup, syntax, environment, or unrelated behaviour does not count as valid Red evidence.
 
 ## Green
 
@@ -38,13 +38,13 @@ Green evidence should show:
 - the relevant test passes;
 - relevant surrounding tests pass where practical;
 - no assertions were weakened just to pass;
-- no unrelated behavior was changed.
+- no unrelated behaviour was changed.
 
 ## Refactor
 
 After Green, refactor only while tests remain green.
 
-Refactoring should improve clarity, structure, duplication, or maintainability without expanding scope or changing behavior.
+Refactoring should improve clarity, structure, duplication, or maintainability without expanding scope or changing behaviour.
 
 ## Bug Fixes
 
@@ -66,7 +66,7 @@ If coverage is weak and the refactor is risky, add characterization tests before
 
 Agents must not:
 
-- write production behavior first and tests later;
+- write production behaviour first and tests later;
 - weaken tests to make implementation pass;
 - delete failing tests without justification;
 - claim Red from irrelevant failures;
