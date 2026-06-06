@@ -26,6 +26,7 @@ A change is complete when:
 - glossary is updated when domain language changed;
 - code changes are scoped and minimal for the intended behaviour;
 - project-facing prose follows the configured language style, UK English by default;
+- specs use semantic line breaks, and touched documentation preserves or improves semantic line breaks;
 - residual risks are reported;
 - incremental Conventional Commits are created when work spans meaningful steps.
 
@@ -44,6 +45,7 @@ A change is not done if:
 - the project lacks quality tooling and the gap has not been surfaced to the user;
 - important decisions only exist in chat or implementation comments;
 - project-facing prose mixes language styles without reason;
+- specs or touched docs ignore semantic line break conventions;
 - unrelated cleanup is mixed into the change without approval.
 
 ## Completion Report

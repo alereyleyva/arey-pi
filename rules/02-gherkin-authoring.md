@@ -14,7 +14,7 @@ Canonical Gherkin specs live under:
 specs/features/
 ```
 
-Recommended organization is by domain or capability:
+Recommended organisation is by domain or capability:
 
 ```txt
 specs/features/auth/login.feature
@@ -53,6 +53,10 @@ Avoid encoding incidental implementation details such as:
 ## Style
 
 Gherkin should be written in domain language.
+
+Gherkin specs must use semantic line breaks.
+Each step should express one clear condition, action, outcome, or coherent idea.
+Avoid long multi-clause steps when separate semantic steps would be clearer.
 
 Prefer clear behavioural structure:
 

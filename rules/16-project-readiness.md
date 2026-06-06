@@ -153,6 +153,8 @@ Evaluate Language Style as a normal framework rule.
 Check whether:
 
 - project-facing prose uses UK English by default;
+- specs always use semantic line breaks;
+- touched docs preserve or improve semantic line breaks;
 - specs, docs, prompts, skills, reports, and harness instructions are consistent;
 - US spellings are avoided unless required by identifiers, APIs, quoted material, tooling, or customer terminology;
 - widespread inconsistency is captured as a follow-up rather than silently expanded.
