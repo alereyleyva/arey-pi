@@ -4,13 +4,13 @@
 
 Project Readiness evaluates whether a repository is aligned with Pi Framework.
 
-It is a meta-assessment across the framework rules. AI Harness and Language Style are evaluated as first-class rules alongside specs, TDD, test quality, quality tooling, architecture, spec sync, rebuildability, and process.
+It is a meta-assessment across the framework rules. AI Harness, Language Style, and Database Specs are evaluated as first-class rules alongside specs, TDD, test quality, quality tooling, architecture, spec sync, rebuildability, and process.
 
 ## Core Rule
 
 Projects should be periodically evaluated against Pi Framework rules.
 
-Assessment is read-only by default. Findings should produce evidence, scores, risks, and a prioritized improvement plan before any changes are made.
+Assessment is read-only by default. Findings should produce evidence, scores, risks, and a prioritised improvement plan before any changes are made.
 
 ## Assessment Areas
 
@@ -87,8 +87,21 @@ Check whether:
 
 - specs, tests, and code appear aligned;
 - behaviour changes have corresponding Gherkin updates or no-impact reasoning;
+- database changes have precise DBML updates or no-impact reasoning;
 - architecture/ADR/glossary updates exist when durable knowledge changed;
 - Definition of Done expectations are documented.
+
+### Database Specs
+
+Evaluate Database Specs as a normal framework rule when the project uses persistent storage.
+
+Check whether:
+
+- DBML exists in `specs/database/` or another documented canonical location;
+- DBML reflects tables, columns, types, keys, relationships, constraints, indexes, and relevant notes;
+- migrations, ORM models, SQL DDL, and DBML agree;
+- database-related changes update DBML in the same change set;
+- DBML validation tooling exists or its absence is reported.
 
 ### Rebuildability
 
@@ -157,7 +170,7 @@ Use a 0-5 score for each rule area:
 | 4 | Strong |
 | 5 | Excellent |
 
-Avoid false precision. Scores are meant to prioritize improvement, not gamify compliance.
+Avoid false precision. Scores are meant to prioritise improvement, not gamify compliance.
 
 ## Required Report
 

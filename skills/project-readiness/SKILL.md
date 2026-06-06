@@ -9,7 +9,7 @@ Use this skill to assess whether a project is ready to operate under Pi Framewor
 
 Project readiness evaluates alignment with Pi Framework rules.
 
-AI Harness is one first-class framework rule alongside specs, TDD, quality tooling, architecture/code quality, spec sync, DoD, and commits.
+AI Harness is one first-class framework rule alongside specs, TDD, database specs, quality tooling, architecture/code quality, spec sync, DoD, and commits.
 
 ## Required Reading
 
@@ -17,6 +17,7 @@ Read these policy files when available in the framework package or project:
 
 - `rules/16-project-readiness.md`
 - `rules/15-ai-harness.md`
+- `rules/18-database-specs.md`
 - `rules/00-framework-principles.md`
 - `rules/09-definition-of-done.md`
 - `rules/12-test-quality.md`
@@ -36,7 +37,7 @@ Inspect the repository and produce a readiness report. Do not modify files, inst
 Look for:
 
 - root and nested `AGENTS.md`, `CLAUDE.md`, `.pi/settings.json`, `.pi/`, `.agents/`
-- `specs/features/`, `specs/architecture/`, `specs/decisions/`, glossary
+- `specs/features/`, `specs/database/`, `specs/architecture/`, `specs/decisions/`, glossary
 - test directories and test runner config
 - quality tooling config: formatter, linter, typecheck, coverage, mutation testing
 - project scripts: `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, Makefile, Justfile, CI
@@ -67,6 +68,7 @@ Produce:
 - Quality Tooling
 - Engineering Quality
 - Spec Sync
+- Database Specs, when applicable
 - Rebuildability
 - Architecture Memory
 - Incremental Commits
@@ -86,6 +88,7 @@ Only after user approval, implement selected improvements such as:
 - creating or updating `AGENTS.md`;
 - adding missing validation scripts;
 - adding spec directory skeletons;
+- adding initial DBML skeletons for database projects;
 - adding framework prompts or skills;
 - documenting quality tooling;
 - adding ADR/glossary structure.

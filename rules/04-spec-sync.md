@@ -8,7 +8,7 @@ It applies whether the work started with Spec-Driven Mode or Direct Change Mode.
 
 ## Core Rule
 
-Every completed change must end with canonical specs synchronized or explicitly confirmed unaffected.
+Every completed change must end with canonical specs synchronised or explicitly confirmed unaffected.
 
 The final result must be one of:
 
@@ -29,6 +29,7 @@ At task completion, agents must consider each canonical dimension:
 - **Gherkin:** Did observable behaviour, API/CLI contracts, rules, errors, permissions, or edge cases change?
 - **Tests:** Do tests represent the intended behaviour and trace to relevant specs where practical?
 - **Architecture:** Did boundaries, dependencies, storage, integrations, or system constraints change?
+- **Database/DBML:** Did migrations, ORM models, SQL DDL, schema definitions, indexes, constraints, relationships, or persistence contracts change?
 - **ADRs:** Was a non-trivial decision made that future agents/developers need to know?
 - **Glossary:** Was a new domain term introduced or an existing meaning changed?
 
@@ -37,6 +38,8 @@ At task completion, agents must consider each canonical dimension:
 If behaviour changed, update Gherkin.
 
 If architecture changed, update architecture docs or create/update an ADR.
+
+If database structure changed, update the canonical DBML spec precisely.
 
 If durable domain language changed, update the glossary.
 
@@ -61,6 +64,7 @@ Spec sync:
 - Gherkin:
 - Tests:
 - Architecture/ADR:
+- Database/DBML:
 - Glossary:
 - Status:
 ```

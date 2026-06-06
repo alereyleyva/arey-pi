@@ -8,13 +8,14 @@ They are not secondary documentation. They are the contract that allows the impl
 
 ## Canonical Sources
 
-The framework recognizes these canonical sources:
+The framework recognises these canonical sources:
 
 | Source | Purpose |
 | --- | --- |
 | Gherkin feature specs | Observable behaviour, workflows, business rules, API/CLI contracts, important edge cases |
 | Tests | Executable verification of the specs and regression protection |
 | Architecture docs | System boundaries, constraints, major components, integration models |
+| DBML database specs | Canonical database structure for projects with persistent storage |
 | ADRs | Important technical decisions, tradeoffs, accepted consequences |
 | Glossary | Domain language, concepts, meanings, aliases, and forbidden terms |
 | Project rules | Non-negotiable engineering policies and local conventions |
@@ -54,7 +55,7 @@ The following are not sufficient as durable sources of truth by themselves:
 - agent assumptions;
 - inferred behaviour from current implementation.
 
-They may inform updates, but durable knowledge must be promoted into canonical specs, tests, ADRs, architecture docs, or glossary entries.
+They may inform updates, but durable knowledge must be promoted into canonical specs, tests, DBML database specs, ADRs, architecture docs, or glossary entries.
 
 ## Acceptance Rule
 

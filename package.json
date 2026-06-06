@@ -1,7 +1,7 @@
 {
   "name": "pi-framework",
   "version": "0.1.0",
-  "description": "A Pi package for canonical Gherkin specs, non-negotiable TDD, spec synchronization, AI harness readiness, and senior-quality software delivery.",
+  "description": "A Pi package for canonical Gherkin specs, non-negotiable TDD, spec synchronisation, AI harness readiness, and senior-quality software delivery.",
   "license": "MIT",
   "author": "Alejandro Rey Leyva",
   "type": "module",

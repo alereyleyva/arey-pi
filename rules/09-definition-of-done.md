@@ -22,6 +22,7 @@ A change is complete when:
 - if the project lacks required quality tooling, tooling selection/configuration has been discussed with the user and captured as follow-up or implementation work;
 - specs, tests, and code agree;
 - architecture docs or ADRs are updated when durable decisions changed;
+- DBML database specs exist and are precisely synchronised when the project has a database and the change touches schema, migrations, ORM models, or persistence contracts;
 - glossary is updated when domain language changed;
 - code changes are scoped and minimal for the intended behaviour;
 - project-facing prose follows the configured language style, UK English by default;
@@ -37,6 +38,7 @@ A change is not done if:
 - production code was written without TDD evidence;
 - failing tests remain unresolved without explicit blocker status;
 - code contradicts canonical specs;
+- database schema, migrations, ORM models, or persistence code drift from canonical DBML;
 - implementation is correct but architecturally weak, brittle, overcomplicated, or low quality;
 - formatter, linter/static analyser, type checker, or required dynamic analysis fails without explicit blocker status;
 - the project lacks quality tooling and the gap has not been surfaced to the user;
@@ -57,6 +59,7 @@ Done summary:
 - Spec sync:
 - Architecture/code quality:
 - Architecture/ADR/glossary:
+- Database/DBML:
 - Commits:
 - Residual risks:
 ```

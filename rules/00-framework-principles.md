@@ -14,7 +14,7 @@ Rebuildability never lowers the quality bar. Pi Framework expects architecture a
 
 ## Core Model
 
-A project using this framework is governed by three synchronized layers:
+A project using this framework is governed by three synchronised layers:
 
 1. **Canonical specs** define intended behaviour and durable project knowledge.
 2. **Tests** execute and verify the intended behaviour.
@@ -43,7 +43,7 @@ Every completed change must preserve these guarantees:
 2. **Production behaviour is covered by meaningful tests.**
 3. **TDD is followed for production behaviour.**
 4. **Architecture and code meet a high senior engineering standard.**
-5. **Specs, tests, and code are synchronized before completion.**
+5. **Specs, tests, and code are synchronised before completion.**
 6. **Durable decisions are persisted outside implementation code.**
 7. **The resulting system remains rebuildable from durable knowledge.**
 
@@ -54,7 +54,7 @@ The framework supports two work modes:
 - **Spec-Driven Mode** for non-trivial, ambiguous, product, domain, API, or architectural work.
 - **Direct Change Mode** for small, local, obvious, or mechanical changes.
 
-Direct Change Mode is a lighter path, not an escape hatch. It still requires TDD where production behaviour is involved and always requires final spec synchronization.
+Direct Change Mode is a lighter path, not an escape hatch. It still requires TDD where production behaviour is involved and always requires final spec synchronisation.
 
 ## Agent Bias
 

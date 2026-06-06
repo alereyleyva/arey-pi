@@ -10,7 +10,7 @@ The framework is designed around:
 
 - canonical behaviour persisted as Gherkin specs;
 - non-negotiable TDD for production behaviour;
-- mandatory synchronization between specs, tests, and code;
+- mandatory synchronisation between specs, tests, and code;
 - rebuildable modules that can be discarded and recreated from durable project knowledge;
 - incremental work with Conventional Commits.
 

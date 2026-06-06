@@ -18,6 +18,7 @@ Evaluate alignment with Pi Framework rules:
 - formatter/linter/static analysis/typecheck/dynamic validation
 - architecture and code quality signals
 - spec sync and Definition of Done
+- DBML database specs when the project uses a database
 - rebuildability and architecture memory
 - Conventional Commits / incremental process
 - AI Harness: AGENTS.md, Pi Framework setup, skills, prompts, subagents, technology guidance, command discoverability, and safety rules
@@ -28,6 +29,7 @@ Read and apply these policies when present:
 
 - `rules/16-project-readiness.md`
 - `rules/15-ai-harness.md`
+- `rules/18-database-specs.md`
 - `rules/09-definition-of-done.md`
 - `rules/12-test-quality.md`
 - `rules/14-quality-tooling.md`

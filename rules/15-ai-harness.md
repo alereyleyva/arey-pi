@@ -174,4 +174,4 @@ A weak AI harness is:
 
 A project is not fully aligned with Pi Framework unless its AI harness is adequate for the level of agent work expected in that project.
 
-AI harness gaps should be evaluated and prioritized like any other framework rule gap.
+AI harness gaps should be evaluated and prioritised like any other framework rule gap.
