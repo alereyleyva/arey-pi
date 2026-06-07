@@ -4,24 +4,53 @@ These documents define the operating policies of Pi Framework.
 
 They are intentionally normative: agents should treat them as project delivery rules, not optional documentation.
 
+## Categories
+
+```txt
+rules/
+├── core/          # framework invariants, work modes, DoD, conflict handling
+├── specs/         # canonical specs, Gherkin, DBML, spec sync, language style
+├── engineering/   # TDD, test quality, code/architecture quality, tooling, rebuildability
+├── architecture/  # architecture memory and ADR expectations
+├── workflow/      # agent workflows, AI harness, commits
+└── assessment/    # project readiness evaluation
+```
+
 ## Policy index
 
-1. `00-framework-principles.md`
-2. `01-canonical-specs.md`
-3. `02-gherkin-authoring.md`
-4. `03-tdd.md`
-5. `04-spec-sync.md`
-6. `05-change-modes.md`
-7. `06-rebuildability.md`
-8. `07-architecture-memory.md`
-9. `08-agent-workflows.md`
-10. `09-definition-of-done.md`
-11. `10-conflict-resolution.md`
-12. `11-incremental-commits.md`
-13. `12-test-quality.md`
-14. `13-engineering-quality.md`
-15. `14-quality-tooling.md`
-16. `15-ai-harness.md`
-17. `16-project-readiness.md`
-18. `17-language-style.md`
-19. `18-database-specs.md`
+### Core
+
+- `core/framework-principles.md`
+- `core/change-modes.md`
+- `core/definition-of-done.md`
+- `core/conflict-resolution.md`
+
+### Specs
+
+- `specs/canonical-specs.md`
+- `specs/gherkin-authoring.md`
+- `specs/spec-sync.md`
+- `specs/database-specs.md`
+- `specs/language-style.md`
+
+### Engineering
+
+- `engineering/tdd.md`
+- `engineering/test-quality.md`
+- `engineering/engineering-quality.md`
+- `engineering/quality-tooling.md`
+- `engineering/rebuildability.md`
+
+### Architecture
+
+- `architecture/architecture-memory.md`
+
+### Workflow
+
+- `workflow/agent-workflows.md`
+- `workflow/incremental-commits.md`
+- `workflow/ai-harness.md`
+
+### Assessment
+
+- `assessment/project-readiness.md`

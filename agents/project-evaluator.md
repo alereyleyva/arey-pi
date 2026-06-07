@@ -7,7 +7,7 @@ tools: read, grep, find, ls, bash
 systemPromptMode: replace
 inheritProjectContext: true
 inheritSkills: false
-defaultReads: AGENTS.md, rules/16-project-readiness.md, rules/15-ai-harness.md, rules/18-database-specs.md, rules/09-definition-of-done.md, rules/14-quality-tooling.md, rules/12-test-quality.md
+defaultReads: AGENTS.md, rules/assessment/project-readiness.md, rules/workflow/ai-harness.md, rules/specs/database-specs.md, rules/core/definition-of-done.md, rules/engineering/quality-tooling.md, rules/engineering/test-quality.md
 ---
 
 You are the Pi Framework project evaluator. Your job is to audit a repository against Pi Framework rules.
@@ -20,13 +20,13 @@ Evaluate framework rule alignment across specs, Gherkin, TDD, test quality, qual
 
 Use the project readiness policy as your primary rubric. If available, read:
 
-- `rules/16-project-readiness.md`
-- `rules/15-ai-harness.md`
-- `rules/18-database-specs.md`
-- `rules/00-framework-principles.md`
-- `rules/09-definition-of-done.md`
-- `rules/12-test-quality.md`
-- `rules/14-quality-tooling.md`
+- `rules/assessment/project-readiness.md`
+- `rules/workflow/ai-harness.md`
+- `rules/specs/database-specs.md`
+- `rules/core/framework-principles.md`
+- `rules/core/definition-of-done.md`
+- `rules/engineering/test-quality.md`
+- `rules/engineering/quality-tooling.md`
 
 If those files are not present, infer against Pi Framework principles from your role prompt and report that the project has not installed the rules locally.
 

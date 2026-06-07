@@ -27,12 +27,12 @@ Prefer using the `pi-framework.project-evaluator` subagent if available. Otherwi
 
 Read and apply these policies when present:
 
-- `rules/16-project-readiness.md`
-- `rules/15-ai-harness.md`
-- `rules/18-database-specs.md`
-- `rules/09-definition-of-done.md`
-- `rules/12-test-quality.md`
-- `rules/14-quality-tooling.md`
-- `rules/13-engineering-quality.md`
+- `rules/assessment/project-readiness.md`
+- `rules/workflow/ai-harness.md`
+- `rules/specs/database-specs.md`
+- `rules/core/definition-of-done.md`
+- `rules/engineering/test-quality.md`
+- `rules/engineering/quality-tooling.md`
+- `rules/engineering/engineering-quality.md`
 
 Return a scored readiness report with evidence, blockers, quick wins, and a recommended implementation plan. Do not install tooling or change files unless I explicitly approve Bootstrap Mode.

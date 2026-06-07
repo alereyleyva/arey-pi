@@ -15,14 +15,14 @@ Project readiness covers all applicable framework rules, including specs, TDD, d
 
 Read these policy files when available in the framework package or project:
 
-- `rules/16-project-readiness.md`
-- `rules/15-ai-harness.md`
-- `rules/18-database-specs.md`
-- `rules/00-framework-principles.md`
-- `rules/09-definition-of-done.md`
-- `rules/12-test-quality.md`
-- `rules/14-quality-tooling.md`
-- `rules/13-engineering-quality.md`
+- `rules/assessment/project-readiness.md`
+- `rules/workflow/ai-harness.md`
+- `rules/specs/database-specs.md`
+- `rules/core/framework-principles.md`
+- `rules/core/definition-of-done.md`
+- `rules/engineering/test-quality.md`
+- `rules/engineering/quality-tooling.md`
+- `rules/engineering/engineering-quality.md`
 
 If the files are missing from the target project, report that as part of the assessment rather than assuming compliance.
 
