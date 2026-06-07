@@ -1,5 +1,5 @@
 ---
-description: Assess project alignment with Pi Framework rules, including AI Harness
+description: Assess project alignment with Pi Framework rules
 argument-hint: "[scope or focus]"
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: project-readiness
-description: Evaluate whether a repository is aligned with Pi Framework rules, including the AI Harness rule. Use when assessing specs, tests, quality tooling, AGENTS.md, skills, prompts, subagents, or project readiness.
+description: Evaluate whether a repository is aligned with Pi Framework rules. Use when assessing specs, tests, quality tooling, AGENTS.md, skills, prompts, subagents, or project readiness.
 ---
 
 # Project Readiness
@@ -9,7 +9,7 @@ Use this skill to assess whether a project is ready to operate under Pi Framewor
 
 Project readiness evaluates alignment with Pi Framework rules.
 
-AI Harness is one first-class framework rule alongside specs, TDD, database specs, quality tooling, architecture/code quality, spec sync, DoD, and commits.
+Project readiness covers all applicable framework rules, including specs, TDD, database specs, quality tooling, architecture/code quality, spec sync, AI harness, DoD, and commits.
 
 ## Required Reading
 
