@@ -42,15 +42,11 @@ Update architecture memory when work introduces or changes:
 
 ## ADR Rule
 
-Create or update an ADR for non-trivial decisions that future maintainers should not have to rediscover.
+Create or update a high-quality ADR for non-trivial decisions that future maintainers should not have to rediscover.
 
-An ADR should capture:
+ADRs should be meaningful, decision-focused, and useful after the original conversation is forgotten.
 
-- context;
-- decision;
-- options considered;
-- consequences;
-- status.
+Use `architecture/adrs.md` as the quality bar for when ADRs are warranted and how they should be written.
 
 ## Agent Behaviour
 

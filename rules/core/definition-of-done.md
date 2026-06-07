@@ -21,7 +21,7 @@ A change is complete when:
 - formatting, linting/static analysis, type checking where applicable, and relevant dynamic analysis have passed or are explicitly blocked with evidence;
 - if the project lacks required quality tooling, tooling selection/configuration has been discussed with the user and captured as follow-up or implementation work;
 - specs, tests, and code agree;
-- architecture docs or ADRs are updated when durable decisions changed;
+- architecture docs or high-quality ADRs are updated when durable decisions changed;
 - DBML database specs exist and are precisely synchronised when the project has a database and the change touches schema, migrations, ORM models, or persistence contracts;
 - glossary is updated when domain language changed;
 - code changes are scoped and minimal for the intended behaviour;
@@ -43,7 +43,7 @@ A change is not done if:
 - implementation is correct but architecturally weak, brittle, overcomplicated, or low quality;
 - formatter, linter/static analyser, type checker, or required dynamic analysis fails without explicit blocker status;
 - the project lacks quality tooling and the gap has not been surfaced to the user;
-- important decisions only exist in chat or implementation comments;
+- significant technical decisions exist only in chat, implementation comments, or low-value ADRs that do not explain context, options, tradeoffs, and consequences;
 - project-facing prose mixes language styles without reason;
 - specs or touched docs ignore semantic line break conventions;
 - unrelated cleanup is mixed into the change without approval.

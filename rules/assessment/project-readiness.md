@@ -4,7 +4,7 @@
 
 Project Readiness evaluates whether a repository is aligned with Pi Framework.
 
-It is a meta-assessment across the framework rules. AI Harness, Language Style, and Database Specs are evaluated as first-class rules alongside specs, TDD, test quality, quality tooling, architecture, spec sync, rebuildability, and process.
+It is a meta-assessment across the framework rules. AI Harness, Language Style, Database Specs, and ADR quality are evaluated as first-class concerns alongside specs, TDD, test quality, quality tooling, architecture, spec sync, rebuildability, and process.
 
 ## Core Rule
 
@@ -112,12 +112,14 @@ Check whether:
 - modules are not understandable only by reading implementation;
 - architecture and domain knowledge are persisted.
 
-### Architecture Memory
+### Architecture Memory and ADRs
 
 Check whether:
 
 - architecture docs exist when needed;
-- ADRs capture non-trivial decisions;
+- ADRs capture meaningful non-trivial decisions rather than irrelevant process noise;
+- ADRs explain context, options, tradeoffs, consequences, impact, and revisit conditions;
+- low-value ADRs are avoided;
 - glossary captures domain language;
 - integrations, boundaries, ownership, and constraints are documented.
 

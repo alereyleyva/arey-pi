@@ -30,14 +30,14 @@ At task completion, agents must consider each canonical dimension:
 - **Tests:** Do tests represent the intended behaviour and trace to relevant specs where practical?
 - **Architecture:** Did boundaries, dependencies, storage, integrations, or system constraints change?
 - **Database/DBML:** Did migrations, ORM models, SQL DDL, schema definitions, indexes, constraints, relationships, or persistence contracts change?
-- **ADRs:** Was a non-trivial decision made that future agents/developers need to know?
+- **ADRs:** Was a meaningful technical decision made that future agents/developers need to understand, and is it important enough for a high-quality ADR rather than process noise?
 - **Glossary:** Was a new domain term introduced or an existing meaning changed?
 
 ## Required Behaviour
 
 If behaviour changed, update Gherkin.
 
-If architecture changed, update architecture docs or create/update an ADR.
+If architecture changed, update architecture docs or create/update a high-quality ADR when the decision has durable impact.
 
 If database structure changed, update the canonical DBML spec precisely.
 

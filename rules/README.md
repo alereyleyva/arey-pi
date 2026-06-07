@@ -44,6 +44,7 @@ rules/
 ### Architecture
 
 - `architecture/architecture-memory.md`
+- `architecture/adrs.md`
 
 ### Workflow
 
