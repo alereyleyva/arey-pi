@@ -71,6 +71,22 @@ Use this structure unless the project already has an equivalent ADR template:
 
 Proposed | Accepted | Superseded | Deprecated
 
+## Relationship
+
+Supersedes:
+Superseded by:
+Amends:
+Amended by:
+Narrows:
+Expands:
+Depends on:
+Related:
+
+## Scope
+
+Where does this decision apply?
+Where does it not apply?
+
 ## Context
 
 What problem, constraint, or opportunity forced a decision?
@@ -127,7 +143,69 @@ ADRs should have a clear status:
 - **Deprecated:** no longer recommended but not directly replaced.
 
 Do not silently edit history when a major decision changes.
-Prefer adding a new ADR that supersedes the old one, with links in both documents.
+Prefer adding a new ADR that relates to the old one explicitly.
+
+## Relationships Between ADRs
+
+ADRs may overlap, refine, or replace earlier decisions.
+Those relationships must be explicit.
+
+Use relationship fields consistently:
+
+- **Supersedes:** the new ADR fully replaces an older ADR.
+- **Superseded by:** the old ADR points to the newer replacing ADR.
+- **Amends:** the new ADR partially changes an older ADR while leaving the rest valid.
+- **Amended by:** the old ADR points to a newer partial amendment.
+- **Narrows:** the new ADR restricts where an older decision applies.
+- **Expands:** the new ADR applies an older decision to additional scope.
+- **Depends on:** the new ADR relies on another decision still being valid.
+- **Related:** the ADRs are relevant to each other but do not change each other's status or scope.
+
+## Supersession and Overlap
+
+When a new ADR replaces an older decision:
+
+1. Create a new ADR explaining why the decision changed.
+2. Set the new ADR relationship to `Supersedes: ADR-NNNN`.
+3. Update the old ADR status to `Superseded`.
+4. Set the old ADR relationship to `Superseded by: ADR-NNNN`.
+5. Update architecture docs, Gherkin, DBML, glossary, or tests when the current system truth changes.
+
+When a new ADR only partially changes an older decision, do not mark the older ADR as fully superseded.
+Use `Amends`, `Narrows`, or `Expands`, and make the affected scope explicit in both ADRs where practical.
+
+Historical ADRs should remain readable.
+Do not delete or rewrite meaningful context to make history look cleaner.
+
+## Conflict Handling
+
+Accepted newer ADRs only override older ADRs when the relationship is explicit.
+
+If two accepted ADRs appear to conflict and no relationship explains the overlap, agents must stop and report the conflict.
+They must not silently choose the newer, older, or easier decision.
+
+Report conflicts with evidence:
+
+```txt
+ADR conflict detected:
+- ADR-0004 says: ...
+- ADR-0010 says: ...
+- No supersession, amendment, narrowing, or expansion relationship found.
+Decision required.
+```
+
+## Current Architecture Truth
+
+ADRs preserve decision history.
+Architecture overview docs describe the current architecture.
+
+The current decision set is derived from:
+
+- accepted ADRs;
+- minus superseded or deprecated ADRs;
+- plus explicit amendments, narrowing, expansions, and dependencies.
+
+Because deriving current truth from many ADRs can become difficult, durable current-state architecture docs should be updated when ADRs materially change the system.
 
 ## Relationship to Specs
 
@@ -167,6 +245,8 @@ Before accepting an ADR, check:
 - Are alternatives and tradeoffs honest?
 - Are consequences explicit?
 - Does it say when to revisit the decision?
+- Does it declare relationships to overlapping ADRs?
+- Does it avoid silent conflict with accepted ADRs?
 - Does it link to affected specs, DBML, architecture docs, or follow-up work where useful?
 - Is it written with semantic line breaks and UK English?
 
