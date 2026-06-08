@@ -119,7 +119,7 @@ Or load the readiness skill directly:
 /skill:project-readiness
 ```
 
-Arey Pi also ships an extension with native workflow commands.
+Arey Pi also ships an extension with native setup commands and automatic natural-language harness activation.
 
 When the Arey Pi agents are available to `pi-subagents`, the project evaluator runtime name is:
 
@@ -129,7 +129,7 @@ arey-pi.project-evaluator
 
 ## Extension-backed workflow
 
-Arey Pi includes a polished extension-backed workflow:
+Arey Pi includes a polished extension-backed setup and natural-language workflow harness:
 
 ```txt
 /arey-doctor      # check package, subagent, prompt, skill, and project readiness setup
