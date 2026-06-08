@@ -1,9 +1,8 @@
 # Arey Pi Commands
 
-Arey Pi ships a Pi extension that registers native setup slash commands.
-Development workflows are intentionally natural-language first:
-when the package is installed,
-the extension injects quiet harness guidance automatically on every agent turn.
+Arey Pi ships a Pi extension that registers native setup slash commands and a runtime harness.
+When the package is installed,
+the extension injects quiet workflow guidance automatically before every agent turn and blocks unsafe env-file mutations.
 
 ## Command overview
 
@@ -137,8 +136,10 @@ Explicitly runs the same combined bootstrap path as `/arey-bootstrap` with no fl
 ```
 
 Overwrites existing project-local Arey Pi agent files and scaffold files selected by the other flags.
-When used alone, it applies to the default full bootstrap path.
-It also creates a starter `AGENTS.md` when one does not already exist.
+When used alone,
+it applies to the default full bootstrap path.
+For `AGENTS.md`,
+Arey Pi remains conservative: it creates the starter file when missing but does not replace an existing root `AGENTS.md`.
 
 Examples:
 
@@ -150,49 +151,75 @@ Examples:
 
 Use this command after installing Arey Pi and `pi-subagents` in a repository where you want the Arey Pi agents to be discoverable by `pi-subagents`.
 
-## Natural-language development workflows
+## Runtime workflow harness
 
-Arey Pi is designed to work without development slash commands.
-When the package is installed,
-the extension injects quiet harness context automatically before every agent turn.
-Users can simply ask naturally:
+Arey Pi is designed to work without separate development slash commands.
+The slash commands are for setup and diagnostics;
+delivery work is handled by the always-on runtime harness.
 
-```txt
-Implementa password reset
-Corrige este bug
-Revisa el current diff
-Evalúa este repo
-```
+On `before_agent_start`,
+the extension injects hidden Arey Pi context that asks the parent agent to:
 
-The harness is not meant to add ceremony for the user.
-It asks the agent to infer whether the request is a feature,
-bugfix,
-sync,
-review,
-assessment,
-or mixed task,
-then apply the corresponding Arey Pi posture.
-The parent agent should act as orchestrator,
-use specialist Arey Pi subagents when available,
-and continue conversationally while reporting evidence naturally.
+- infer whether the request is a feature,
+  bugfix,
+  sync,
+  review,
+  assessment,
+  or mixed task;
+- act as the parent Arey Pi orchestrator;
+- use canonical specs and strict Red → Green → Refactor for behaviour changes;
+- reproduce bugs with meaningful failing regression tests before production changes;
+- check drift across specs,
+  tests,
+  code,
+  DBML,
+  ADRs,
+  glossary,
+  README files,
+  docs,
+  `AGENTS.md`,
+  skills,
+  prompts,
+  rules,
+  agents,
+  commands,
+  templates,
+  and tooling instructions;
+- delegate bounded work to Arey Pi subagents when available;
+- use builtin `scout`,
+  `context-builder`,
+  `planner`,
+  `reviewer`,
+  and `oracle` agents when they fit discovery,
+  planning,
+  second-opinion,
+  or fresh-review needs;
+- keep one writer in the active worktree;
+- report final evidence and residual risks clearly.
 
-The injected harness guidance emphasises:
+The injected harness guidance references these Arey Pi agents:
 
 - `arey-pi.spec-author` for canonical specs;
 - `arey-pi.tdd-implementer` for Red → Green → Refactor;
 - `arey-pi.spec-syncer` for alignment;
 - `arey-pi.engineering-reviewer` for fresh review;
-- `arey-pi.project-evaluator` for readiness assessment;
-- builtin scout/planner/reviewer/oracle-style agents for discovery, planning, and second opinions.
+- `arey-pi.project-evaluator` for readiness assessment.
 
-While Arey Pi is active,
-Arey Pi applies simple tool-call guardrails:
+## Guardrails
 
-- writes or edits to env files such as `.env` and `.env.local` are blocked; `.git/` and `node_modules/` remain readable and writable when the task genuinely requires them.
+The extension listens for `tool_call` events and blocks write/edit operations targeting env files such as:
 
+```txt
+.env
+.env.local
+.env.production
+```
+
+This protection is intentionally narrow.
+It prevents accidental secret or environment mutation while leaving normal repository files available for legitimate work.
 
 ## Prompt templates and skills
 
 Arey Pi still ships focused prompt templates and skills for targeted use,
 but they are optional.
-The intended default is natural language plus automatic harness injection.
+The intended default is conversational work plus automatic runtime harness injection.

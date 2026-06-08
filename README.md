@@ -37,23 +37,28 @@ Arey Pi is built around these guarantees:
 ## Package contents
 
 ```txt
-agents/      # Arey Pi subagent role definitions for pi-subagents
-extensions/  # Directory-style Pi extension for doctor, bootstrap, and workflows
-docs/        # Package documentation
-skills/      # On-demand Arey Pi workflows and instructions
-prompts/     # Reusable Pi prompt workflows
-rules/       # Arey Pi operating rules
-templates/   # Bootstrap templates for AGENTS.md, specs, ADRs, DBML, glossary, and reports
+agents/       # Arey Pi subagent role definitions for pi-subagents
+assets/       # Package assets, including the package image used by Pi
+docs/         # Package documentation
+extensions/   # Pi extension for doctor, bootstrap, workflow runtime, and guardrails
+prompts/      # Reusable Pi prompt workflows
+rules/        # Arey Pi operating rules
+skills/       # On-demand Arey Pi workflows and instructions
+templates/    # Bootstrap templates for AGENTS.md, specs, ADRs, DBML, glossary, and reports
 ```
 
 The rules are the policy layer.
-The skills and prompts make those policies usable inside Pi.
-The agents define the intended specialist roles for subagent-backed delivery.
+The extension turns the policy into project setup commands,
+always-on workflow context,
+and safe mutation guardrails.
+The skills and prompts provide focused entry points for targeted work.
+The agents define specialist roles for subagent-backed delivery.
 
-Arey Pi includes focused prompt templates and skills for feature specs,
+Arey Pi currently includes prompt templates and skills for project readiness,
+feature specs,
 strict Red-Green-Refactor,
 spec drift repair,
-ADR assessment,
+ADR review,
 and adversarial engineering review.
 
 ## Current subagent architecture
@@ -71,14 +76,12 @@ tech-lead
 └── project-evaluator
 ```
 
-The intended daily experience is natural language first:
-
-```txt
-Implement password reset.
-```
-
-The parent agent should act as the tech lead,
-then use specialist subagents when available for specs,
+The intended daily experience is conversational.
+Users describe the work they want done,
+and the parent agent acts as the tech lead behind the scenes.
+It classifies the request,
+selects the matching Arey Pi workflow,
+and uses specialist subagents when available for specs,
 TDD implementation,
 spec sync,
 and engineering review.
@@ -119,7 +122,9 @@ Or load the readiness skill directly:
 /skill:project-readiness
 ```
 
-Arey Pi also ships an extension with native setup commands and automatic natural-language harness activation.
+Arey Pi also ships an extension with native setup commands,
+always-on workflow context injection,
+and simple protected-file guardrails.
 
 When the Arey Pi agents are available to `pi-subagents`, the project evaluator runtime name is:
 
@@ -129,34 +134,30 @@ arey-pi.project-evaluator
 
 ## Extension-backed workflow
 
-Arey Pi includes a polished extension-backed setup and natural-language workflow harness:
+Arey Pi includes a polished extension-backed setup and runtime harness:
 
 ```txt
 /arey-doctor      # check package, subagent, prompt, skill, and project readiness setup
 /arey-bootstrap   # full safe bootstrap: agents, AGENTS.md, specs, docs, and templates
-/arey-bootstrap --agentsmd  # also create a starter AGENTS.md if missing
+/arey-bootstrap --agentsmd  # create a starter AGENTS.md if missing
 /arey-bootstrap --specs     # scaffold starter specs directories and glossary
 /arey-bootstrap --docs      # scaffold starter docs directory
 /arey-bootstrap --full      # explicit alias for the default full bootstrap
-/arey-bootstrap --force     # full bootstrap and overwrite selected project-local files
-# Development workflows are natural-language first:
-# "Implementa password reset"
-# "Corrige este bug"
-# "Revisa el current diff"
+/arey-bootstrap --force     # overwrite selected project-local agents and scaffold files
 ```
 
-The goal is that users work naturally without development commands.
 When the package is installed,
 Arey Pi automatically injects quiet harness context behind the scenes on every agent turn.
 The parent agent infers the work mode,
 acts as orchestrator,
-use specialist subagents when available,
-inject the relevant delivery guidance,
-and apply simple event-based guardrails for protected paths.
+uses specialist subagents when available,
+applies the relevant delivery guidance,
+and enforces simple event-based guardrails for protected env files.
 
 See:
 
-- `docs/commands.md` for setup commands and natural-language workflow behaviour;
+- `docs/README.md` for the package documentation index;
+- `docs/commands.md` for setup commands, runtime harness behaviour, and guardrails;
 - `docs/adoption.md` for adopting Arey Pi in an existing repository;
 - `docs/workflows.md` for workflow expectations;
 - `docs/workflow-diagram.md` for the visual framework workflow;
@@ -200,13 +201,14 @@ The policy layer,
 readiness workflow,
 documentation sync rule,
 core subagent role definitions,
-and professional setup extension commands exist.
-
-Arey Pi now includes always-on natural-language harness injection,
+professional setup extension commands,
+bootstrap scaffolding,
+always-on workflow context injection,
 focused prompts,
 TDD/spec-sync/review skills,
-and extension-core tests.
+protected env-file guardrails,
+and extension-core tests exist.
 
-Next improvements include stronger bootstrap scaffolding,
-custom Arey Pi tools,
-and deeper enforcement through Pi extension events.
+Next improvements include custom Arey Pi tools,
+more granular workflow events,
+and deeper enforcement through Pi extension hooks.

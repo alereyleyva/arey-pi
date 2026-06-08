@@ -2,17 +2,11 @@
 
 See `docs/workflow-diagram.md` for a visual overview of the framework workflow.
 
-Arey Pi development workflows are natural-language first.
+Arey Pi workflows are conversational at the user boundary and structured internally.
 When the package is installed,
 the extension injects quiet harness guidance automatically before every agent turn.
 
 ## Feature Workflow
-
-Example request:
-
-```txt
-Implementa password reset
-```
 
 Expected flow:
 
@@ -40,12 +34,6 @@ The workflow should:
 
 ## Bugfix Workflow
 
-Example request:
-
-```txt
-Corrige el bug de verificación de email
-```
-
 Use this when behaviour is wrong.
 
 Expected flow:
@@ -59,12 +47,6 @@ The regression test should fail for the bug before the fix,
 and it should live outside production source directories by default.
 
 ## Sync Workflow
-
-Example request:
-
-```txt
-Sincroniza specs y docs para el current diff
-```
 
 Use this before completing non-trivial work or when drift is suspected.
 
@@ -100,12 +82,6 @@ or justified unaffected statuses.
 
 ## Review Workflow
 
-Example request:
-
-```txt
-Revisa el current diff
-```
-
 Use this for adversarial engineering review.
 
 Review should cover:
@@ -126,12 +102,6 @@ Review should cover:
 Findings should be classified by severity.
 
 ## Assessment Workflow
-
-Example request:
-
-```txt
-Evalúa este repo
-```
 
 Use this to assess project readiness.
 
@@ -178,19 +148,21 @@ end the turn and wait for completion rather than polling repeatedly.
 
 See `docs/pi-subagents.md` for detailed guidance.
 
-## Natural Language Workflow
+## Conversational Workflow Runtime
 
-Users do not need to memorise commands.
-
-This should work:
-
-```txt
-Implement password reset.
-```
-
-The parent agent should act as tech lead,
+Users do not need to memorise development commands.
+The extension provides hidden workflow context before every agent turn,
+so the parent agent should act as tech lead,
 select the appropriate workflow,
 and use specialist subagents when available.
+
+The runtime is intentionally quiet:
+it should improve delivery quality without adding ceremony to normal conversation.
+
+## Guardrails
+
+The workflow runtime blocks write/edit operations to env files such as `.env` and `.env.local`.
+This prevents accidental mutation of secrets or environment configuration while keeping the rest of the repository available for normal work.
 
 ## Evidence Standard
 
