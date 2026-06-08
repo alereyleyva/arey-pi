@@ -105,6 +105,10 @@ unless this repository documents that convention explicitly.
 
 ## Subagents
 
+Keep orchestration in the parent Pi session.
+Child agents should receive concrete,
+bounded tasks and should not launch their own subagent workflows unless explicitly assigned a bounded fanout job.
+
 Project-local Arey Pi subagents live in:
 
 ```txt
@@ -112,8 +116,9 @@ Project-local Arey Pi subagents live in:
 ```
 
 Use them through pi-subagents when available.
+Run `/subagents-doctor` if subagent discovery or async coordination looks wrong.
 
-Suggested roles:
+Suggested Arey Pi roles:
 
 - `arey-pi.tech-lead` for orchestration;
 - `arey-pi.spec-author` for canonical specs;
@@ -121,6 +126,20 @@ Suggested roles:
 - `arey-pi.spec-syncer` for spec and documentation alignment;
 - `arey-pi.engineering-reviewer` for adversarial quality review;
 - `arey-pi.project-evaluator` for readiness assessment.
+
+Useful builtin `pi-subagents` roles:
+
+- `scout` for fast codebase reconnaissance;
+- `context-builder` for stronger planning handoff context;
+- `planner` for implementation plans;
+- `worker` for approved generic implementation;
+- `reviewer` for fresh-context reviews;
+- `oracle` for risky decisions and second opinions;
+- `researcher` for external evidence when web access is available.
+
+Prefer fresh reviewers for independent review.
+Use `oracle` when prior conversation context and decision drift matter.
+Keep one writer in the active worktree at a time.
 
 ## Local Overrides
 

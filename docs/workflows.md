@@ -16,8 +16,13 @@ Command:
 Expected flow:
 
 ```txt
-tech-lead → spec-author → tdd-implementer → spec-syncer → engineering-reviewer
+parent tech lead → arey-pi.spec-author → arey-pi.tdd-implementer → arey-pi.spec-syncer → fresh reviewers → parent finalisation
 ```
+
+For broad or risky changes,
+use builtin `scout`,
+`context-builder`,
+or `planner` before the Arey Pi delivery flow.
 
 Use this for new behaviour or meaningful behaviour changes.
 
@@ -155,6 +160,22 @@ Use selective flags only when needed:
 /arey-bootstrap --docs
 /arey-bootstrap --force
 ```
+
+## Subagent Orchestration Pattern
+
+Keep orchestration in the parent Pi session.
+Child agents should receive bounded tasks and should not launch their own subagent workflows unless explicitly assigned a bounded fanout job.
+
+Use fresh-context reviewers for independent review.
+Use `oracle` when a decision needs a second opinion before implementation.
+Use one writer in the active worktree at a time.
+
+For long-running work,
+background subagents are appropriate.
+If the parent has no useful independent work,
+end the turn and wait for completion rather than polling repeatedly.
+
+See `docs/pi-subagents.md` for detailed guidance.
 
 ## Natural Language Workflow
 

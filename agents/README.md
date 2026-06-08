@@ -5,6 +5,29 @@ Arey Pi uses subagents to turn Arey Pi rules into repeatable delivery workflows.
 Subagents are not independent product owners.
 They are specialised engineering roles with bounded responsibilities, explicit handoffs, and shared commitment to canonical specs, TDD, quality, and rebuildability.
 
+## Relationship to pi-subagents
+
+Arey Pi assumes the parent Pi session owns orchestration.
+
+Specialist children should receive concrete,
+bounded tasks and return evidence-backed handoffs.
+They should not launch their own subagent workflows unless explicitly assigned a bounded fanout job with the `subagent` tool.
+
+Use Arey Pi agents for framework-specific delivery.
+Use builtin `pi-subagents` agents for generic support:
+
+- `scout` for local codebase reconnaissance;
+- `context-builder` for planning handoff context;
+- `planner` for implementation plans;
+- `worker` for approved generic implementation;
+- `reviewer` for fresh independent review;
+- `oracle` for second opinions and risky decisions;
+- `researcher` for external evidence when web access is available.
+
+Prefer fresh-context reviewers for adversarial review.
+Use forked context for `oracle` when the parent conversation history matters.
+Keep one writer in the active worktree at a time.
+
 ## Core Principles
 
 ### Specs remain canonical
@@ -179,13 +202,19 @@ Does not own:
 For meaningful feature or bug-fix work, use this sequence:
 
 ```txt
-1. tech-lead classifies change mode and scope
-2. spec-author writes or confirms canonical specs
-3. tdd-implementer performs Red → Green → Refactor
-4. spec-syncer verifies specs/tests/code and documentation alignment
-5. engineering-reviewer performs adversarial review
-6. tech-lead finalises evidence, risks, and commits
+1. parent tech lead classifies change mode and scope
+2. arey-pi.spec-author writes or confirms canonical specs
+3. arey-pi.tdd-implementer performs Red → Green → Refactor
+4. arey-pi.spec-syncer verifies specs/tests/code and documentation alignment
+5. fresh reviewers perform adversarial review when risk warrants it
+6. parent tech lead synthesises findings and finalises evidence, risks, and commits
 ```
+
+For broad or risky work,
+use builtin `scout`,
+`context-builder`,
+`planner`,
+or `oracle` before the Arey Pi delivery sequence.
 
 Small direct changes may skip specialised agents only when the tech lead can explicitly justify that specs, tests, architecture, DBML, ADRs, and documentation are unaffected.
 

@@ -72,8 +72,9 @@ describe("workflowMessage", () => {
 
     expect(message).toContain("Act as the Arey Pi tech lead");
     expect(message).toContain("Run the Arey Pi feature workflow for: add password reset");
-    expect(message).toContain("spec-author");
-    expect(message).toContain("tdd-implementer");
+    expect(message).toContain("arey-pi.spec-author");
+    expect(message).toContain("arey-pi.tdd-implementer");
+    expect(message).toContain("Keep orchestration authority in the parent session");
   });
 
   test("builds sync workflow messages with spec and documentation sync requirements", () => {

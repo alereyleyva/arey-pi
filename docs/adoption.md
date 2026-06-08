@@ -25,6 +25,12 @@ install `pi-subagents` too:
 pi install -l npm:pi-subagents
 ```
 
+Optionally install `pi-intercom` when background subagents may need to ask the parent for blocking decisions:
+
+```bash
+pi install -l npm:pi-intercom
+```
+
 Reload Pi after installation:
 
 ```txt
@@ -37,9 +43,10 @@ Check what Pi can discover:
 
 ```txt
 /arey-doctor
+/subagents-doctor
 ```
 
-Use this before and after bootstrap.
+Use these before and after bootstrap.
 
 ### 3. Bootstrap safely
 
@@ -160,6 +167,26 @@ Use this for high-risk or agent-heavy projects.
 - Require readiness assessment follow-ups.
 - Use engineering review for significant changes.
 - Consider coverage and mutation testing for critical behaviour.
+
+## Subagent Adoption Notes
+
+See `docs/pi-subagents.md` for deeper guidance.
+
+In short:
+
+- keep orchestration in the parent Pi session;
+- use Arey Pi agents for framework-specific delivery;
+- use builtin `scout`,
+  `planner`,
+  `worker`,
+  `reviewer`,
+  `oracle`,
+  `context-builder`,
+  and `researcher` for generic support;
+- prefer fresh reviewers for independent review;
+- use `oracle` when the decision itself is risky;
+- keep one writer in the active worktree at a time;
+- use `.pi/settings.json` `subagents.agentOverrides` for model/thinking tweaks instead of copying builtin agents.
 
 ## What Not To Do
 

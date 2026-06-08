@@ -60,17 +60,17 @@ export type WorkflowKind = "feature" | "bugfix" | "sync" | "review" | "assess" |
 
 export function workflowMessage(kind: WorkflowKind, args: string): string {
   const target = args.trim() || "the current repository/task";
-  const common = `Act as the Arey Pi tech lead. Use pi-subagents when available and appropriate. Keep orchestration authority in the parent session. Follow Arey Pi rules, preserve TDD, and report evidence clearly.`;
+  const common = `Act as the Arey Pi tech lead. Use pi-subagents when available and appropriate. Keep orchestration authority in the parent session, give child agents bounded tasks, and keep one writer in the active worktree at a time. Follow Arey Pi rules, preserve TDD, and report evidence clearly.`;
 
   switch (kind) {
     case "feature":
-      return `${common}\n\nRun the Arey Pi feature workflow for: ${target}\n\nExpected flow: spec-author for canonical specs, tdd-implementer for Red-Green-Refactor, spec-syncer for final alignment, and engineering-reviewer for adversarial quality review when risk warrants it.`;
+      return `${common}\n\nRun the Arey Pi feature workflow for: ${target}\n\nExpected flow: arey-pi.spec-author for canonical specs, arey-pi.tdd-implementer for Red-Green-Refactor, arey-pi.spec-syncer for final alignment, and fresh reviewers or arey-pi.engineering-reviewer for adversarial quality review when risk warrants it. Use scout/context-builder/planner first if the codebase context is not clear.`;
     case "bugfix":
-      return `${common}\n\nRun the Arey Pi bugfix workflow for: ${target}\n\nStart with a regression test that fails for the bug, then implement the minimal high-quality fix, synchronise specs, and review engineering quality.`;
+      return `${common}\n\nRun the Arey Pi bugfix workflow for: ${target}\n\nStart with a regression test that fails for the bug, keep tests outside production source directories by default, implement the minimal high-quality fix, synchronise specs and docs, and review engineering quality.`;
     case "sync":
       return `${common}\n\nRun Arey Pi spec and documentation sync for: ${target}\n\nVerify Gherkin, tests, code, DBML, ADRs, glossary, architecture docs, README files, docs, AGENTS.md, skills, prompts, rules, agents, commands, and tooling instructions. End with both a spec status and a documentation status.`;
     case "review":
-      return `${common}\n\nRun an Arey Pi engineering review for: ${target}\n\nReview architecture, code quality, test quality, quality tooling, security, privacy, operability, maintainability, and spec/ADR/DBML concerns. Classify findings by severity.`;
+      return `${common}\n\nRun an Arey Pi engineering review for: ${target}\n\nPrefer fresh-context review. Review architecture, code quality, test quality and location, quality tooling, security, privacy, operability, maintainability, and spec/ADR/DBML/documentation concerns. Classify findings by severity.`;
     case "assess":
       return `${common}\n\nAssess this repository against Arey Pi Project Readiness. Audit only by default. Produce scores, evidence, blockers, quick wins, and a prioritised improvement plan.`;
     default:
