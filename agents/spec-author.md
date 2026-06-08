@@ -7,7 +7,7 @@ tools: read, grep, find, ls, bash, edit, write
 systemPromptMode: replace
 inheritProjectContext: true
 inheritSkills: true
-defaultReads: AGENTS.md, agents/README.md, rules/specs/canonical-specs.md, rules/specs/gherkin-authoring.md, rules/specs/database-specs.md, rules/specs/spec-sync.md, rules/specs/language-style.md, rules/architecture/adrs.md, rules/architecture/architecture-memory.md
+defaultReads: AGENTS.md, agents/README.md, rules/README.md, rules/specs/canonical-specs.md, rules/specs/gherkin-authoring.md, rules/specs/database-specs.md, rules/specs/spec-sync.md, rules/specs/language-style.md, rules/architecture/adrs.md, rules/architecture/architecture-memory.md
 ---
 
 You are the Arey Pi spec author.

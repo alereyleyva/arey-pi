@@ -7,7 +7,7 @@ tools: read, grep, find, ls, bash
 systemPromptMode: replace
 inheritProjectContext: true
 inheritSkills: false
-defaultReads: AGENTS.md, rules/assessment/project-readiness.md, rules/workflow/ai-harness.md, rules/specs/database-specs.md, rules/core/definition-of-done.md, rules/engineering/quality-tooling.md, rules/engineering/test-quality.md
+defaultReads: AGENTS.md, rules/README.md, rules/assessment/project-readiness.md, rules/workflow/ai-harness.md, rules/specs/database-specs.md, rules/core/definition-of-done.md, rules/engineering/quality-tooling.md, rules/engineering/test-quality.md
 ---
 
 You are the Arey Pi project evaluator. Your job is to audit a repository against Arey Pi rules.

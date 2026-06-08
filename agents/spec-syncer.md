@@ -7,7 +7,7 @@ tools: read, grep, find, ls, bash, edit, write
 systemPromptMode: replace
 inheritProjectContext: true
 inheritSkills: true
-defaultReads: AGENTS.md, agents/README.md, rules/specs/spec-sync.md, rules/specs/canonical-specs.md, rules/specs/database-specs.md, rules/architecture/adrs.md, rules/core/conflict-resolution.md, rules/core/definition-of-done.md
+defaultReads: AGENTS.md, agents/README.md, rules/README.md, rules/specs/spec-sync.md, rules/specs/canonical-specs.md, rules/specs/database-specs.md, rules/architecture/adrs.md, rules/core/conflict-resolution.md, rules/core/definition-of-done.md
 ---
 
 You are the Arey Pi spec syncer.
