@@ -64,6 +64,119 @@ function copyAgents(targetDir: string, force: boolean): { copied: string[]; skip
   return { copied, skipped, missing };
 }
 
+type ScaffoldResult = { created: string[]; skipped: string[] };
+
+function writeIfMissing(path: string, content: string, force: boolean, cwd: string, result: ScaffoldResult) {
+  mkdirSync(dirname(path), { recursive: true });
+
+  if (fileExists(path) && !force) {
+    result.skipped.push(relative(cwd, path));
+    return;
+  }
+
+  writeFileSync(path, content);
+  result.created.push(relative(cwd, path));
+}
+
+function starterSpecsReadme(): string {
+  return `# Specs
+
+This directory contains canonical Arey Pi project specifications.
+
+Specs are durable project knowledge.
+Keep them synchronised with tests, code, DBML, ADRs, glossary, architecture docs, and project documentation.
+`;
+}
+
+function starterFeaturesReadme(): string {
+  return `# Behaviour Specs
+
+Write behaviour specs in Gherkin.
+
+Use semantic line breaks in feature files and accompanying notes.
+Each feature should describe externally observable behaviour, not implementation details.
+`;
+}
+
+function starterDatabaseReadme(): string {
+  return `# Database Specs
+
+Database projects must keep canonical DBML specs here or document the canonical DBML location.
+
+DBML must stay synchronised with migrations, ORM models, SQL DDL, constraints, indexes, and relationships.
+`;
+}
+
+function starterArchitectureReadme(): string {
+  return `# Architecture
+
+Use this directory for durable architecture memory.
+
+Document boundaries, integrations, ownership, constraints, and current system structure that future humans and agents need to preserve.
+`;
+}
+
+function starterDecisionsReadme(): string {
+  return `# Decisions
+
+Use this directory for high-quality ADRs.
+
+ADRs should capture meaningful technical decisions, context, options, tradeoffs, consequences, revisit conditions, and supersession relationships.
+`;
+}
+
+function starterGlossary(): string {
+  return `# Glossary
+
+Use this glossary for durable domain language.
+
+## Terms
+
+<!--
+Add terms as they become important.
+
+Example:
+
+### Account
+
+Definition.
+
+Related specs:
+- specs/features/example.feature
+-->
+`;
+}
+
+function starterDocsReadme(): string {
+  return `# Documentation
+
+Use this directory for project-facing documentation that is not itself a canonical spec.
+
+Keep usage, setup, commands, operations, and workflow instructions synchronised with the implementation and Arey Pi rules.
+`;
+}
+
+function scaffoldSpecs(cwd: string, force: boolean): ScaffoldResult {
+  const result: ScaffoldResult = { created: [], skipped: [] };
+
+  writeIfMissing(join(cwd, "specs", "README.md"), starterSpecsReadme(), force, cwd, result);
+  writeIfMissing(join(cwd, "specs", "features", "README.md"), starterFeaturesReadme(), force, cwd, result);
+  writeIfMissing(join(cwd, "specs", "database", "README.md"), starterDatabaseReadme(), force, cwd, result);
+  writeIfMissing(join(cwd, "specs", "architecture", "README.md"), starterArchitectureReadme(), force, cwd, result);
+  writeIfMissing(join(cwd, "specs", "decisions", "README.md"), starterDecisionsReadme(), force, cwd, result);
+  writeIfMissing(join(cwd, "specs", "glossary.md"), starterGlossary(), force, cwd, result);
+
+  return result;
+}
+
+function scaffoldDocs(cwd: string, force: boolean): ScaffoldResult {
+  const result: ScaffoldResult = { created: [], skipped: [] };
+
+  writeIfMissing(join(cwd, "docs", "README.md"), starterDocsReadme(), force, cwd, result);
+
+  return result;
+}
+
 function starterAgentsMd(): string {
   return `# Agent Instructions
 
@@ -75,7 +188,7 @@ This project uses Arey Pi.
 - Use Gherkin for behaviour specs.
 - Use DBML for database specs when the project has persistence.
 - Follow TDD for production behaviour changes.
-- Keep specs, tests, code, DBML, ADRs, glossary, and architecture docs synchronised.
+- Keep specs, tests, code, DBML, ADRs, glossary, architecture docs, README files, docs, AGENTS.md, commands, and tooling instructions synchronised.
 - Capture significant technical decisions in high-quality ADRs.
 - Run formatter, lint/static analysis, typecheck, tests, and relevant dynamic analysis where available.
 - Use incremental Conventional Commits for meaningful steps.
@@ -196,19 +309,27 @@ export default function areyPi(pi: ExtensionAPI) {
   });
 
   pi.registerCommand("arey-bootstrap", {
-    description: "Install Arey Pi project-local subagents and optional starter AGENTS.md",
+    description: "Install Arey Pi subagents and optionally scaffold specs/docs",
     handler: async (args, ctx) => {
       const cwd = cwdFrom(ctx);
-      const force = args.split(/\s+/).includes("--force");
-      const createAgentsMd = args.split(/\s+/).includes("--agentsmd");
+      const flags = args.split(/\s+/).filter(Boolean);
+      const force = flags.includes("--force");
+      const full = flags.includes("--full");
+      const createAgentsMd = flags.includes("--agentsmd") || full;
+      const createSpecs = flags.includes("--specs") || full;
+      const createDocs = flags.includes("--docs") || full;
       const targetDir = join(cwd, ".pi", "agents", "arey-pi");
       const result = copyAgents(targetDir, force);
+      const specsResult = createSpecs ? scaffoldSpecs(cwd, force) : { created: [], skipped: [] };
+      const docsResult = createDocs ? scaffoldDocs(cwd, force) : { created: [], skipped: [] };
       const agentsMdPath = join(cwd, "AGENTS.md");
       let agentsMdStatus = "unchanged";
 
       if (!fileExists(agentsMdPath) && (createAgentsMd || force)) {
         writeFileSync(agentsMdPath, starterAgentsMd());
         agentsMdStatus = "created";
+      } else if (fileExists(agentsMdPath) && createAgentsMd && !force) {
+        agentsMdStatus = "skipped existing";
       }
 
       const report = [
@@ -219,12 +340,26 @@ export default function areyPi(pi: ExtensionAPI) {
         `- Skipped existing agents: ${result.skipped.length}`,
         `- Missing package agents: ${result.missing.length}`,
         `- AGENTS.md: ${agentsMdStatus}`,
+        `- Spec scaffold created: ${specsResult.created.length}`,
+        `- Spec scaffold skipped: ${specsResult.skipped.length}`,
+        `- Docs scaffold created: ${docsResult.created.length}`,
+        `- Docs scaffold skipped: ${docsResult.skipped.length}`,
         "",
-        "## Copied",
+        "## Copied agents",
         result.copied.length ? result.copied.map((agent) => `- ${agent}`).join("\n") : "- none",
         "",
-        "## Skipped",
+        "## Skipped agents",
         result.skipped.length ? result.skipped.map((agent) => `- ${agent}`).join("\n") : "- none",
+        "",
+        "## Created scaffold files",
+        [...specsResult.created, ...docsResult.created].length
+          ? [...specsResult.created, ...docsResult.created].map((path) => `- ${path}`).join("\n")
+          : "- none",
+        "",
+        "## Skipped scaffold files",
+        [...specsResult.skipped, ...docsResult.skipped].length
+          ? [...specsResult.skipped, ...docsResult.skipped].map((path) => `- ${path}`).join("\n")
+          : "- none",
         "",
         "Run `/arey-doctor` to verify setup.",
       ].join("\n");
@@ -233,7 +368,7 @@ export default function areyPi(pi: ExtensionAPI) {
         customType: "arey-pi-bootstrap",
         content: report,
         display: true,
-        details: result,
+        details: { agents: result, specs: specsResult, docs: docsResult, agentsMd: agentsMdStatus },
       });
     },
   });

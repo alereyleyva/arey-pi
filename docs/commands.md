@@ -11,7 +11,7 @@ The commands are designed for two modes of use:
 
 ```txt
 /arey-doctor
-/arey-bootstrap [--agentsmd] [--force]
+/arey-bootstrap [--agentsmd] [--specs] [--docs] [--full] [--force]
 /arey-feature <feature request>
 /arey-bugfix <bug description>
 /arey-sync [scope]
@@ -50,14 +50,15 @@ or when subagent workflows are not behaving as expected.
 ## `/arey-bootstrap`
 
 Installs Arey Pi's packaged subagent definitions into the current project.
+It can also safely scaffold starter spec and documentation structure.
 
-Default target:
+Default agent target:
 
 ```txt
 .pi/agents/arey-pi/
 ```
 
-By default, existing project-local agent files are not overwritten.
+By default, existing project-local agent files and scaffold files are not overwritten.
 
 Usage:
 
@@ -74,11 +75,54 @@ Options:
 Also creates a starter root `AGENTS.md` when one does not already exist.
 
 ```txt
+/arey-bootstrap --specs
+```
+
+Creates starter Arey Pi spec structure when files do not already exist:
+
+```txt
+specs/README.md
+specs/features/README.md
+specs/database/README.md
+specs/architecture/README.md
+specs/decisions/README.md
+specs/glossary.md
+```
+
+```txt
+/arey-bootstrap --docs
+```
+
+Creates starter project documentation structure when files do not already exist:
+
+```txt
+docs/README.md
+```
+
+```txt
+/arey-bootstrap --full
+```
+
+Runs the combined bootstrap path:
+
+```txt
+--agentsmd --specs --docs
+```
+
+```txt
 /arey-bootstrap --force
 ```
 
-Overwrites existing project-local Arey Pi agent files.
+Overwrites existing project-local Arey Pi agent files and scaffold files selected by the other flags.
 It also creates a starter `AGENTS.md` when one does not already exist.
+
+Examples:
+
+```txt
+/arey-bootstrap --specs --docs
+/arey-bootstrap --full
+/arey-bootstrap --full --force
+```
 
 Use this command after installing Arey Pi and `pi-subagents` in a repository where you want the Arey Pi agents to be discoverable by `pi-subagents`.
 
