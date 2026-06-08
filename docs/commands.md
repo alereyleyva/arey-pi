@@ -188,7 +188,7 @@ The injected harness guidance emphasises:
 While Arey Pi is active,
 Arey Pi applies simple tool-call guardrails:
 
-- writes or edits to protected paths such as `.env`, `.git/`, and `node_modules/` are blocked.
+- writes or edits to env files such as `.env` and `.env.local` are blocked; `.git/` and `node_modules/` remain readable and writable when the task genuinely requires them.
 
 
 ## Prompt templates and skills

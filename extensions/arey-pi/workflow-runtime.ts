@@ -1,14 +1,13 @@
 import {
   isToolCallEventType,
   type ExtensionAPI,
-  type ExtensionContext,
   type ToolCallEvent,
   type ToolCallEventResult,
 } from "@earendil-works/pi-coding-agent";
 import { areyPiHarnessContext } from "./core.ts";
 
-function isSensitivePath(path: string): boolean {
-  return [".env", ".git/", "node_modules/"].some((protectedPath) => path.includes(protectedPath));
+function isProtectedEnvPath(path: string): boolean {
+  return path.split("/").some((segment) => segment === ".env" || segment.startsWith(".env."));
 }
 
 function editedPath(event: ToolCallEvent): string | undefined {
@@ -19,13 +18,12 @@ function editedPath(event: ToolCallEvent): string | undefined {
   return undefined;
 }
 
-function handleMutationGuardrails(event: ToolCallEvent, ctx: ExtensionContext): ToolCallEventResult | undefined {
+function handleMutationGuardrails(event: ToolCallEvent): ToolCallEventResult | undefined {
   const path = editedPath(event);
   if (!path) return undefined;
 
-  if (isSensitivePath(path)) {
-    ctx.ui.notify(`Blocked write to protected path: ${path}`, "warning");
-    return { block: true, reason: `Arey Pi guardrail: path is protected: ${path}` };
+  if (isProtectedEnvPath(path)) {
+    return { block: true, reason: `Arey Pi guardrail: env file writes are protected: ${path}` };
   }
 
   return undefined;
@@ -41,5 +39,5 @@ export function registerWorkflowRuntime(pi: ExtensionAPI): void {
     },
   }));
 
-  pi.on("tool_call", (event, ctx) => handleMutationGuardrails(event, ctx));
+  pi.on("tool_call", (event) => handleMutationGuardrails(event));
 }
