@@ -1,6 +1,6 @@
 {
   "name": "arey-pi",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A Pi package for canonical Gherkin specs, non-negotiable TDD, spec synchronisation, AI harness readiness, and senior-quality software delivery.",
   "license": "MIT",
   "author": "Alejandro Rey Leyva",
