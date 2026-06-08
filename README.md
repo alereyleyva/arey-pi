@@ -37,6 +37,7 @@ Arey Pi is built around these guarantees:
 
 ```txt
 agents/      # Arey Pi subagent role definitions for pi-subagents
+extensions/  # Slash commands for doctor, bootstrap, and workflows
 skills/      # On-demand Arey Pi workflows and instructions
 prompts/     # Reusable Pi prompt workflows
 rules/       # Arey Pi operating rules
@@ -73,8 +74,7 @@ TDD implementation,
 spec sync,
 and engineering review.
 
-Today, the package includes the agent definitions in `agents/`.
-A forthcoming extension/bootstrap flow will install those definitions into the project-local `pi-subagents` discovery path automatically.
+The package includes an extension that can install those definitions into the project-local `pi-subagents` discovery path automatically.
 
 ## Installation
 
@@ -116,9 +116,9 @@ When the Arey Pi agents are available to `pi-subagents`, the project evaluator r
 arey-pi.project-evaluator
 ```
 
-## Intended professional workflow
+## Extension-backed workflow
 
-Arey Pi is moving towards a polished extension-backed workflow:
+Arey Pi includes a polished extension-backed workflow:
 
 ```txt
 /arey-doctor      # check package, subagent, prompt, skill, and project readiness setup
@@ -127,6 +127,7 @@ Arey Pi is moving towards a polished extension-backed workflow:
 /arey-bugfix      # run regression-test-first bug fixing
 /arey-sync        # verify specs, tests, code, DBML, ADRs, and glossary alignment
 /arey-review      # run adversarial engineering review
+/arey-assess      # assess project readiness against Arey Pi rules
 ```
 
 The goal is that users can either speak naturally or use explicit commands,
@@ -154,8 +155,9 @@ Arey Pi is pre-1.0.
 
 The policy layer,
 readiness workflow,
-and core subagent role definitions exist.
-The next milestone is the professional extension layer for doctor,
-bootstrap,
-workflow commands,
-and project-local subagent installation.
+core subagent role definitions,
+and professional extension commands exist.
+
+Next milestones include richer templates,
+stronger bootstrap scaffolding,
+and deeper integration with `pi-subagents` discovery.

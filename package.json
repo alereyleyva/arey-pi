@@ -1,6 +1,6 @@
 {
   "name": "arey-pi",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Pi package for canonical Gherkin specs, non-negotiable TDD, spec synchronisation, AI harness readiness, and senior-quality software delivery.",
   "license": "MIT",
   "author": "Alejandro Rey Leyva",
@@ -23,6 +23,7 @@
   ],
   "files": [
     "agents/",
+    "extensions/",
     "skills/",
     "prompts/",
     "rules/",
@@ -31,6 +32,9 @@
     "LICENSE"
   ],
   "pi": {
+    "extensions": [
+      "./extensions/arey-pi.ts"
+    ],
     "skills": [
       "./skills"
     ],
@@ -39,10 +43,23 @@
     ]
   },
   "scripts": {
-    "check": "node -e \"JSON.parse(require('fs').readFileSync('package.json', 'utf8'))\"",
+    "check": "node -e \"JSON.parse(require('fs').readFileSync('package.json', 'utf8'))\" && tsc --noEmit",
     "prepublishOnly": "npm run check && npm pack --dry-run"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^0.78.1",
+    "@types/node": "^25.9.2",
+    "typescript": "^6.0.3"
   }
 }
