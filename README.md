@@ -133,6 +133,18 @@ Arey Pi includes a polished extension-backed workflow:
 The goal is that users can either speak naturally or use explicit commands,
 while Arey Pi handles the disciplined workflow behind the scenes.
 
+## Development
+
+Arey Pi uses Bun as its package manager and Biome for extension formatting and linting.
+
+```bash
+bun install
+bun run format
+bun run check
+```
+
+`bun run check` runs Biome linting and TypeScript type checking.
+
 ## Rule categories
 
 Arey Pi rules are organised as:
