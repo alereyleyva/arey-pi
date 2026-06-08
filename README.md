@@ -39,9 +39,11 @@ Arey Pi is built around these guarantees:
 ```txt
 agents/      # Arey Pi subagent role definitions for pi-subagents
 extensions/  # Slash commands for doctor, bootstrap, and workflows
+docs/        # Package documentation
 skills/      # On-demand Arey Pi workflows and instructions
 prompts/     # Reusable Pi prompt workflows
 rules/       # Arey Pi operating rules
+templates/   # Bootstrap templates for AGENTS.md, specs, ADRs, DBML, glossary, and reports
 ```
 
 The rules are the policy layer.
@@ -125,7 +127,7 @@ Arey Pi includes a polished extension-backed workflow:
 
 ```txt
 /arey-doctor      # check package, subagent, prompt, skill, and project readiness setup
-/arey-bootstrap   # full safe bootstrap: agents, AGENTS.md, specs, and docs
+/arey-bootstrap   # full safe bootstrap: agents, AGENTS.md, specs, docs, and templates
 /arey-bootstrap --agentsmd  # also create a starter AGENTS.md if missing
 /arey-bootstrap --specs     # scaffold starter specs directories and glossary
 /arey-bootstrap --docs      # scaffold starter docs directory

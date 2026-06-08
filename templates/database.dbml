@@ -1,0 +1,14 @@
+// Canonical database specification.
+// Keep this DBML synchronised with migrations, ORM models, SQL DDL, constraints, indexes, and relationships.
+
+Project project_name {
+  database_type: 'PostgreSQL'
+  Note: 'Replace this starter DBML with the canonical project schema.'
+}
+
+Table example_entities {
+  id uuid [pk, note: 'Primary identifier']
+  name varchar [not null]
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+}

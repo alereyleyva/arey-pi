@@ -28,6 +28,7 @@ It reports:
 - Arey Pi package version;
 - current project path;
 - whether packaged rules are present;
+- whether packaged templates are present;
 - whether packaged agents are present;
 - whether `pi-subagents` appears to be installed;
 - whether project-local Arey Pi agents exist in `.pi/agents/arey-pi/`;
@@ -64,6 +65,7 @@ Default agent target:
 ```
 
 By default, existing project-local agent files and scaffold files are not overwritten.
+Starter scaffold files are copied from the packaged `templates/` directory.
 Selective flags are available when you only want one part of the scaffold.
 
 Usage:
@@ -79,11 +81,15 @@ This creates or installs, where missing:
 AGENTS.md
 specs/README.md
 specs/features/README.md
+specs/features/example.feature
 specs/database/README.md
+specs/database/schema.dbml
 specs/architecture/README.md
 specs/decisions/README.md
+specs/decisions/0001-record-architecture-decision.md
 specs/glossary.md
 docs/README.md
+docs/project-readiness-report.md
 ```
 
 Options:
@@ -103,9 +109,12 @@ Creates starter Arey Pi spec structure when files do not already exist:
 ```txt
 specs/README.md
 specs/features/README.md
+specs/features/example.feature
 specs/database/README.md
+specs/database/schema.dbml
 specs/architecture/README.md
 specs/decisions/README.md
+specs/decisions/0001-record-architecture-decision.md
 specs/glossary.md
 ```
 
@@ -117,6 +126,7 @@ Creates starter project documentation structure when files do not already exist:
 
 ```txt
 docs/README.md
+docs/project-readiness-report.md
 ```
 
 ```txt

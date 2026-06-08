@@ -6,6 +6,7 @@ import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 const packageRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 const agentSourceDir = join(packageRoot, "agents");
 const rulesDir = join(packageRoot, "rules");
+const templatesDir = join(packageRoot, "templates");
 const requiredAgents = [
   "tech-lead.md",
   "spec-author.md",
@@ -66,143 +67,58 @@ function copyAgents(targetDir: string, force: boolean): { copied: string[]; skip
 
 type ScaffoldResult = { created: string[]; skipped: string[] };
 
-function writeIfMissing(path: string, content: string, force: boolean, cwd: string, result: ScaffoldResult) {
-  mkdirSync(dirname(path), { recursive: true });
+type ScaffoldFile = { template: string; target: string };
 
-  if (fileExists(path) && !force) {
-    result.skipped.push(relative(cwd, path));
+function templateContent(name: string): string {
+  return readFileSync(join(templatesDir, name), "utf8");
+}
+
+function writeTemplateIfMissing(file: ScaffoldFile, force: boolean, cwd: string, result: ScaffoldResult) {
+  const target = join(cwd, file.target);
+  mkdirSync(dirname(target), { recursive: true });
+
+  if (fileExists(target) && !force) {
+    result.skipped.push(file.target);
     return;
   }
 
-  writeFileSync(path, content);
-  result.created.push(relative(cwd, path));
+  writeFileSync(target, templateContent(file.template));
+  result.created.push(file.target);
 }
 
-function starterSpecsReadme(): string {
-  return `# Specs
+function scaffoldFiles(cwd: string, force: boolean, files: ScaffoldFile[]): ScaffoldResult {
+  const result: ScaffoldResult = { created: [], skipped: [] };
 
-This directory contains canonical Arey Pi project specifications.
+  for (const file of files) {
+    writeTemplateIfMissing(file, force, cwd, result);
+  }
 
-Specs are durable project knowledge.
-Keep them synchronised with tests, code, DBML, ADRs, glossary, architecture docs, and project documentation.
-`;
-}
-
-function starterFeaturesReadme(): string {
-  return `# Behaviour Specs
-
-Write behaviour specs in Gherkin.
-
-Use semantic line breaks in feature files and accompanying notes.
-Each feature should describe externally observable behaviour, not implementation details.
-`;
-}
-
-function starterDatabaseReadme(): string {
-  return `# Database Specs
-
-Database projects must keep canonical DBML specs here or document the canonical DBML location.
-
-DBML must stay synchronised with migrations, ORM models, SQL DDL, constraints, indexes, and relationships.
-`;
-}
-
-function starterArchitectureReadme(): string {
-  return `# Architecture
-
-Use this directory for durable architecture memory.
-
-Document boundaries, integrations, ownership, constraints, and current system structure that future humans and agents need to preserve.
-`;
-}
-
-function starterDecisionsReadme(): string {
-  return `# Decisions
-
-Use this directory for high-quality ADRs.
-
-ADRs should capture meaningful technical decisions, context, options, tradeoffs, consequences, revisit conditions, and supersession relationships.
-`;
-}
-
-function starterGlossary(): string {
-  return `# Glossary
-
-Use this glossary for durable domain language.
-
-## Terms
-
-<!--
-Add terms as they become important.
-
-Example:
-
-### Account
-
-Definition.
-
-Related specs:
-- specs/features/example.feature
--->
-`;
-}
-
-function starterDocsReadme(): string {
-  return `# Documentation
-
-Use this directory for project-facing documentation that is not itself a canonical spec.
-
-Keep usage, setup, commands, operations, and workflow instructions synchronised with the implementation and Arey Pi rules.
-`;
+  return result;
 }
 
 function scaffoldSpecs(cwd: string, force: boolean): ScaffoldResult {
-  const result: ScaffoldResult = { created: [], skipped: [] };
-
-  writeIfMissing(join(cwd, "specs", "README.md"), starterSpecsReadme(), force, cwd, result);
-  writeIfMissing(join(cwd, "specs", "features", "README.md"), starterFeaturesReadme(), force, cwd, result);
-  writeIfMissing(join(cwd, "specs", "database", "README.md"), starterDatabaseReadme(), force, cwd, result);
-  writeIfMissing(join(cwd, "specs", "architecture", "README.md"), starterArchitectureReadme(), force, cwd, result);
-  writeIfMissing(join(cwd, "specs", "decisions", "README.md"), starterDecisionsReadme(), force, cwd, result);
-  writeIfMissing(join(cwd, "specs", "glossary.md"), starterGlossary(), force, cwd, result);
-
-  return result;
+  return scaffoldFiles(cwd, force, [
+    { template: "specs-readme.md", target: "specs/README.md" },
+    { template: "features-readme.md", target: "specs/features/README.md" },
+    { template: "feature.feature", target: "specs/features/example.feature" },
+    { template: "database-readme.md", target: "specs/database/README.md" },
+    { template: "database.dbml", target: "specs/database/schema.dbml" },
+    { template: "architecture-readme.md", target: "specs/architecture/README.md" },
+    { template: "decisions-readme.md", target: "specs/decisions/README.md" },
+    { template: "adr.md", target: "specs/decisions/0001-record-architecture-decision.md" },
+    { template: "glossary.md", target: "specs/glossary.md" },
+  ]);
 }
 
 function scaffoldDocs(cwd: string, force: boolean): ScaffoldResult {
-  const result: ScaffoldResult = { created: [], skipped: [] };
-
-  writeIfMissing(join(cwd, "docs", "README.md"), starterDocsReadme(), force, cwd, result);
-
-  return result;
+  return scaffoldFiles(cwd, force, [
+    { template: "docs-readme.md", target: "docs/README.md" },
+    { template: "project-readiness-report.md", target: "docs/project-readiness-report.md" },
+  ]);
 }
 
 function starterAgentsMd(): string {
-  return `# Agent Instructions
-
-This project uses Arey Pi.
-
-## Delivery rules
-
-- Treat canonical specs as the source of truth.
-- Use Gherkin for behaviour specs.
-- Use DBML for database specs when the project has persistence.
-- Follow TDD for production behaviour changes.
-- Keep specs, tests, code, DBML, ADRs, glossary, architecture docs, README files, docs, AGENTS.md, commands, and tooling instructions synchronised.
-- Capture significant technical decisions in high-quality ADRs.
-- Run formatter, lint/static analysis, typecheck, tests, and relevant dynamic analysis where available.
-- Use incremental Conventional Commits for meaningful steps.
-
-## Subagents
-
-Project-local Arey Pi subagents live in:
-
-\`\`\`txt
-.pi/agents/arey-pi/
-\`\`\`
-
-Use them through pi-subagents when available.
-`;
+  return templateContent("AGENTS.md");
 }
 
 function workflowMessage(kind: string, args: string): string {
@@ -282,6 +198,7 @@ export default function areyPi(pi: ExtensionAPI) {
         `- Package: arey-pi@${packageVersion()}`,
         `- Project: ${cwd}`,
         `- Package rules present: ${dirExists(rulesDir) ? "yes" : "no"}`,
+        `- Package templates present: ${dirExists(templatesDir) ? "yes" : "no"}`,
         `- Package agents present: ${packageAgents.length}/${requiredAgents.length}`,
         `- pi-subagents command detected: ${hasSubagentsCommand ? "yes" : "no"}`,
         `- Project-local Arey Pi agents: ${installedAgents.length}/${requiredAgents.length}`,
