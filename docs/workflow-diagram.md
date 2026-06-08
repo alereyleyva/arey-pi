@@ -10,53 +10,53 @@ repair,
 or finalise.
 
 ```mermaid
-flowchart TD
-  A[User request] --> B[Parent acts as Arey Pi tech lead]
-  B --> C{Classify change mode}
+graph TD
+  A["User request"] --> B["Parent acts as Arey Pi tech lead"]
+  B --> C{"Classify change mode"}
 
-  C -->|Assessment| EVAL[arey-pi.project-evaluator]
-  EVAL --> EVALREPORT[Readiness report and improvement plan]
+  C -->|"Assessment"| EVAL["Project evaluator"]
+  EVAL --> EVALREPORT["Readiness report and improvement plan"]
 
-  C -->|Bootstrap| BOOT[/arey-bootstrap]
-  BOOT --> HARNESS[AGENTS.md, specs, docs, templates, project agents]
-  HARNESS --> DOCTOR[/arey-doctor and /subagents-doctor]
+  C -->|"Bootstrap"| BOOT["arey-bootstrap"]
+  BOOT --> HARNESS["AGENTS.md, specs, docs, templates, project agents"]
+  HARNESS --> DOCTOR["arey-doctor and subagents-doctor"]
 
-  C -->|Direct change| DIRECT{Specs, tests, docs unaffected?}
-  DIRECT -->|No or unclear| SPEC
-  DIRECT -->|Yes, justified| IMPL
+  C -->|"Direct change"| DIRECT{"Specs, tests, docs unaffected?"}
+  DIRECT -->|"No or unclear"| SPEC
+  DIRECT -->|"Yes, justified"| IMPL
 
-  C -->|Feature, bugfix, rebuild, risky change| CONTEXT{Enough context?}
-  CONTEXT -->|No| RECON[scout / context-builder / planner]
-  RECON --> SPEC[arey-pi.spec-author]
-  CONTEXT -->|Yes| SPEC
+  C -->|"Feature, bugfix, rebuild, risky change"| CONTEXT{"Enough context?"}
+  CONTEXT -->|"No"| RECON["Scout, context-builder, or planner"]
+  RECON --> SPEC["Spec author"]
+  CONTEXT -->|"Yes"| SPEC
 
-  SPEC --> SPECCHECK{Canonical intent clear?}
-  SPECCHECK -->|No| ASK[Ask user / resolve conflict]
+  SPEC --> SPECCHECK{"Canonical intent clear?"}
+  SPECCHECK -->|"No"| ASK["Ask user or resolve conflict"]
   ASK --> SPEC
-  SPECCHECK -->|Yes| IMPL[arey-pi.tdd-implementer]
+  SPECCHECK -->|"Yes"| IMPL["TDD implementer"]
 
-  IMPL --> RED[Red: failing behaviour/regression test]
-  RED --> GREEN[Green: minimal high-quality implementation]
-  GREEN --> REFACTOR[Refactor while tests stay green]
-  REFACTOR --> VALIDATE[Run validation and quality tooling]
+  IMPL --> RED["Red: failing behaviour or regression test"]
+  RED --> GREEN["Green: minimal high-quality implementation"]
+  GREEN --> REFACTOR["Refactor while tests stay green"]
+  REFACTOR --> VALIDATE["Run validation and quality tooling"]
 
-  VALIDATE --> SYNC[arey-pi.spec-syncer]
-  SYNC --> SYNCCHECK{Specs and docs aligned?}
-  SYNCCHECK -->|No| REPAIR[Repair sync gaps]
+  VALIDATE --> SYNC["Spec syncer"]
+  SYNC --> SYNCCHECK{"Specs and docs aligned?"}
+  SYNCCHECK -->|"No"| REPAIR["Repair sync gaps"]
   REPAIR --> VALIDATE
-  SYNCCHECK -->|Yes| REVIEWGATE{Risk warrants review?}
+  SYNCCHECK -->|"Yes"| REVIEWGATE{"Risk warrants review?"}
 
-  REVIEWGATE -->|Yes| REVIEW[Fresh reviewers / arey-pi.engineering-reviewer]
-  REVIEW --> FINDINGS{Blocking findings?}
-  FINDINGS -->|Yes| FIX[Single writer applies accepted fixes]
+  REVIEWGATE -->|"Yes"| REVIEW["Fresh reviewers or engineering reviewer"]
+  REVIEW --> FINDINGS{"Blocking findings?"}
+  FINDINGS -->|"Yes"| FIX["Single writer applies accepted fixes"]
   FIX --> VALIDATE
-  FINDINGS -->|No| DONE
+  FINDINGS -->|"No"| DONE
 
-  REVIEWGATE -->|No| DONE[Parent finalises]
+  REVIEWGATE -->|"No"| DONE["Parent finalises"]
 
-  DONE --> REPORT[Done summary: specs, tests/TDD, validation, spec sync, docs sync, quality, commits, risks]
+  DONE --> REPORT["Done summary with specs, TDD, validation, sync, quality, commits, and risks"]
 
-  ORACLE[oracle] -. risky decision / second opinion .-> B
+  ORACLE["Oracle second opinion"] -.-> B
 ```
 
 ## Safety Rules
