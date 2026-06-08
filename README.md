@@ -29,6 +29,7 @@ Arey Pi is built around these guarantees:
 - architecture and code must meet a senior engineering quality bar;
 - significant technical decisions are captured in high-quality ADRs;
 - specs, tests, code, DBML, ADRs, glossary, and architecture docs stay synchronised;
+- README files, docs, AGENTS.md, skills, prompts, rules, agents, commands, and tooling instructions are kept synchronised when affected;
 - quality tooling is part of Definition of Done, not optional polish;
 - work is incremental and uses Conventional Commits;
 - AI harness setup is treated as a first-class project rule.
@@ -98,7 +99,7 @@ pi install npm:pi-subagents
 
 ## Usage today
 
-Audit a repository against Arey Pi readiness:
+Audit a repository against Arey Pi readiness with the prompt workflow:
 
 ```txt
 /assess-project
@@ -109,6 +110,8 @@ Or load the readiness skill directly:
 ```txt
 /skill:project-readiness
 ```
+
+Arey Pi also ships an extension with native workflow commands.
 
 When the Arey Pi agents are available to `pi-subagents`, the project evaluator runtime name is:
 
@@ -122,7 +125,9 @@ Arey Pi includes a polished extension-backed workflow:
 
 ```txt
 /arey-doctor      # check package, subagent, prompt, skill, and project readiness setup
-/arey-bootstrap   # install project-local Arey Pi agents and starter harness files
+/arey-bootstrap   # install project-local Arey Pi agents
+/arey-bootstrap --agentsmd  # also create a starter AGENTS.md if missing
+/arey-bootstrap --force     # overwrite existing project-local Arey Pi agents
 /arey-feature     # run spec → TDD → sync → review for a feature
 /arey-bugfix      # run regression-test-first bug fixing
 /arey-sync        # verify specs, docs, tests, code, DBML, ADRs, and glossary alignment
@@ -155,7 +160,7 @@ rules/
 ├── specs/         # Gherkin, DBML, spec sync, language style
 ├── engineering/   # TDD, test quality, code quality, tooling, rebuildability
 ├── architecture/  # architecture memory and ADR quality
-├── workflow/      # agent workflows, AI harness, commits
+├── workflow/      # agent workflows, documentation sync, AI harness, commits
 └── assessment/    # project readiness
 ```
 
@@ -167,6 +172,7 @@ Arey Pi is pre-1.0.
 
 The policy layer,
 readiness workflow,
+documentation sync rule,
 core subagent role definitions,
 and professional extension commands exist.
 
