@@ -25,7 +25,7 @@ Arey Pi is built around these guarantees:
 - behaviour is captured in canonical Gherkin specs;
 - database projects keep canonical DBML specs precisely synchronised;
 - TDD is mandatory for production behaviour changes;
-- tests must be meaningful, reviewed, and strengthened with coverage or mutation testing where risk warrants it;
+- tests must be meaningful, reviewed, kept outside production source directories, and strengthened with coverage or mutation testing where risk warrants it;
 - architecture and code must meet a senior engineering quality bar;
 - significant technical decisions are captured in high-quality ADRs;
 - specs, tests, code, DBML, ADRs, glossary, and architecture docs stay synchronised;

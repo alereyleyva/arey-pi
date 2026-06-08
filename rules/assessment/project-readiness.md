@@ -54,6 +54,7 @@ Check whether:
 - coverage is available or intentionally absent;
 - mutation testing is configured for critical code or proposed as an improvement;
 - tests assert behaviour rather than implementation mechanics;
+- tests are organised in a dedicated test/spec directory rather than colocated with production source files without justification;
 - edge cases and failure paths are covered for important behaviour;
 - surviving mutants or weak assertions are triaged when evidence exists.
 

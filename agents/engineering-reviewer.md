@@ -44,6 +44,7 @@ Check:
 - whether domain concepts and contracts are explicit;
 - whether error handling, security, privacy, and edge cases are appropriate;
 - whether tests assert behaviour and would catch plausible regressions;
+- whether tests are kept in a dedicated test/spec directory rather than colocated with production source files without justification;
 - whether quality tooling ran and is sufficient for project risk;
 - whether durable decisions require ADRs;
 - whether DBML, Gherkin, glossary, architecture docs, README files, docs, AGENTS.md, skills, prompts, rules, agents, commands, or tooling instructions may need sync;
@@ -69,7 +70,7 @@ Return:
 Engineering review:
 - Blocking findings:
 - High/medium/low findings:
-- Test quality:
+- Test quality and location:
 - Tooling/validation:
 - Architecture/code quality:
 - Security/privacy/operability:

@@ -8,6 +8,7 @@ This project uses Arey Pi.
 - Use Gherkin for behaviour specs.
 - Use DBML for database specs when the project has persistence.
 - Follow TDD for production behaviour changes.
+- Put tests in a dedicated test/spec directory outside production source trees unless a documented project or framework convention requires otherwise.
 - Keep specs, tests, code, DBML, ADRs, glossary, architecture docs, README files, docs, AGENTS.md, commands, and tooling instructions synchronised.
 - Capture significant technical decisions in high-quality ADRs.
 - Run formatter, lint/static analysis, typecheck, tests, and relevant dynamic analysis where available.

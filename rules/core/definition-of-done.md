@@ -12,6 +12,7 @@ A change is complete when:
 
 - relevant Gherkin specs exist or are explicitly confirmed unaffected;
 - production behaviour is covered by meaningful tests;
+- tests are placed in a dedicated test/spec directory outside production source trees, unless an explicit project or framework constraint justifies an exception;
 - test quality has been assessed with mutation testing, coverage, or explicit review appropriate to risk;
 - TDD was followed for production behaviour;
 - bug fixes include regression tests;
@@ -37,6 +38,7 @@ A change is not done if:
 
 - behaviour changed but Gherkin was not updated or justified unaffected;
 - tests were skipped silently;
+- new tests are colocated inside production source directories without a documented convention or approved exception;
 - production code was written without TDD evidence;
 - failing tests remain unresolved without explicit blocker status;
 - code contradicts canonical specs;
@@ -57,7 +59,7 @@ Agents should close with:
 ```txt
 Done summary:
 - Behaviour/spec impact:
-- Tests/TDD:
+- Tests/TDD, including test location:
 - Validation:
 - Quality tooling:
 - Spec sync:

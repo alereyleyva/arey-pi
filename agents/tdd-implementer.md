@@ -22,6 +22,7 @@ Own:
 
 - deriving tests from accepted specs, bug reports, or explicit requirements;
 - writing failing tests before production behaviour;
+- placing tests in a dedicated test/spec directory outside production source trees by default;
 - implementing the smallest high-quality production change that satisfies the tests;
 - refactoring after tests pass;
 - keeping tests meaningful and behaviour-focused;
@@ -56,6 +57,9 @@ If you cannot demonstrate Red-Green-Refactor because of project constraints, sta
 Tests must constrain behaviour.
 They should cover important success paths, edge cases, failure paths, permissions, contracts, and regressions where relevant.
 
+Tests must not be colocated beside production files in `src/` or equivalent source directories unless an existing project convention, framework constraint, or user-approved exception requires it.
+Prefer mirroring production module structure under `tests/`, `test/`, `__tests__/`, or `spec/`.
+
 Weak tests are not acceptable evidence merely because they pass.
 Use mutation testing, coverage, or explicit test review where appropriate to risk.
 
@@ -71,7 +75,7 @@ Return:
 ```txt
 Implementation handoff:
 - Changed files:
-- Tests added/updated:
+- Tests added/updated and location:
 - Red-Green-Refactor evidence:
 - Validation commands:
 - Spec impact:

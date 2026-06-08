@@ -16,13 +16,16 @@ Red → Green → Refactor
 
 This applies to features, bug fixes, behaviour changes, risky refactors, API/CLI behaviour, validation, permissions, persistence, and error handling.
 
+Tests must live outside production source directories by default.
+Do not colocate test files beside production files in `src/` or equivalent source trees unless an existing project convention explicitly requires it or the user approves an exception.
+
 ## Red
 
 Before implementation, create, update, or identify a test that fails for the intended reason.
 
 Valid Red evidence includes:
 
-- a newly added failing test;
+- a newly added failing test in the dedicated test directory;
 - an updated failing test;
 - an existing failing test that already captures the intended behaviour;
 - a documented inability to run the test, including the exact intended command and reason.
@@ -45,6 +48,32 @@ Green evidence should show:
 After Green, refactor only while tests remain green.
 
 Refactoring should improve clarity, structure, duplication, or maintainability without expanding scope or changing behaviour.
+
+## Test Location
+
+Use a dedicated test/spec directory for automated tests.
+
+Preferred locations include project conventions such as:
+
+```txt
+tests/
+test/
+__tests__/
+spec/
+```
+
+When adding tests for code under `src/`, mirror the production module structure under the chosen test directory instead of creating sibling test files inside `src/`.
+
+Example:
+
+```txt
+src/domain/accounts/password-reset.ts
+tests/domain/accounts/password-reset.test.ts
+```
+
+If a repository already has a clear separate test root, follow it.
+If it only has colocated tests, ask before continuing the pattern or migrating it.
+If a framework mandates colocated tests, document the constraint in the final evidence.
 
 ## Bug Fixes
 
@@ -82,5 +111,6 @@ Completion must report:
 - Green evidence;
 - refactor status;
 - commands run;
+- test location and any exception to separate test directories;
 - tests not run and why;
 - residual risks.

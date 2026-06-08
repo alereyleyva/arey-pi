@@ -23,6 +23,36 @@ Agents should assess test quality across these dimensions:
 5. **Minimal coupling:** the test avoids depending on private implementation details unless intentionally characterizing legacy code before refactor.
 6. **Maintainability:** the test is readable, focused, deterministic, and not overly broad.
 7. **Regression value:** for bug fixes, the test would have failed before the fix.
+8. **Source separation:** tests live in a dedicated test/spec directory rather than being colocated with production files, unless an explicit project or framework constraint justifies an exception.
+
+## Test Organisation
+
+Tests should be organised outside production source directories.
+
+Prefer a project-level test root such as:
+
+```txt
+tests/
+test/
+__tests__/
+spec/
+```
+
+Mirror production structure inside that test root when useful.
+
+Avoid creating files such as:
+
+```txt
+src/foo.test.ts
+src/foo.spec.ts
+src/foo.test.py
+```
+
+unless the repository has an established, user-approved, or framework-mandated colocated test convention.
+
+This keeps production source trees clean,
+makes generated tests easier to audit,
+and avoids mixing executable product code with validation artefacts.
 
 ## Coverage
 
@@ -101,7 +131,8 @@ Agents must reject or improve tests that:
 - over-mock collaborators so the real contract is not exercised;
 - assert private structure instead of observable behaviour;
 - pass even if important logic is removed;
-- lack a clear connection to a spec, bug, or requirement.
+- lack a clear connection to a spec, bug, or requirement;
+- are colocated with production source files without an explicit project convention or approved exception.
 
 ## Negative and Edge Cases
 
@@ -130,7 +161,7 @@ If the answer is no, the test is probably weak.
 
 For non-trivial production changes, agents should report:
 
-- tests added or modified;
+- tests added or modified, including their dedicated test directory location;
 - related Gherkin scenarios or requirements;
 - Red evidence;
 - Green evidence;
