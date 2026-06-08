@@ -315,9 +315,13 @@ export default function areyPi(pi: ExtensionAPI) {
       const flags = args.split(/\s+/).filter(Boolean);
       const force = flags.includes("--force");
       const full = flags.includes("--full");
-      const createAgentsMd = flags.includes("--agentsmd") || full;
-      const createSpecs = flags.includes("--specs") || full;
-      const createDocs = flags.includes("--docs") || full;
+      const hasSelectiveScaffoldFlag = flags.some((flag) =>
+        ["--agentsmd", "--specs", "--docs", "--full"].includes(flag),
+      );
+      const defaultFullBootstrap = !hasSelectiveScaffoldFlag;
+      const createAgentsMd = defaultFullBootstrap || flags.includes("--agentsmd") || full;
+      const createSpecs = defaultFullBootstrap || flags.includes("--specs") || full;
+      const createDocs = defaultFullBootstrap || flags.includes("--docs") || full;
       const targetDir = join(cwd, ".pi", "agents", "arey-pi");
       const result = copyAgents(targetDir, force);
       const specsResult = createSpecs ? scaffoldSpecs(cwd, force) : { created: [], skipped: [] };

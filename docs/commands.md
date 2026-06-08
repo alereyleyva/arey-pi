@@ -49,8 +49,13 @@ or when subagent workflows are not behaving as expected.
 
 ## `/arey-bootstrap`
 
-Installs Arey Pi's packaged subagent definitions into the current project.
-It can also safely scaffold starter spec and documentation structure.
+Installs Arey Pi's packaged subagent definitions into the current project and performs a safe starter scaffold.
+
+With no flags, `/arey-bootstrap` runs the full bootstrap path:
+
+```txt
+--agentsmd --specs --docs
+```
 
 Default agent target:
 
@@ -59,11 +64,26 @@ Default agent target:
 ```
 
 By default, existing project-local agent files and scaffold files are not overwritten.
+Selective flags are available when you only want one part of the scaffold.
 
 Usage:
 
 ```txt
 /arey-bootstrap
+```
+
+This creates or installs, where missing:
+
+```txt
+.pi/agents/arey-pi/
+AGENTS.md
+specs/README.md
+specs/features/README.md
+specs/database/README.md
+specs/architecture/README.md
+specs/decisions/README.md
+specs/glossary.md
+docs/README.md
 ```
 
 Options:
@@ -103,7 +123,7 @@ docs/README.md
 /arey-bootstrap --full
 ```
 
-Runs the combined bootstrap path:
+Explicitly runs the same combined bootstrap path as `/arey-bootstrap` with no flags:
 
 ```txt
 --agentsmd --specs --docs
@@ -114,6 +134,7 @@ Runs the combined bootstrap path:
 ```
 
 Overwrites existing project-local Arey Pi agent files and scaffold files selected by the other flags.
+When used alone, it applies to the default full bootstrap path.
 It also creates a starter `AGENTS.md` when one does not already exist.
 
 Examples:

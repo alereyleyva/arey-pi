@@ -125,12 +125,12 @@ Arey Pi includes a polished extension-backed workflow:
 
 ```txt
 /arey-doctor      # check package, subagent, prompt, skill, and project readiness setup
-/arey-bootstrap   # install project-local Arey Pi agents
+/arey-bootstrap   # full safe bootstrap: agents, AGENTS.md, specs, and docs
 /arey-bootstrap --agentsmd  # also create a starter AGENTS.md if missing
 /arey-bootstrap --specs     # scaffold starter specs directories and glossary
 /arey-bootstrap --docs      # scaffold starter docs directory
-/arey-bootstrap --full      # scaffold agents, AGENTS.md, specs, and docs
-/arey-bootstrap --force     # overwrite selected project-local Arey Pi files
+/arey-bootstrap --full      # explicit alias for the default full bootstrap
+/arey-bootstrap --force     # full bootstrap and overwrite selected project-local files
 /arey-feature     # run spec → TDD → sync → review for a feature
 /arey-bugfix      # run regression-test-first bug fixing
 /arey-sync        # verify specs, docs, tests, code, DBML, ADRs, and glossary alignment
