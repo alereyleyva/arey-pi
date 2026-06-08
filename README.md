@@ -50,6 +50,12 @@ The rules are the policy layer.
 The skills and prompts make those policies usable inside Pi.
 The agents define the intended specialist roles for subagent-backed delivery.
 
+Arey Pi includes focused prompt templates and skills for feature specs,
+strict Red-Green-Refactor,
+spec drift repair,
+ADR assessment,
+and adversarial engineering review.
+
 ## Current subagent architecture
 
 Arey Pi is designed to work with `pi-subagents`.
@@ -191,6 +197,12 @@ documentation sync rule,
 core subagent role definitions,
 and professional extension commands exist.
 
-Next milestones include richer templates,
+Arey Pi now includes stronger workflow command contracts,
+focused prompts,
+TDD/spec-sync/review skills,
+and extension-core tests.
+
+Next improvements include guided interactive workflows,
 stronger bootstrap scaffolding,
-and deeper integration with `pi-subagents` discovery.
+custom Arey Pi tools,
+and deeper enforcement through Pi extension events.

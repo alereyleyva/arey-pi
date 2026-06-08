@@ -58,23 +58,91 @@ export function parseBootstrapFlags(args: string): BootstrapPlan {
 
 export type WorkflowKind = "feature" | "bugfix" | "sync" | "review" | "assess" | string;
 
+const evidenceSummary = `Final evidence format:\n- Behaviour/spec impact:\n- Tests/TDD, including test location:\n- Validation commands and results:\n- Quality tooling:\n- Spec sync:\n- Documentation sync:\n- Architecture/ADR/glossary impact:\n- Database/DBML impact:\n- Residual risks:`;
+
+function commonWorkflowMessage(): string {
+  return [
+    "Act as the Arey Pi tech lead.",
+    "Use pi-subagents when available and appropriate.",
+    "Keep orchestration authority in the parent session, give child agents bounded tasks, and keep one writer in the active worktree at a time.",
+    "Clarify blocking ambiguity before editing; otherwise proceed incrementally.",
+    "Follow Arey Pi rules, preserve TDD for behaviour changes, and report evidence clearly.",
+  ].join(" ");
+}
+
+function featureWorkflow(target: string): string {
+  return [
+    commonWorkflowMessage(),
+    "",
+    `Run the Arey Pi feature workflow for: ${target}`,
+    "",
+    "Execution contract:",
+    "1. Scope: identify behaviour, impacted users, non-goals, risk level, and unknowns.",
+    "2. Specs: confirm or update canonical Gherkin before production behaviour changes; use arey-pi.spec-author when available.",
+    "3. TDD: use arey-pi.tdd-implementer for Red → Green → Refactor; tests must live outside production source directories by default.",
+    "4. Implementation: make the smallest high-quality change; avoid speculative architecture.",
+    "5. Sync: use arey-pi.spec-syncer to align specs, tests, code, DBML, ADRs, glossary, README, docs, AGENTS.md, skills, prompts, rules, agents, commands, and tooling instructions when affected.",
+    "6. Review: use fresh-context arey-pi.engineering-reviewer or reviewers when risk warrants it.",
+    "",
+    "Use scout/context-builder/planner first if codebase context is not clear.",
+    evidenceSummary,
+  ].join("\n");
+}
+
+function bugfixWorkflow(target: string): string {
+  return [
+    commonWorkflowMessage(),
+    "",
+    `Run the Arey Pi bugfix workflow for: ${target}`,
+    "",
+    "Execution contract:",
+    "1. Reproduce: identify expected vs actual behaviour and affected scope.",
+    "2. Regression test first: add or update a meaningful failing test that proves the bug before changing production code.",
+    "3. Fix: implement the smallest high-quality correction without broad rewrites unless necessary.",
+    "4. Refactor: improve design only while regression tests and existing tests remain green.",
+    "5. Sync: update Gherkin, docs, DBML, ADRs, glossary, or architecture docs when the intended behaviour or design contract changed.",
+    "6. Review: request fresh engineering review for security, data-loss, concurrency, auth, payment, migration, or public API bugs.",
+    "",
+    "If a failing regression test cannot be demonstrated, state the blocker explicitly and do not claim TDD evidence.",
+    evidenceSummary,
+  ].join("\n");
+}
+
+function syncWorkflow(target: string): string {
+  return [
+    commonWorkflowMessage(),
+    "",
+    `Run Arey Pi spec and documentation sync for: ${target}`,
+    "",
+    "Sync contract:",
+    "1. Inspect the requested scope and current diff before editing.",
+    "2. Verify alignment across canonical Gherkin, tests, production code, DBML, ADRs, glossary, architecture docs, README files, docs, AGENTS.md, skills, prompts, rules, agents, commands, templates, and tooling instructions.",
+    "3. Classify drift as blocking, recommended, or unaffected.",
+    "4. Fix safe drift directly when the intended behaviour is clear; otherwise ask for a decision.",
+    "5. Do not rewrite specs to hide implementation defects.",
+    "6. Run relevant validation after changes.",
+    "",
+    "End with both statuses exactly: `Specs updated` or `Specs unaffected`; `Docs updated` or `Docs unaffected`, with evidence.",
+    evidenceSummary,
+  ].join("\n");
+}
+
 export function workflowMessage(kind: WorkflowKind, args: string): string {
   const target = args.trim() || "the current repository/task";
-  const common = `Act as the Arey Pi tech lead. Use pi-subagents when available and appropriate. Keep orchestration authority in the parent session, give child agents bounded tasks, and keep one writer in the active worktree at a time. Follow Arey Pi rules, preserve TDD, and report evidence clearly.`;
 
   switch (kind) {
     case "feature":
-      return `${common}\n\nRun the Arey Pi feature workflow for: ${target}\n\nExpected flow: arey-pi.spec-author for canonical specs, arey-pi.tdd-implementer for Red-Green-Refactor, arey-pi.spec-syncer for final alignment, and fresh reviewers or arey-pi.engineering-reviewer for adversarial quality review when risk warrants it. Use scout/context-builder/planner first if the codebase context is not clear.`;
+      return featureWorkflow(target);
     case "bugfix":
-      return `${common}\n\nRun the Arey Pi bugfix workflow for: ${target}\n\nStart with a regression test that fails for the bug, keep tests outside production source directories by default, implement the minimal high-quality fix, synchronise specs and docs, and review engineering quality.`;
+      return bugfixWorkflow(target);
     case "sync":
-      return `${common}\n\nRun Arey Pi spec and documentation sync for: ${target}\n\nVerify Gherkin, tests, code, DBML, ADRs, glossary, architecture docs, README files, docs, AGENTS.md, skills, prompts, rules, agents, commands, and tooling instructions. End with both a spec status and a documentation status.`;
+      return syncWorkflow(target);
     case "review":
-      return `${common}\n\nRun an Arey Pi engineering review for: ${target}\n\nPrefer fresh-context review. Review architecture, code quality, test quality and location, quality tooling, security, privacy, operability, maintainability, and spec/ADR/DBML/documentation concerns. Classify findings by severity.`;
+      return `${commonWorkflowMessage()}\n\nRun an Arey Pi engineering review for: ${target}\n\nPrefer fresh-context review. Review architecture, code quality, test quality and location, quality tooling, security, privacy, operability, maintainability, and spec/ADR/DBML/documentation concerns. Classify findings by severity.`;
     case "assess":
-      return `${common}\n\nAssess this repository against Arey Pi Project Readiness. Audit only by default. Produce scores, evidence, blockers, quick wins, and a prioritised improvement plan.`;
+      return `${commonWorkflowMessage()}\n\nAssess this repository against Arey Pi Project Readiness. Audit only by default. Produce scores, evidence, blockers, quick wins, and a prioritised improvement plan.`;
     default:
-      return `${common}\n\nWork on: ${target}`;
+      return `${commonWorkflowMessage()}\n\nWork on: ${target}`;
   }
 }
 

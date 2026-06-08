@@ -181,13 +181,16 @@ The expected workflow is:
 spec-author → tdd-implementer → spec-syncer → engineering-reviewer
 ```
 
+The command now sends a stronger execution contract.
 The workflow should:
 
-- confirm or update canonical specs;
+- identify scope, non-goals, risk, and unknowns;
+- confirm or update canonical specs before production behaviour changes;
 - preserve TDD through Red → Green → Refactor;
-- synchronise specs, docs, tests, code, DBML, ADRs, glossary, and architecture docs;
-- run engineering review when risk warrants it;
-- report validation evidence and residual risks.
+- keep tests outside production source directories by default;
+- synchronise specs, docs, tests, code, DBML, ADRs, glossary, README files, AGENTS.md, skills, prompts, rules, agents, commands, templates, and tooling instructions when affected;
+- run fresh-context engineering review when risk warrants it;
+- report validation evidence and residual risks using the Arey Pi final evidence format.
 
 ## `/arey-bugfix`
 
@@ -205,12 +208,15 @@ Example:
 /arey-bugfix Users can bypass email verification by refreshing the session
 ```
 
+The command now sends a regression-test-first execution contract.
 The workflow should:
 
-- reproduce the bug with a failing regression test;
+- identify expected versus actual behaviour and affected scope;
+- reproduce the bug with a meaningful failing regression test before production changes;
 - implement the smallest high-quality fix;
-- keep TDD evidence visible;
+- keep Red → Green → Refactor evidence visible;
 - update Gherkin, docs, DBML, ADRs, glossary, or architecture docs when affected;
+- request fresh engineering review for security, data-loss, concurrency, auth, payment, migration, or public API bugs;
 - run validation and report residual risks.
 
 ## `/arey-sync`
@@ -246,6 +252,12 @@ The command asks the parent agent to verify alignment across:
 - `AGENTS.md`;
 - skills, prompts, rules, agents, examples, templates;
 - command and tooling instructions.
+
+The sync contract asks the agent to classify drift as blocking,
+recommended,
+or unaffected.
+It may fix safe drift directly when canonical intent is clear,
+but it must ask before changing intent.
 
 The final report should include both:
 
@@ -328,6 +340,32 @@ identify blockers and quick wins,
 and propose a prioritised improvement plan.
 
 Use this when adopting Arey Pi in an existing repository or checking whether a project remains aligned.
+
+## Prompt templates and skills
+
+Arey Pi also ships focused prompt templates:
+
+```txt
+/feature-spec
+/red-green-refactor
+/sync-drift
+/engineering-review
+/adr-review
+/assess-project
+```
+
+And focused skills:
+
+```txt
+/skill:tdd-red-green-refactor
+/skill:spec-sync
+/skill:engineering-review
+/skill:project-readiness
+```
+
+Use slash commands for full workflow orchestration,
+prompts for targeted one-off work,
+and skills when you want the model to load specialised Arey Pi instructions on demand.
 
 ## Busy agent behaviour
 
