@@ -147,9 +147,11 @@ Arey Pi includes a polished extension-backed workflow:
 
 The goal is that users work naturally without development commands.
 Requests such as `Implementa password reset siguiendo Arey Pi` automatically activate quiet harness context behind the scenes.
-Arey Pi lets the agent infer the work mode,
-injects the relevant delivery guidance,
-and applies simple event-based guardrails for protected paths.
+Arey Pi lets the parent agent infer the work mode,
+act as orchestrator,
+use specialist subagents when available,
+inject the relevant delivery guidance,
+and apply simple event-based guardrails for protected paths.
 
 See:
 

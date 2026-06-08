@@ -171,7 +171,18 @@ review,
 assessment,
 or mixed task,
 then apply the corresponding Arey Pi posture.
-The agent should continue conversationally and report evidence naturally.
+The parent agent should act as orchestrator,
+use specialist Arey Pi subagents when available,
+and continue conversationally while reporting evidence naturally.
+
+The injected harness guidance emphasises:
+
+- `arey-pi.spec-author` for canonical specs;
+- `arey-pi.tdd-implementer` for Red → Green → Refactor;
+- `arey-pi.spec-syncer` for alignment;
+- `arey-pi.engineering-reviewer` for fresh review;
+- `arey-pi.project-evaluator` for readiness assessment;
+- builtin scout/planner/reviewer/oracle-style agents for discovery, planning, and second opinions.
 
 While Arey Pi is active,
 Arey Pi applies simple tool-call guardrails:

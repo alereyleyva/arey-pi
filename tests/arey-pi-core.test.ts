@@ -82,8 +82,12 @@ describe("natural-language harness activation", () => {
 
     expect(context).toContain("Arey Pi harness is active");
     expect(context).toContain("Infer the user's intent yourself");
+    expect(context).toContain("parent Arey Pi orchestrator");
     expect(context).toContain("Feature or behaviour change");
     expect(context).toContain("Bugfix");
+    expect(context).toContain("arey-pi.spec-author");
+    expect(context).toContain("arey-pi.tdd-implementer");
+    expect(context).toContain("arey-pi.engineering-reviewer");
     expect(context).toContain("Final evidence format:");
   });
 });
