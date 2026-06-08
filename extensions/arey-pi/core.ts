@@ -58,6 +58,82 @@ export function parseBootstrapFlags(args: string): BootstrapPlan {
 
 export type WorkflowKind = "feature" | "bugfix" | "sync" | "review" | "assess" | string;
 
+export type WorkflowPhase = {
+  id: string;
+  label: string;
+  status: "pending" | "active" | "done";
+  guardrail?: string;
+};
+
+export type WorkflowState = {
+  id: string;
+  kind: WorkflowKind;
+  target: string;
+  createdAt: string;
+  phases: WorkflowPhase[];
+  guardrails: string[];
+};
+
+const featurePhases: Omit<WorkflowPhase, "status">[] = [
+  { id: "scope", label: "Scope, risk, non-goals, and unknowns clarified" },
+  {
+    id: "specs",
+    label: "Canonical Gherkin/spec impact confirmed",
+    guardrail: "Do not edit production behaviour before specs are confirmed.",
+  },
+  {
+    id: "red",
+    label: "Meaningful failing Red test observed",
+    guardrail: "Do not edit production behaviour before Red evidence exists.",
+  },
+  { id: "green", label: "Small Green implementation completed" },
+  { id: "refactor", label: "Refactor completed with tests green" },
+  { id: "sync", label: "Specs, docs, ADR, DBML, glossary sync checked" },
+  { id: "review", label: "Fresh engineering review completed or explicitly waived" },
+  { id: "evidence", label: "Final evidence and residual risks reported" },
+];
+
+const bugfixPhases: Omit<WorkflowPhase, "status">[] = [
+  { id: "reproduce", label: "Expected vs actual behaviour and scope reproduced" },
+  {
+    id: "red",
+    label: "Failing regression test observed",
+    guardrail: "Do not edit production behaviour before a failing regression test exists.",
+  },
+  { id: "fix", label: "Small fix completed" },
+  { id: "refactor", label: "Refactor completed with regression tests green" },
+  { id: "sync", label: "Specs, docs, ADR, DBML, glossary sync checked" },
+  { id: "review", label: "Risk-based fresh engineering review completed or waived" },
+  { id: "evidence", label: "Final evidence and residual risks reported" },
+];
+
+const syncPhases: Omit<WorkflowPhase, "status">[] = [
+  { id: "inspect", label: "Requested scope and current diff inspected" },
+  { id: "drift", label: "Drift classified as blocking, recommended, or unaffected" },
+  { id: "fix", label: "Safe drift fixed or decision requested" },
+  { id: "validate", label: "Relevant validation run" },
+  { id: "evidence", label: "Sync status and evidence reported" },
+];
+
+const reviewPhases: Omit<WorkflowPhase, "status">[] = [
+  { id: "inspect", label: "Scope, diff, and relevant files inspected" },
+  { id: "findings", label: "Findings classified by severity" },
+  { id: "evidence", label: "Review evidence and residual risks reported" },
+];
+
+const assessPhases: Omit<WorkflowPhase, "status">[] = [
+  { id: "audit", label: "Repository readiness audited" },
+  { id: "score", label: "Scores, blockers, and quick wins produced" },
+  { id: "plan", label: "Prioritised improvement plan reported" },
+];
+
+const defaultGuardrails = [
+  "Keep one writer in the active worktree at a time.",
+  "Do not use production source directories for tests by default.",
+  "Do not rewrite specs to hide implementation defects.",
+  "Report validation commands and residual risks before finalising.",
+];
+
 const evidenceSummary = `Final evidence format:\n- Behaviour/spec impact:\n- Tests/TDD, including test location:\n- Validation commands and results:\n- Quality tooling:\n- Spec sync:\n- Documentation sync:\n- Architecture/ADR/glossary impact:\n- Database/DBML impact:\n- Residual risks:`;
 
 function commonWorkflowMessage(): string {
@@ -127,6 +203,117 @@ function syncWorkflow(target: string): string {
   ].join("\n");
 }
 
+export function createWorkflowState(kind: WorkflowKind, args: string, now = new Date()): WorkflowState {
+  const target = args.trim() || "the current repository/task";
+  const sourcePhases =
+    kind === "feature"
+      ? featurePhases
+      : kind === "bugfix"
+        ? bugfixPhases
+        : kind === "sync"
+          ? syncPhases
+          : kind === "review"
+            ? reviewPhases
+            : kind === "assess"
+              ? assessPhases
+              : reviewPhases;
+
+  return {
+    id: `arey-${kind}-${now.getTime()}`,
+    kind,
+    target,
+    createdAt: now.toISOString(),
+    phases: sourcePhases.map((phase, index) => ({ ...phase, status: index === 0 ? "active" : "pending" })),
+    guardrails: defaultGuardrails,
+  };
+}
+
+export function completeWorkflowPhase(state: WorkflowState, phaseId: string): WorkflowState {
+  let completedIndex = -1;
+  const phases = state.phases.map((phase, index) => {
+    if (phase.id !== phaseId) return phase;
+    completedIndex = index;
+    return { ...phase, status: "done" as const };
+  });
+
+  if (completedIndex === -1) return state;
+
+  return {
+    ...state,
+    phases: phases.map((phase, index) =>
+      index === completedIndex + 1 && phase.status === "pending" ? { ...phase, status: "active" as const } : phase,
+    ),
+  };
+}
+
+export type AutoWorkflowKind = "feature" | "bugfix" | "sync" | "review" | "assess";
+export type AutoWorkflowIntent = { kind: AutoWorkflowKind; target: string };
+
+export function detectAutoWorkflowIntent(prompt: string): AutoWorkflowIntent | undefined {
+  const text = prompt.trim();
+  const normalized = text.toLowerCase();
+  const mentionsArey = /\barey(?:\s+pi)?\b/.test(normalized);
+  const asksFramework = /siguiendo\s+arey|following\s+arey|con\s+arey|against\s+arey|arey\s+pi/.test(normalized);
+
+  if (!mentionsArey && !asksFramework) return undefined;
+  if (normalized.includes("arey harness workflow is active")) return undefined;
+
+  const kind = /\bbug\b|bugfix|fix|arregla|corrige|regression|regresi[oó]n/.test(normalized)
+    ? "bugfix"
+    : /\bsync\b|sincroniza|drift|aline(a|ar)|alignment/.test(normalized)
+      ? "sync"
+      : /review|revisa|audita|audit/.test(normalized)
+        ? "review"
+        : /assess|readiness|eval[uú]a|diagn[oó]stico/.test(normalized)
+          ? "assess"
+          : "feature";
+
+  return { kind, target: text };
+}
+
+export function buildWorkflowReport(state: WorkflowState): string {
+  const done = state.phases.filter((phase) => phase.status === "done").length;
+  const checklist = state.phases
+    .map((phase) => {
+      const mark = phase.status === "done" ? "x" : " ";
+      const active = phase.status === "active" ? " ← active" : "";
+      return `- [${mark}] ${phase.id}: ${phase.label}${active}`;
+    })
+    .join("\n");
+
+  return [
+    "# Arey Pi Harness Workflow",
+    "",
+    `- ID: ${state.id}`,
+    `- Kind: ${state.kind}`,
+    `- Target: ${state.target}`,
+    `- Progress: ${done}/${state.phases.length}`,
+    "",
+    "## Phases",
+    checklist,
+    "",
+    "## Active guardrails",
+    ...state.guardrails.map((guardrail) => `- ${guardrail}`),
+    "",
+    "## Harness behaviour",
+    "- This workflow is activated from natural language and guides the agent quietly.",
+    "- The user should not need workflow commands or manual phase advancement.",
+    "- Progress is advisory and evidence-led, not user-facing ceremony.",
+  ].join("\n");
+}
+
+export function workflowHarnessMessage(state: WorkflowState): string {
+  return [
+    "Arey Pi harness workflow is active.",
+    "Treat the checklist as the controlling delivery state, not just advisory prose.",
+    "Use the checklist as quiet guidance for sequencing and evidence, not as user-facing ceremony.",
+    "Do not ask the user to advance phases manually; report evidence naturally as work progresses.",
+    "If a guardrail prevents the next edit, report the missing evidence instead of guessing.",
+    "",
+    buildWorkflowReport(state),
+  ].join("\n");
+}
+
 export function workflowMessage(kind: WorkflowKind, args: string): string {
   const target = args.trim() || "the current repository/task";
 
@@ -183,7 +370,7 @@ export function buildDoctorReport(input: DoctorReportInput): string {
     "",
     "## Recommended next step",
     input.installedAgentsCount === input.requiredAgentsCount
-      ? "- Project-local Arey Pi subagents are installed. Use `/arey-feature`, `/arey-bugfix`, `/arey-sync`, `/arey-review`, or natural language."
+      ? "- Project-local Arey Pi subagents are installed. Use natural language such as `Implementa password reset siguiendo Arey Pi`."
       : "- Run `/arey-bootstrap` to install project-local Arey Pi subagents.",
   ].join("\n");
 }

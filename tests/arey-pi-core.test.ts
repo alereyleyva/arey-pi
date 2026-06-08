@@ -3,9 +3,14 @@ import { join } from "node:path";
 import { describe, expect, test } from "bun:test";
 import {
   buildDoctorReport,
+  buildWorkflowReport,
+  completeWorkflowPhase,
+  createWorkflowState,
+  detectAutoWorkflowIntent,
   docsScaffoldFiles,
   parseBootstrapFlags,
   specScaffoldFiles,
+  workflowHarnessMessage,
   workflowMessage,
 } from "../extensions/arey-pi/core.ts";
 
@@ -67,6 +72,63 @@ describe("scaffold file plans", () => {
       "docs/README.md",
       "docs/project-readiness-report.md",
     ]);
+  });
+});
+
+describe("harness workflow state", () => {
+  test("creates a feature checklist with active first phase and guardrails", () => {
+    const state = createWorkflowState("feature", "add password reset", new Date("2026-01-01T00:00:00.000Z"));
+
+    expect(state.id).toBe("arey-feature-1767225600000");
+    expect(state.target).toBe("add password reset");
+    expect(state.phases[0]).toMatchObject({ id: "scope", status: "active" });
+    expect(state.phases.map((phase) => phase.id)).toEqual([
+      "scope",
+      "specs",
+      "red",
+      "green",
+      "refactor",
+      "sync",
+      "review",
+      "evidence",
+    ]);
+    expect(state.guardrails).toContain("Keep one writer in the active worktree at a time.");
+  });
+
+  test("completes a phase and activates the next pending phase", () => {
+    const state = createWorkflowState("bugfix", "session bypass", new Date("2026-01-01T00:00:00.000Z"));
+    const updated = completeWorkflowPhase(state, "reproduce");
+
+    expect(updated.phases[0]).toMatchObject({ id: "reproduce", status: "done" });
+    expect(updated.phases[1]).toMatchObject({ id: "red", status: "active" });
+  });
+
+  test("renders workflow reports and harness prompts", () => {
+    const state = createWorkflowState("sync", "current diff", new Date("2026-01-01T00:00:00.000Z"));
+    const report = buildWorkflowReport(state);
+    const prompt = workflowHarnessMessage(state);
+
+    expect(report).toContain("# Arey Pi Harness Workflow");
+    expect(report).toContain("- [ ] inspect: Requested scope and current diff inspected ← active");
+    expect(report).toContain("The user should not need workflow commands");
+    expect(prompt).toContain("Treat the checklist as the controlling delivery state");
+  });
+});
+
+describe("natural-language workflow detection", () => {
+  test("detects Arey Pi feature requests without slash commands", () => {
+    expect(detectAutoWorkflowIntent("Implementa password reset siguiendo Arey Pi")).toMatchObject({
+      kind: "feature",
+      target: "Implementa password reset siguiendo Arey Pi",
+    });
+  });
+
+  test("detects Arey Pi bugfix requests", () => {
+    expect(detectAutoWorkflowIntent("Corrige el bug de sesiones con Arey Pi")).toMatchObject({ kind: "bugfix" });
+  });
+
+  test("ignores ordinary prompts that do not opt into Arey Pi", () => {
+    expect(detectAutoWorkflowIntent("Implementa password reset")).toBeUndefined();
   });
 });
 
@@ -153,7 +215,7 @@ describe("buildDoctorReport", () => {
     });
 
     expect(report).toContain("- none");
-    expect(report).toContain("Project-local Arey Pi subagents are installed");
+    expect(report).toContain("Use natural language");
   });
 });
 
