@@ -2,19 +2,20 @@ import { copyFileSync, existsSync, mkdirSync, readFileSync, statSync, writeFileS
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import {
+  buildDoctorReport,
+  docsScaffoldFiles,
+  parseBootstrapFlags,
+  requiredAgents,
+  specScaffoldFiles,
+  workflowMessage,
+  type ScaffoldFile,
+} from "./arey-pi-core.js";
 
 const packageRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 const agentSourceDir = join(packageRoot, "agents");
 const rulesDir = join(packageRoot, "rules");
 const templatesDir = join(packageRoot, "templates");
-const requiredAgents = [
-  "tech-lead.md",
-  "spec-author.md",
-  "tdd-implementer.md",
-  "spec-syncer.md",
-  "engineering-reviewer.md",
-  "project-evaluator.md",
-];
 
 function cwdFrom(ctx: unknown): string {
   const maybe = ctx as { cwd?: string };
@@ -67,8 +68,6 @@ function copyAgents(targetDir: string, force: boolean): { copied: string[]; skip
 
 type ScaffoldResult = { created: string[]; skipped: string[] };
 
-type ScaffoldFile = { template: string; target: string };
-
 function templateContent(name: string): string {
   return readFileSync(join(templatesDir, name), "utf8");
 }
@@ -97,48 +96,15 @@ function scaffoldFiles(cwd: string, force: boolean, files: ScaffoldFile[]): Scaf
 }
 
 function scaffoldSpecs(cwd: string, force: boolean): ScaffoldResult {
-  return scaffoldFiles(cwd, force, [
-    { template: "specs-readme.md", target: "specs/README.md" },
-    { template: "features-readme.md", target: "specs/features/README.md" },
-    { template: "feature.feature", target: "specs/features/example.feature" },
-    { template: "database-readme.md", target: "specs/database/README.md" },
-    { template: "database.dbml", target: "specs/database/schema.dbml" },
-    { template: "architecture-readme.md", target: "specs/architecture/README.md" },
-    { template: "decisions-readme.md", target: "specs/decisions/README.md" },
-    { template: "adr.md", target: "specs/decisions/0001-record-architecture-decision.md" },
-    { template: "glossary.md", target: "specs/glossary.md" },
-  ]);
+  return scaffoldFiles(cwd, force, specScaffoldFiles);
 }
 
 function scaffoldDocs(cwd: string, force: boolean): ScaffoldResult {
-  return scaffoldFiles(cwd, force, [
-    { template: "docs-readme.md", target: "docs/README.md" },
-    { template: "project-readiness-report.md", target: "docs/project-readiness-report.md" },
-  ]);
+  return scaffoldFiles(cwd, force, docsScaffoldFiles);
 }
 
 function starterAgentsMd(): string {
   return templateContent("AGENTS.md");
-}
-
-function workflowMessage(kind: string, args: string): string {
-  const target = args.trim() || "the current repository/task";
-  const common = `Act as the Arey Pi tech lead. Use pi-subagents when available and appropriate. Keep orchestration authority in the parent session. Follow Arey Pi rules, preserve TDD, and report evidence clearly.`;
-
-  switch (kind) {
-    case "feature":
-      return `${common}\n\nRun the Arey Pi feature workflow for: ${target}\n\nExpected flow: spec-author for canonical specs, tdd-implementer for Red-Green-Refactor, spec-syncer for final alignment, and engineering-reviewer for adversarial quality review when risk warrants it.`;
-    case "bugfix":
-      return `${common}\n\nRun the Arey Pi bugfix workflow for: ${target}\n\nStart with a regression test that fails for the bug, then implement the minimal high-quality fix, synchronise specs, and review engineering quality.`;
-    case "sync":
-      return `${common}\n\nRun Arey Pi spec and documentation sync for: ${target}\n\nVerify Gherkin, tests, code, DBML, ADRs, glossary, architecture docs, README files, docs, AGENTS.md, skills, prompts, rules, agents, commands, and tooling instructions. End with both a spec status and a documentation status.`;
-    case "review":
-      return `${common}\n\nRun an Arey Pi engineering review for: ${target}\n\nReview architecture, code quality, test quality, quality tooling, security, privacy, operability, maintainability, and spec/ADR/DBML concerns. Classify findings by severity.`;
-    case "assess":
-      return `${common}\n\nAssess this repository against Arey Pi Project Readiness. Audit only by default. Produce scores, evidence, blockers, quick wins, and a prioritised improvement plan.`;
-    default:
-      return `${common}\n\nWork on: ${target}`;
-  }
 }
 
 function sendWorkflow(
@@ -192,29 +158,21 @@ export default function areyPi(pi: ExtensionAPI) {
         (command) => command.source === "skill" && command.sourceInfo?.source?.includes("arey-pi"),
       );
 
-      const report = [
-        "# Arey Pi Doctor",
-        "",
-        `- Package: arey-pi@${packageVersion()}`,
-        `- Project: ${cwd}`,
-        `- Package rules present: ${dirExists(rulesDir) ? "yes" : "no"}`,
-        `- Package templates present: ${dirExists(templatesDir) ? "yes" : "no"}`,
-        `- Package agents present: ${packageAgents.length}/${requiredAgents.length}`,
-        `- pi-subagents command detected: ${hasSubagentsCommand ? "yes" : "no"}`,
-        `- Project-local Arey Pi agents: ${installedAgents.length}/${requiredAgents.length}`,
-        `- Root AGENTS.md: ${fileExists(join(cwd, "AGENTS.md")) ? "yes" : "no"}`,
-        `- .pi/settings.json: ${fileExists(join(cwd, ".pi", "settings.json")) ? "yes" : "no"}`,
-        `- Arey Pi prompts discovered: ${prompts.length}`,
-        `- Arey Pi skills discovered: ${skills.length}`,
-        "",
-        "## Missing project agents",
-        missingAgents.length ? missingAgents.map((agent) => `- ${agent}`).join("\n") : "- none",
-        "",
-        "## Recommended next step",
-        installedAgents.length === requiredAgents.length
-          ? "- Project-local Arey Pi subagents are installed. Use `/arey-feature`, `/arey-bugfix`, `/arey-sync`, `/arey-review`, or natural language."
-          : "- Run `/arey-bootstrap` to install project-local Arey Pi subagents.",
-      ].join("\n");
+      const report = buildDoctorReport({
+        packageVersion: packageVersion(),
+        cwd,
+        packageRulesPresent: dirExists(rulesDir),
+        packageTemplatesPresent: dirExists(templatesDir),
+        packageAgentsCount: packageAgents.length,
+        requiredAgentsCount: requiredAgents.length,
+        hasSubagentsCommand,
+        installedAgentsCount: installedAgents.length,
+        hasRootAgentsMd: fileExists(join(cwd, "AGENTS.md")),
+        hasPiSettings: fileExists(join(cwd, ".pi", "settings.json")),
+        promptsCount: prompts.length,
+        skillsCount: skills.length,
+        missingAgents,
+      });
 
       pi.sendMessage({
         customType: "arey-pi-doctor",
@@ -229,16 +187,7 @@ export default function areyPi(pi: ExtensionAPI) {
     description: "Install Arey Pi subagents and optionally scaffold specs/docs",
     handler: async (args, ctx) => {
       const cwd = cwdFrom(ctx);
-      const flags = args.split(/\s+/).filter(Boolean);
-      const force = flags.includes("--force");
-      const full = flags.includes("--full");
-      const hasSelectiveScaffoldFlag = flags.some((flag) =>
-        ["--agentsmd", "--specs", "--docs", "--full"].includes(flag),
-      );
-      const defaultFullBootstrap = !hasSelectiveScaffoldFlag;
-      const createAgentsMd = defaultFullBootstrap || flags.includes("--agentsmd") || full;
-      const createSpecs = defaultFullBootstrap || flags.includes("--specs") || full;
-      const createDocs = defaultFullBootstrap || flags.includes("--docs") || full;
+      const { force, createAgentsMd, createSpecs, createDocs } = parseBootstrapFlags(args);
       const targetDir = join(cwd, ".pi", "agents", "arey-pi");
       const result = copyAgents(targetDir, force);
       const specsResult = createSpecs ? scaffoldSpecs(cwd, force) : { created: [], skipped: [] };

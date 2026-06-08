@@ -152,10 +152,11 @@ Arey Pi uses Bun as its package manager and Biome for extension formatting and l
 ```bash
 bun install
 bun run format
+bun run test
 bun run check
 ```
 
-`bun run check` runs Biome linting and TypeScript type checking.
+`bun run check` runs Biome linting, TypeScript type checking, and Bun tests.
 
 ## Rule categories
 
