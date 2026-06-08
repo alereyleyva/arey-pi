@@ -1,6 +1,7 @@
 # Arey Pi Commands
 
 Arey Pi ships a Pi extension that registers native slash commands.
+The extension uses Pi's documented directory style at `extensions/arey-pi/index.ts`.
 
 The commands are designed for two modes of use:
 

@@ -5,7 +5,7 @@ import {
   parseBootstrapFlags,
   specScaffoldFiles,
   workflowMessage,
-} from "../extensions/arey-pi-core.js";
+} from "../extensions/arey-pi/core.ts";
 
 describe("parseBootstrapFlags", () => {
   test("defaults to full safe bootstrap when no selective flags are passed", () => {

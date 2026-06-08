@@ -38,7 +38,7 @@ Arey Pi is built around these guarantees:
 
 ```txt
 agents/      # Arey Pi subagent role definitions for pi-subagents
-extensions/  # Slash commands for doctor, bootstrap, and workflows
+extensions/  # Directory-style Pi extension for doctor, bootstrap, and workflows
 docs/        # Package documentation
 skills/      # On-demand Arey Pi workflows and instructions
 prompts/     # Reusable Pi prompt workflows

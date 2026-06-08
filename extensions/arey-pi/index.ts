@@ -10,7 +10,7 @@ import {
   specScaffoldFiles,
   workflowMessage,
   type ScaffoldFile,
-} from "./arey-pi-core.js";
+} from "./core.ts";
 
 const packageRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 const agentSourceDir = join(packageRoot, "agents");
