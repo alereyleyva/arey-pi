@@ -24,6 +24,7 @@
   ],
   "files": [
     "agents/",
+    "assets/",
     "extensions/",
     "docs/",
     "skills/",
@@ -42,7 +43,8 @@
     ],
     "prompts": [
       "./prompts"
-    ]
+    ],
+    "image": "./assets/arey-pi-logo.png"
   },
   "scripts": {
     "format": "biome format --write .",
