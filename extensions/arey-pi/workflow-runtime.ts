@@ -7,14 +7,6 @@ import {
 } from "@earendil-works/pi-coding-agent";
 import { areyPiHarnessContext } from "./core.ts";
 
-function updateHarnessUi(ctx: ExtensionContext): void {
-  ctx.ui.setStatus("arey-pi", ctx.ui.theme.fg("accent", "Arey Pi"));
-  ctx.ui.setWidget("arey-pi-harness", [
-    "Arey Pi active: harness guidance is injected on every turn.",
-    "The parent agent orchestrates specialist subagents when useful.",
-  ]);
-}
-
 function isSensitivePath(path: string): boolean {
   return [".env", ".git/", "node_modules/"].some((protectedPath) => path.includes(protectedPath));
 }
@@ -40,10 +32,6 @@ function handleMutationGuardrails(event: ToolCallEvent, ctx: ExtensionContext): 
 }
 
 export function registerWorkflowRuntime(pi: ExtensionAPI): void {
-  pi.on("session_start", (_event, ctx) => {
-    updateHarnessUi(ctx);
-  });
-
   pi.on("before_agent_start", (event) => ({
     message: {
       customType: "arey-pi-harness-context",
