@@ -2,7 +2,8 @@
 
 Arey Pi ships a Pi extension that registers native setup slash commands.
 Development workflows are intentionally natural-language first:
-the extension recognises explicit Arey Pi opt-in and injects quiet harness guidance automatically.
+when the package is installed,
+the extension injects quiet harness guidance automatically on every agent turn.
 
 ## Command overview
 
@@ -152,17 +153,17 @@ Use this command after installing Arey Pi and `pi-subagents` in a repository whe
 ## Natural-language development workflows
 
 Arey Pi is designed to work without development slash commands.
-When the user explicitly opts into Arey Pi in normal language,
-for example:
+When the package is installed,
+the extension injects quiet harness context automatically before every agent turn.
+Users can simply ask naturally:
 
 ```txt
-Implementa password reset siguiendo Arey Pi
-Corrige este bug con Arey Pi
-Revisa el current diff contra Arey Pi
-Evalúa este repo contra Arey Pi
+Implementa password reset
+Corrige este bug
+Revisa el current diff
+Evalúa este repo
 ```
 
-The extension injects quiet harness context automatically before the agent turn.
 The harness is not meant to add ceremony for the user.
 It asks the agent to infer whether the request is a feature,
 bugfix,

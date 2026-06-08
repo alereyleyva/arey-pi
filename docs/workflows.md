@@ -3,15 +3,15 @@
 See `docs/workflow-diagram.md` for a visual overview of the framework workflow.
 
 Arey Pi development workflows are natural-language first.
-When the user asks to work following Arey Pi,
-the extension injects quiet harness guidance automatically before the agent turn.
+When the package is installed,
+the extension injects quiet harness guidance automatically before every agent turn.
 
 ## Feature Workflow
 
 Example request:
 
 ```txt
-Implementa password reset siguiendo Arey Pi
+Implementa password reset
 ```
 
 Expected flow:
@@ -43,7 +43,7 @@ The workflow should:
 Example request:
 
 ```txt
-Corrige el bug de verificación de email con Arey Pi
+Corrige el bug de verificación de email
 ```
 
 Use this when behaviour is wrong.
@@ -63,7 +63,7 @@ and it should live outside production source directories by default.
 Example request:
 
 ```txt
-Sincroniza specs y docs con Arey Pi para el current diff
+Sincroniza specs y docs para el current diff
 ```
 
 Use this before completing non-trivial work or when drift is suspected.
@@ -103,7 +103,7 @@ or justified unaffected statuses.
 Example request:
 
 ```txt
-Revisa el current diff contra Arey Pi
+Revisa el current diff
 ```
 
 Use this for adversarial engineering review.
@@ -130,7 +130,7 @@ Findings should be classified by severity.
 Example request:
 
 ```txt
-Evalúa este repo contra Arey Pi
+Evalúa este repo
 ```
 
 Use this to assess project readiness.
@@ -185,7 +185,7 @@ Users do not need to memorise commands.
 This should work:
 
 ```txt
-Implement password reset following Arey Pi.
+Implement password reset.
 ```
 
 The parent agent should act as tech lead,

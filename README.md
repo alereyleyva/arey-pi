@@ -74,7 +74,7 @@ tech-lead
 The intended daily experience is natural language first:
 
 ```txt
-Implement password reset following Arey Pi.
+Implement password reset.
 ```
 
 The parent agent should act as the tech lead,
@@ -140,15 +140,16 @@ Arey Pi includes a polished extension-backed setup and natural-language workflow
 /arey-bootstrap --full      # explicit alias for the default full bootstrap
 /arey-bootstrap --force     # full bootstrap and overwrite selected project-local files
 # Development workflows are natural-language first:
-# "Implementa password reset siguiendo Arey Pi"
-# "Corrige este bug con Arey Pi"
-# "Revisa el current diff contra Arey Pi"
+# "Implementa password reset"
+# "Corrige este bug"
+# "Revisa el current diff"
 ```
 
 The goal is that users work naturally without development commands.
-Requests such as `Implementa password reset siguiendo Arey Pi` automatically activate quiet harness context behind the scenes.
-Arey Pi lets the parent agent infer the work mode,
-act as orchestrator,
+When the package is installed,
+Arey Pi automatically injects quiet harness context behind the scenes on every agent turn.
+The parent agent infers the work mode,
+acts as orchestrator,
 use specialist subagents when available,
 inject the relevant delivery guidance,
 and apply simple event-based guardrails for protected paths.
@@ -201,7 +202,7 @@ documentation sync rule,
 core subagent role definitions,
 and professional setup extension commands exist.
 
-Arey Pi now includes natural-language harness activation,
+Arey Pi now includes always-on natural-language harness injection,
 focused prompts,
 TDD/spec-sync/review skills,
 and extension-core tests.

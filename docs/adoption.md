@@ -88,7 +88,7 @@ agents should be able to discover:
 Ask naturally:
 
 ```txt
-Evalúa este repo contra Arey Pi
+Evalúa este repo
 ```
 
 You can also use the focused prompt template if desired:
@@ -206,7 +206,7 @@ run setup diagnostics and ask for a natural readiness assessment:
 
 ```txt
 /arey-doctor
-Evalúa este repo contra Arey Pi
+Evalúa este repo
 ```
 
 A good first adoption result is not perfection.

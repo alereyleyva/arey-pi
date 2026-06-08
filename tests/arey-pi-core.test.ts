@@ -3,11 +3,10 @@ import { join } from "node:path";
 import { describe, expect, test } from "bun:test";
 import {
   buildDoctorReport,
+  areyPiHarnessContext,
   docsScaffoldFiles,
   parseBootstrapFlags,
   specScaffoldFiles,
-  areyPiHarnessContext,
-  shouldActivateAreyPiHarness,
 } from "../extensions/arey-pi/core.ts";
 
 const repoRoot = join(import.meta.dir, "..");
@@ -71,14 +70,9 @@ describe("scaffold file plans", () => {
   });
 });
 
-describe("natural-language harness activation", () => {
-  test("activates only when the user opts into Arey Pi", () => {
-    expect(shouldActivateAreyPiHarness("Implementa password reset siguiendo Arey Pi")).toBe(true);
-    expect(shouldActivateAreyPiHarness("Implementa password reset")).toBe(false);
-  });
-
+describe("always-on harness context", () => {
   test("injects universal guidance and lets the agent infer work mode", () => {
-    const context = areyPiHarnessContext("Corrige el bug de sesiones con Arey Pi");
+    const context = areyPiHarnessContext("Corrige el bug de sesiones");
 
     expect(context).toContain("Arey Pi harness is active");
     expect(context).toContain("Infer the user's intent yourself");
@@ -137,7 +131,7 @@ describe("buildDoctorReport", () => {
     });
 
     expect(report).toContain("- none");
-    expect(report).toContain("Use natural language");
+    expect(report).toContain("Work naturally");
   });
 });
 

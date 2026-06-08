@@ -133,7 +133,7 @@ The readiness report template captures Arey Pi assessment output.
 
 Use it when you want a persistent audit snapshot under `docs/`.
 For routine checks,
-ask naturally: `Evalúa este repo contra Arey Pi`.
+ask naturally: `Evalúa este repo`.
 
 ## Template Maintenance
 

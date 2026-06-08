@@ -56,12 +56,6 @@ export function parseBootstrapFlags(args: string): BootstrapPlan {
   };
 }
 
-export function shouldActivateAreyPiHarness(prompt: string): boolean {
-  const normalized = prompt.toLowerCase();
-  if (normalized.includes("arey pi harness is active")) return false;
-  return /\barey(?:\s+pi)?\b/.test(normalized);
-}
-
 const evidenceSummary = `Final evidence format:\n- Behaviour/spec impact:\n- Tests/TDD, including test location:\n- Validation commands and results:\n- Quality tooling:\n- Spec sync:\n- Documentation sync:\n- Architecture/ADR/glossary impact:\n- Database/DBML impact:\n- Residual risks:`;
 
 export function areyPiHarnessContext(prompt: string): string {
@@ -129,7 +123,7 @@ export function buildDoctorReport(input: DoctorReportInput): string {
     "",
     "## Recommended next step",
     input.installedAgentsCount === input.requiredAgentsCount
-      ? "- Project-local Arey Pi subagents are installed. Use natural language such as `Implementa password reset siguiendo Arey Pi`."
+      ? "- Project-local Arey Pi subagents are installed. Work naturally; Arey Pi harness guidance is injected automatically."
       : "- Run `/arey-bootstrap` to install project-local Arey Pi subagents.",
   ].join("\n");
 }

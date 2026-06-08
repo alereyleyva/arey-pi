@@ -79,7 +79,7 @@ They should not create their own subagent workflows unless explicitly launched w
 Good parent request:
 
 ```txt
-Implement password reset following Arey Pi.
+Implement password reset.
 Use specialist subagents where useful.
 ```
 
