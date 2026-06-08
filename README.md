@@ -1,5 +1,7 @@
 # Arey Pi
 
+[![npm package](https://img.shields.io/npm/v/arey-pi.svg)](https://www.npmjs.com/package/arey-pi)
+
 Arey Pi is an opinionated Pi package for spec-centred, TDD-driven software delivery.
 
 It defines a way of working where canonical specs preserve intent,
