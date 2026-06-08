@@ -1,6 +1,6 @@
 # Subagent Architecture
 
-Arey AI uses subagents to turn Arey AI rules into repeatable delivery workflows.
+Arey Pi uses subagents to turn Arey Pi rules into repeatable delivery workflows.
 
 Subagents are not independent product owners.
 They are specialised engineering roles with bounded responsibilities, explicit handoffs, and shared commitment to canonical specs, TDD, quality, and rebuildability.
@@ -12,7 +12,7 @@ They are specialised engineering roles with bounded responsibilities, explicit h
 Subagents must treat canonical specs as the source of truth.
 
 When specs, tests, and implementation disagree, agents must not silently choose the current code.
-They must resolve the conflict through the Arey AI conflict-resolution rule.
+They must resolve the conflict through the Arey Pi conflict-resolution rule.
 
 ### One owner per responsibility
 
@@ -46,7 +46,7 @@ They must not invent policy, overwrite canonical decisions, or create low-value 
 
 ## MVP Agent Set
 
-The initial Arey AI delivery topology is:
+The initial Arey Pi delivery topology is:
 
 ```txt
 tech-lead
@@ -92,7 +92,7 @@ Owns:
 - DBML database specs when persistence changes;
 - ADR creation or updates when significant decisions are made;
 - glossary and domain language updates;
-- semantic line breaks and UK English in Arey AI-facing prose;
+- semantic line breaks and UK English in Arey Pi-facing prose;
 - identifying when specs are unaffected.
 
 Does not own:
@@ -165,14 +165,14 @@ The readiness audit agent.
 
 Owns:
 
-- read-only assessment against Arey AI rules;
+- read-only assessment against Arey Pi rules;
 - scoring and prioritised improvement plans;
-- identifying Arey AI gaps before bootstrap or adoption work.
+- identifying Arey Pi gaps before bootstrap or adoption work.
 
 Does not own:
 
 - changing files unless explicitly invoked for bootstrap work;
-- treating AI Harness, ADRs, DBML, or language style as optional when the Arey AI applies.
+- treating AI Harness, ADRs, DBML, or language style as optional when Arey Pi applies.
 
 ## Default Workflow
 
@@ -257,11 +257,11 @@ Agents must escalate conflicts when:
 - DBML and migrations/ORM/SQL disagree;
 - accepted ADRs overlap without an explicit relationship;
 - tests encode behaviour not present in canonical specs;
-- project instructions conflict with Arey AI rules;
+- project instructions conflict with Arey Pi rules;
 - quality tooling is missing but required for the project risk;
 - user requests would bypass TDD or canonical specs.
 
-Escalation should include evidence and a recommended path, but must not silently choose a source of truth when Arey AI requires clarification.
+Escalation should include evidence and a recommended path, but must not silently choose a source of truth when Arey Pi requires clarification.
 
 ## Subagent Selection Heuristics
 
@@ -295,10 +295,10 @@ Use `engineering-reviewer` when:
 
 Use `project-evaluator` when:
 
-- adopting Arey AI in an existing repository;
+- adopting Arey Pi in an existing repository;
 - checking readiness;
 - planning bootstrap work;
-- auditing Arey AI compliance without editing files.
+- auditing Arey Pi compliance without editing files.
 
 ## Finalisation Standard
 

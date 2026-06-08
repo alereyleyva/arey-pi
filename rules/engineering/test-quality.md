@@ -62,7 +62,7 @@ Agents should consider mutation testing especially for:
 - rewrites;
 - modules intended to be rebuildable from specs/tests.
 
-Mutation testing is not required for every tiny change, but Arey AI should prefer it for critical or high-risk behaviour.
+Mutation testing is not required for every tiny change, but Arey Pi should prefer it for critical or high-risk behaviour.
 
 ## Mutation Score
 

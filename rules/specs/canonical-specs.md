@@ -8,7 +8,7 @@ They are not secondary documentation. They are the contract that allows the impl
 
 ## Canonical Sources
 
-Arey AI recognises these canonical sources:
+Arey Pi recognises these canonical sources:
 
 | Source | Purpose |
 | --- | --- |

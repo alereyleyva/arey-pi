@@ -6,7 +6,7 @@ This policy defines how agents should collaborate without corrupting the worktre
 
 ## Core Roles
 
-Arey AI may define agents such as:
+Arey Pi may define agents such as:
 
 - spec author;
 - test designer;

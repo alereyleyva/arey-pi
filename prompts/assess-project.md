@@ -1,15 +1,15 @@
 ---
-description: Assess project alignment with Arey AI rules
+description: Assess project alignment with Arey Pi rules
 argument-hint: "[scope or focus]"
 ---
 
-Assess this repository for Arey AI Project Readiness.
+Assess this repository for Arey Pi Project Readiness.
 
 Scope/focus: $ARGUMENTS
 
 Run in audit mode by default: inspect and report, do not modify files.
 
-Evaluate alignment with Arey AI rules:
+Evaluate alignment with Arey Pi rules:
 
 - canonical Gherkin specs
 - Gherkin authoring quality
@@ -21,9 +21,9 @@ Evaluate alignment with Arey AI rules:
 - DBML database specs when the project uses a database
 - rebuildability and architecture memory
 - Conventional Commits / incremental process
-- AI Harness: AGENTS.md, Arey AI setup, skills, prompts, subagents, technology guidance, command discoverability, and safety rules
+- AI Harness: AGENTS.md, Arey Pi setup, skills, prompts, subagents, technology guidance, command discoverability, and safety rules
 
-Prefer using the `arey-ai.project-evaluator` subagent if available. Otherwise perform the audit directly.
+Prefer using the `arey-pi.project-evaluator` subagent if available. Otherwise perform the audit directly.
 
 Read and apply these policies when present:
 

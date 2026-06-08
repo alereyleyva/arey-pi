@@ -1,19 +1,19 @@
 ---
 name: project-readiness
-description: Evaluate whether a repository is aligned with Arey AI rules. Use when assessing specs, tests, quality tooling, AGENTS.md, skills, prompts, subagents, or project readiness.
+description: Evaluate whether a repository is aligned with Arey Pi rules. Use when assessing specs, tests, quality tooling, AGENTS.md, skills, prompts, subagents, or project readiness.
 ---
 
 # Project Readiness
 
-Use this skill to assess whether a project is ready to operate under Arey AI.
+Use this skill to assess whether a project is ready to operate under Arey Pi.
 
-Project readiness evaluates alignment with Arey AI rules.
+Project readiness evaluates alignment with Arey Pi rules.
 
-Project readiness covers all applicable Arey AI rules, including specs, TDD, database specs, quality tooling, architecture/code quality, spec sync, AI harness, DoD, and commits.
+Project readiness covers all applicable Arey Pi rules, including specs, TDD, database specs, quality tooling, architecture/code quality, spec sync, AI harness, DoD, and commits.
 
 ## Required Reading
 
-Read these policy files when available in the Arey AI package or project:
+Read these policy files when available in the Arey Pi package or project:
 
 - `rules/assessment/project-readiness.md`
 - `rules/workflow/ai-harness.md`
@@ -49,7 +49,7 @@ Look for:
 Produce:
 
 ```md
-# Arey AI Project Readiness Report
+# Arey Pi Project Readiness Report
 
 ## Overall
 - Overall Readiness: N/5
@@ -89,8 +89,8 @@ Only after user approval, implement selected improvements such as:
 - adding missing validation scripts;
 - adding spec directory skeletons;
 - adding initial DBML skeletons for database projects;
-- adding Arey AI prompts or skills;
+- adding Arey Pi prompts or skills;
 - documenting quality tooling;
 - adding ADR/glossary structure.
 
-Bootstrap Mode must follow Arey AI policies, including quality tooling, DoD, and incremental Conventional Commits.
+Bootstrap Mode must follow Arey Pi policies, including quality tooling, DoD, and incremental Conventional Commits.

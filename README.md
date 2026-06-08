@@ -1,4 +1,4 @@
-# Arey AI
+# Arey Pi
 
 A Pi package for software delivery where canonical Gherkin specs are the source of truth, tests are executable truth, production code is replaceable, and engineering quality is non-negotiable.
 
@@ -6,7 +6,7 @@ A Pi package for software delivery where canonical Gherkin specs are the source 
 
 > Specs are durable. Tests are executable truth. Code is disposable.
 
-Arey AI is designed around:
+Arey Pi is designed around:
 
 - canonical behaviour persisted as Gherkin specs;
 - non-negotiable TDD for production behaviour;
@@ -17,20 +17,20 @@ Arey AI is designed around:
 ## Installation
 
 ```bash
-pi install npm:arey-ai
+pi install npm:arey-pi
 ```
 
 For project-local installation:
 
 ```bash
-pi install -l npm:arey-ai
+pi install -l npm:arey-pi
 ```
 
 ## Package contents
 
 ```txt
 agents/      # Pi subagent role definitions, when pi-subagents is installed
-skills/      # On-demand Arey AI workflows and instructions
+skills/      # On-demand Arey Pi workflows and instructions
 prompts/     # Reusable Pi prompt workflows
 rules/       # Framework policies and operating rules
 templates/   # Project/spec/ADR templates
@@ -53,7 +53,7 @@ Or load the skill directly:
 When `pi-subagents` is installed, the package also provides:
 
 ```txt
-arey-ai.project-evaluator
+arey-pi.project-evaluator
 ```
 
 ## Status

@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Arey AI projects should communicate in the language style expected by their users, customers, and maintainers.
+Arey Pi projects should communicate in the language style expected by their users, customers, and maintainers.
 
-For Arey AI, the default written English standard is UK English.
+For Arey Pi, the default written English standard is UK English.
 
 ## Core Rule
 

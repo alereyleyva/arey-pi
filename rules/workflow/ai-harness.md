@@ -2,19 +2,19 @@
 
 ## Purpose
 
-The AI harness is the project infrastructure that lets agents work reliably, safely, and consistently under Arey AI.
+The AI harness is the project infrastructure that lets agents work reliably, safely, and consistently under Arey Pi.
 
-It is a first-class Arey AI rule, not an optional convenience and not an external concern. If agents are expected to contribute to a project, the project must expose enough context, commands, skills, prompts, and safety rails for them to do high-quality work.
+It is a first-class Arey Pi rule, not an optional convenience and not an external concern. If agents are expected to contribute to a project, the project must expose enough context, commands, skills, prompts, and safety rails for them to do high-quality work.
 
 ## Core Rule
 
-A project using Arey AI must maintain an explicit AI harness appropriate to its complexity, stack, and risk.
+A project using Arey Pi must maintain an explicit AI harness appropriate to its complexity, stack, and risk.
 
 The AI harness should make it easy for agents to discover:
 
 - what the project is;
 - how it is structured;
-- which Arey AI rules apply;
+- which Arey Pi rules apply;
 - where canonical specs live;
 - how to run validation;
 - which tooling is required;
@@ -28,7 +28,7 @@ The AI harness should make it easy for agents to discover:
 Projects should provide an `AGENTS.md` file with:
 
 - project overview;
-- Arey AI instructions;
+- Arey Pi instructions;
 - links to relevant rules/specs;
 - common setup and validation commands;
 - Definition of Done expectations;
@@ -54,13 +54,13 @@ Use nested files when different areas have meaningfully different:
 - generated file rules;
 - ownership or review expectations.
 
-Nested `AGENTS.md` files should refine or specialize the root instructions, not contradict them. If local instructions conflict with root Arey AI rules, the conflict must be explicit and resolved by the user or project maintainers.
+Nested `AGENTS.md` files should refine or specialize the root instructions, not contradict them. If local instructions conflict with root Arey Pi rules, the conflict must be explicit and resolved by the user or project maintainers.
 
 Because Pi loads context files from parent directories and the current working directory at startup, nested `AGENTS.md` works best when agents are launched from the relevant subtree or when the root `AGENTS.md` tells agents which nested files to read for specific areas.
 
 ### Pi Configuration
 
-Projects should document or configure how Arey AI is loaded, for example through:
+Projects should document or configure how Arey Pi is loaded, for example through:
 
 - `.pi/settings.json`;
 - package installation instructions;
@@ -68,7 +68,7 @@ Projects should document or configure how Arey AI is loaded, for example through
 - project README instructions;
 - explicit prompts or skills.
 
-Agents should be able to tell whether Arey AI is installed, vendored, or expected as external context.
+Agents should be able to tell whether Arey Pi is installed, vendored, or expected as external context.
 
 ### Skills
 
@@ -96,7 +96,7 @@ Projects should provide reusable prompts for common workflows when useful, such 
 - release validation;
 - migration work.
 
-Prompts should apply Arey AI rules instead of duplicating stale instructions.
+Prompts should apply Arey Pi rules instead of duplicating stale instructions.
 
 ### Subagents
 
@@ -110,7 +110,7 @@ When `pi-subagents` is used, projects may define role agents for recurring respo
 - project evaluation;
 - domain-specific analysis.
 
-Subagents must respect Arey AI role boundaries and worktree safety rules.
+Subagents must respect Arey Pi role boundaries and worktree safety rules.
 
 ### Command Discoverability
 
@@ -146,7 +146,7 @@ If a project lacks an adequate AI harness, agents must surface the gap.
 
 They should propose improvements and ask for approval before adding or changing harness infrastructure.
 
-For non-trivial projects, missing `AGENTS.md`, undiscoverable validation commands, or absent safety rules are Arey AI readiness issues.
+For non-trivial projects, missing `AGENTS.md`, undiscoverable validation commands, or absent safety rules are Arey Pi readiness issues.
 
 ## Harness Quality
 
@@ -172,6 +172,6 @@ A weak AI harness is:
 
 ## Acceptance Rule
 
-A project is not fully aligned with Arey AI unless its AI harness is adequate for the level of agent work expected in that project.
+A project is not fully aligned with Arey Pi unless its AI harness is adequate for the level of agent work expected in that project.
 
-AI harness gaps should be evaluated and prioritised like any other Arey AI rule gap.
+AI harness gaps should be evaluated and prioritised like any other Arey Pi rule gap.

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Arey AI supports both full Spec-Driven Development and direct changes. The goal is to avoid unnecessary ceremony while preserving TDD, spec sync, and rebuildability.
+Arey Pi supports both full Spec-Driven Development and direct changes. The goal is to avoid unnecessary ceremony while preserving TDD, spec sync, and rebuildability.
 
 ## Spec-Driven Mode
 

@@ -43,7 +43,7 @@ Create or update an ADR for decisions involving:
 - module boundaries or dependency direction;
 - substantial performance, reliability, or scalability tradeoffs;
 - accepted technical debt with meaningful consequences;
-- deviations from Arey AI rules;
+- deviations from Arey Pi rules;
 - irreversible or expensive-to-reverse choices.
 
 ## When Not to Create an ADR

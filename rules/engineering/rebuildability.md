@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Arey AI treats production code as replaceable. A healthy project can discard and recreate implementation modules from durable knowledge.
+Arey Pi treats production code as replaceable. A healthy project can discard and recreate implementation modules from durable knowledge.
 
 ## Core Rule
 

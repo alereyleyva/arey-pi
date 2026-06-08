@@ -1,6 +1,6 @@
-# Arey AI Rules
+# Arey Pi Rules
 
-These documents define the operating policies of Arey AI.
+These documents define the operating policies of Arey Pi.
 
 They are intentionally normative: agents should treat them as project delivery rules, not optional documentation.
 
@@ -8,7 +8,7 @@ They are intentionally normative: agents should treat them as project delivery r
 
 ```txt
 rules/
-├── core/          # Arey AI invariants, work modes, DoD, conflict handling
+├── core/          # Arey Pi invariants, work modes, DoD, conflict handling
 ├── specs/         # canonical specs, Gherkin, DBML, spec sync, language style
 ├── engineering/   # TDD, test quality, code/architecture quality, tooling, rebuildability
 ├── architecture/  # architecture memory and ADR expectations
