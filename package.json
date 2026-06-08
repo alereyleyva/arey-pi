@@ -44,7 +44,7 @@
     "prompts": [
       "./prompts"
     ],
-    "image": "./assets/arey-pi-logo.png"
+    "image": "https://cdn.jsdelivr.net/gh/alereyleyva/arey-pi@main/assets/arey-pi-logo.png"
   },
   "scripts": {
     "format": "biome format --write .",
