@@ -1,23 +1,14 @@
 # Arey Pi Commands
 
-Arey Pi ships a Pi extension that registers native slash commands.
-The extension uses Pi's documented directory style at `extensions/arey-pi/index.ts`.
-
-The commands are designed for two modes of use:
-
-- quick explicit workflows such as `/arey-feature` or `/arey-sync`;
-- natural-language work where the parent agent acts as the Arey Pi tech lead and uses the same workflow expectations.
+Arey Pi ships a Pi extension that registers native setup slash commands.
+Development workflows are intentionally natural-language first:
+the extension detects Arey Pi requests and injects quiet harness guidance automatically.
 
 ## Command overview
 
 ```txt
 /arey-doctor
 /arey-bootstrap [--agentsmd] [--specs] [--docs] [--full] [--force]
-/arey-feature <feature request>
-/arey-bugfix <bug description>
-/arey-sync [scope]
-/arey-review [scope]
-/arey-assess [scope]
 ```
 
 ## `/arey-doctor`
@@ -158,235 +149,38 @@ Examples:
 
 Use this command after installing Arey Pi and `pi-subagents` in a repository where you want the Arey Pi agents to be discoverable by `pi-subagents`.
 
-## `/arey-feature`
+## Natural-language development workflows
 
-Starts the Arey Pi feature delivery workflow.
-
-Usage:
-
-```txt
-/arey-feature <feature request>
-```
-
-Example:
+Arey Pi is designed to work without development slash commands.
+When the user explicitly opts into Arey Pi in normal language,
+for example:
 
 ```txt
-/arey-feature Add password reset with expiring email links
+Implementa password reset siguiendo Arey Pi
+Corrige este bug con Arey Pi
+Revisa el current diff contra Arey Pi
+Evalúa este repo contra Arey Pi
 ```
 
-The command sends a structured request to the parent agent to act as the Arey Pi tech lead.
-The expected workflow is:
+The extension starts a quiet harness workflow automatically before the agent turn.
+The harness is not meant to add ceremony for the user.
+It injects sequencing guidance,
+persists lightweight session state,
+and gives the TUI an optional checklist widget when available.
+The agent should continue conversationally and report evidence naturally.
 
-```txt
-spec-author → tdd-implementer → spec-syncer → engineering-reviewer
-```
+While a workflow is active,
+Arey Pi applies tool-call guardrails:
 
-The command now sends a stronger execution contract.
-The workflow should:
+- writes or edits to protected paths such as `.env`, `.git/`, and `node_modules/` are blocked;
+- feature workflows warn when production files are edited before specs and Red-test phases are complete;
+- bugfix workflows warn when production files are edited before reproduction and regression Red-test phases are complete.
 
-- identify scope, non-goals, risk, and unknowns;
-- confirm or update canonical specs before production behaviour changes;
-- preserve TDD through Red → Green → Refactor;
-- keep tests outside production source directories by default;
-- synchronise specs, docs, tests, code, DBML, ADRs, glossary, README files, AGENTS.md, skills, prompts, rules, agents, commands, templates, and tooling instructions when affected;
-- run fresh-context engineering review when risk warrants it;
-- report validation evidence and residual risks using the Arey Pi final evidence format.
-
-## `/arey-bugfix`
-
-Starts the Arey Pi regression-test-first bugfix workflow.
-
-Usage:
-
-```txt
-/arey-bugfix <bug description>
-```
-
-Example:
-
-```txt
-/arey-bugfix Users can bypass email verification by refreshing the session
-```
-
-The command now sends a regression-test-first execution contract.
-The workflow should:
-
-- identify expected versus actual behaviour and affected scope;
-- reproduce the bug with a meaningful failing regression test before production changes;
-- implement the smallest high-quality fix;
-- keep Red → Green → Refactor evidence visible;
-- update Gherkin, docs, DBML, ADRs, glossary, or architecture docs when affected;
-- request fresh engineering review for security, data-loss, concurrency, auth, payment, migration, or public API bugs;
-- run validation and report residual risks.
-
-## `/arey-sync`
-
-Runs Arey Pi sync review for the current repository or a specific scope.
-
-Usage:
-
-```txt
-/arey-sync
-/arey-sync <scope>
-```
-
-Examples:
-
-```txt
-/arey-sync
-/arey-sync authentication flow
-/arey-sync current diff
-```
-
-The command asks the parent agent to verify alignment across:
-
-- Gherkin specs;
-- tests;
-- code;
-- DBML;
-- ADRs;
-- glossary;
-- architecture docs;
-- README files;
-- `docs/`;
-- `AGENTS.md`;
-- skills, prompts, rules, agents, examples, templates;
-- command and tooling instructions.
-
-The sync contract asks the agent to classify drift as blocking,
-recommended,
-or unaffected.
-It may fix safe drift directly when canonical intent is clear,
-but it must ask before changing intent.
-
-The final report should include both:
-
-```txt
-Specs updated
-```
-
-or:
-
-```txt
-Specs unaffected: <reason>
-```
-
-and:
-
-```txt
-Docs updated
-```
-
-or:
-
-```txt
-Docs unaffected: <reason>
-```
-
-## `/arey-review`
-
-Runs an adversarial Arey Pi engineering review.
-
-Usage:
-
-```txt
-/arey-review
-/arey-review <scope>
-```
-
-Examples:
-
-```txt
-/arey-review
-/arey-review current diff
-/arey-review persistence layer
-```
-
-The review should examine:
-
-- architecture and code quality;
-- test quality;
-- quality tooling and validation evidence;
-- security and privacy;
-- reliability and operability;
-- maintainability;
-- spec, ADR, DBML, glossary, and documentation sync concerns;
-- generated-code or agent-authored-code slop.
-
-Findings should be classified by severity.
-
-## `/arey-assess`
-
-Runs Arey Pi project readiness assessment.
-
-Usage:
-
-```txt
-/arey-assess
-/arey-assess <scope>
-```
-
-Examples:
-
-```txt
-/arey-assess
-/arey-assess backend package only
-```
-
-The assessment is read-only by default.
-It should score the repository against Arey Pi rules,
-provide evidence with file paths,
-identify blockers and quick wins,
-and propose a prioritised improvement plan.
-
-Use this when adopting Arey Pi in an existing repository or checking whether a project remains aligned.
+The production-edit guardrails warn instead of blocking because real repositories vary,
+but they make missing evidence visible at the exact moment the harness observes risky edits.
 
 ## Prompt templates and skills
 
-Arey Pi also ships focused prompt templates:
-
-```txt
-/feature-spec
-/red-green-refactor
-/sync-drift
-/engineering-review
-/adr-review
-/assess-project
-```
-
-And focused skills:
-
-```txt
-/skill:tdd-red-green-refactor
-/skill:spec-sync
-/skill:engineering-review
-/skill:project-readiness
-```
-
-Use slash commands for full workflow orchestration,
-prompts for targeted one-off work,
-and skills when you want the model to load specialised Arey Pi instructions on demand.
-
-## Busy agent behaviour
-
-Workflow commands send a user message to the current Pi session.
-
-If the agent is idle,
-the workflow starts immediately.
-
-If the agent is already working,
-the workflow is queued as a follow-up message.
-
-## Relationship to natural language
-
-Commands are optional.
-
-Users can also work naturally:
-
-```txt
-Implement magic links following Arey Pi.
-```
-
-The commands exist to make common workflows explicit,
-repeatable,
-and easier to discover.
+Arey Pi still ships focused prompt templates and skills for targeted use,
+but they are optional.
+The intended default is natural language plus automatic harness injection.

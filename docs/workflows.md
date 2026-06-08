@@ -2,17 +2,16 @@
 
 See `docs/workflow-diagram.md` for a visual overview of the framework workflow.
 
-Arey Pi workflows can be started with slash commands or natural language.
-
-The slash commands make the intended process explicit.
-Natural language should still follow the same rules when the user asks to work following Arey Pi.
+Arey Pi development workflows are natural-language first.
+When the user asks to work following Arey Pi,
+the extension injects quiet harness guidance automatically before the agent turn.
 
 ## Feature Workflow
 
-Command:
+Example request:
 
 ```txt
-/arey-feature <feature request>
+Implementa password reset siguiendo Arey Pi
 ```
 
 Expected flow:
@@ -41,10 +40,10 @@ The workflow should:
 
 ## Bugfix Workflow
 
-Command:
+Example request:
 
 ```txt
-/arey-bugfix <bug description>
+Corrige el bug de verificación de email con Arey Pi
 ```
 
 Use this when behaviour is wrong.
@@ -61,10 +60,10 @@ and it should live outside production source directories by default.
 
 ## Sync Workflow
 
-Command:
+Example request:
 
 ```txt
-/arey-sync [scope]
+Sincroniza specs y docs con Arey Pi para el current diff
 ```
 
 Use this before completing non-trivial work or when drift is suspected.
@@ -101,10 +100,10 @@ or justified unaffected statuses.
 
 ## Review Workflow
 
-Command:
+Example request:
 
 ```txt
-/arey-review [scope]
+Revisa el current diff contra Arey Pi
 ```
 
 Use this for adversarial engineering review.
@@ -128,10 +127,10 @@ Findings should be classified by severity.
 
 ## Assessment Workflow
 
-Command:
+Example request:
 
 ```txt
-/arey-assess [scope]
+Evalúa este repo contra Arey Pi
 ```
 
 Use this to assess project readiness.

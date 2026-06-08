@@ -139,19 +139,21 @@ Arey Pi includes a polished extension-backed workflow:
 /arey-bootstrap --docs      # scaffold starter docs directory
 /arey-bootstrap --full      # explicit alias for the default full bootstrap
 /arey-bootstrap --force     # full bootstrap and overwrite selected project-local files
-/arey-feature     # run spec → TDD → sync → review for a feature
-/arey-bugfix      # run regression-test-first bug fixing
-/arey-sync        # verify specs, docs, tests, code, DBML, ADRs, and glossary alignment
-/arey-review      # run adversarial engineering review
-/arey-assess      # assess project readiness against Arey Pi rules
+# Development workflows are natural-language first:
+# "Implementa password reset siguiendo Arey Pi"
+# "Corrige este bug con Arey Pi"
+# "Revisa el current diff contra Arey Pi"
 ```
 
-The goal is that users can either speak naturally or use explicit commands,
-while Arey Pi handles the disciplined workflow behind the scenes.
+The goal is that users work naturally without development commands.
+Requests such as `Implementa password reset siguiendo Arey Pi` automatically activate a quiet harness workflow behind the scenes.
+Arey Pi keeps lightweight session state,
+adds optional visible phase guidance in the TUI,
+and applies event-based guardrails for protected paths and premature production edits.
 
 See:
 
-- `docs/commands.md` for detailed command behaviour, options, and examples;
+- `docs/commands.md` for setup commands and natural-language workflow behaviour;
 - `docs/adoption.md` for adopting Arey Pi in an existing repository;
 - `docs/workflows.md` for workflow expectations;
 - `docs/workflow-diagram.md` for the visual framework workflow;

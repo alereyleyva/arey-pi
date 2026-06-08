@@ -85,13 +85,13 @@ agents should be able to discover:
 
 ### 5. Assess readiness
 
-Run:
+Ask naturally:
 
 ```txt
-/arey-assess
+Evalúa este repo contra Arey Pi
 ```
 
-or:
+You can also use the focused prompt template if desired:
 
 ```txt
 /assess-project
@@ -155,7 +155,7 @@ Use this for active product repositories.
 - Add Gherkin specs for core behaviours.
 - Add DBML if persistence exists.
 - Add ADRs for significant decisions.
-- Require `/arey-sync` before completing non-trivial work.
+- Require natural Arey Pi sync review before completing non-trivial work.
 
 ### Strict adoption
 
@@ -202,11 +202,11 @@ Do not:
 ## Completion Standard
 
 After adoption work,
-run:
+run setup diagnostics and ask for a natural readiness assessment:
 
 ```txt
 /arey-doctor
-/arey-assess
+Evalúa este repo contra Arey Pi
 ```
 
 A good first adoption result is not perfection.
