@@ -87,12 +87,10 @@ A GitHub release should mean the package is available from npm.
 If npm publishing is blocked by OTP or registry issues,
 do not publish the GitHub release yet.
 
-## Current Release State
+## Latest Release
 
-For `v0.3.0`, the package version bump commit exists:
+`v0.3.0` has been published to npm and GitHub.
 
-```txt
-5348fba chore(release): bump version to 0.3.0
-```
-
-npm publication is still pending OTP authentication.
+- npm package: `arey-pi@0.3.0`
+- git tag: `v0.3.0`
+- GitHub release: <https://github.com/alereyleyva/arey-pi/releases/tag/v0.3.0>
