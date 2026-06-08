@@ -2,19 +2,19 @@
 
 ## Purpose
 
-Project Readiness evaluates whether a repository is aligned with Pi Framework.
+Project Readiness evaluates whether a repository is aligned with Arey AI.
 
-It is a meta-assessment across the framework rules. AI Harness, Language Style, Database Specs, and ADR quality are evaluated as first-class concerns alongside specs, TDD, test quality, quality tooling, architecture, spec sync, rebuildability, and process.
+It is a meta-assessment across the Arey AI rules. AI Harness, Language Style, Database Specs, and ADR quality are evaluated as first-class concerns alongside specs, TDD, test quality, quality tooling, architecture, spec sync, rebuildability, and process.
 
 ## Core Rule
 
-Projects should be periodically evaluated against Pi Framework rules.
+Projects should be periodically evaluated against Arey AI rules.
 
 Assessment is read-only by default. Findings should produce evidence, scores, risks, and a prioritised improvement plan before any changes are made.
 
 ## Assessment Areas
 
-Evaluate the project across these framework areas.
+Evaluate the project across these Arey AI areas.
 
 ### Canonical Specs
 
@@ -93,7 +93,7 @@ Check whether:
 
 ### Database Specs
 
-Evaluate Database Specs as a normal framework rule when the project uses persistent storage.
+Evaluate Database Specs as a normal Arey AI rule when the project uses persistent storage.
 
 Check whether:
 
@@ -134,23 +134,23 @@ Check whether:
 
 ### AI Harness
 
-Evaluate AI Harness as a normal framework rule.
+Evaluate AI Harness as a normal Arey AI rule.
 
 Check whether:
 
 - root `AGENTS.md` exists and is useful;
 - nested `AGENTS.md` files exist for subtrees that need local technology, domain, command, or safety instructions;
-- Pi Framework installation/reference is discoverable;
+- Arey AI installation/reference is discoverable;
 - project-local skills, prompts, and subagents exist where useful;
 - technology-specific guidance is available;
 - validation/setup commands are discoverable;
 - safety rails for agents are documented.
 
-Missing AI harness setup is a framework alignment gap because it prevents agents from applying the other rules consistently.
+Missing AI harness setup is a Arey AI alignment gap because it prevents agents from applying the other rules consistently.
 
 ### Language Style
 
-Evaluate Language Style as a normal framework rule.
+Evaluate Language Style as a normal Arey AI rule.
 
 Check whether:
 
@@ -211,14 +211,14 @@ After audit and user approval, implement selected improvements such as:
 - adding or updating `AGENTS.md`;
 - adding missing validation scripts;
 - adding spec skeletons;
-- adding framework prompts or skills;
+- adding Arey AI prompts or skills;
 - documenting quality tooling;
 - creating ADR/glossary structure.
 
-Bootstrap Mode must still follow Pi Framework policies, including TDD where applicable, quality tooling, DoD, and incremental Conventional Commits.
+Bootstrap Mode must still follow Arey AI policies, including TDD where applicable, quality tooling, DoD, and incremental Conventional Commits.
 
 ## Acceptance Rule
 
-A project is not fully ready for Pi Framework until its relevant framework rules score adequate or better for its risk and complexity.
+A project is not fully ready for Arey AI until its relevant Arey AI rules score adequate or better for its risk and complexity.
 
 AI Harness readiness is one of those rules, not a separate external assessment.

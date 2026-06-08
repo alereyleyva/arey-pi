@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Engineering quality is the standard that keeps Pi Framework from becoming a documentation and test exercise around mediocre software.
+Engineering quality is the standard that keeps Arey AI from becoming a documentation and test exercise around mediocre software.
 
 Specs, TDD, test quality, DBML, ADRs, quality tooling, and rebuildability all exist to support excellent engineering. They do not replace the need for excellent architecture and code.
 
-The framework's expectation is simple:
+Arey AI's expectation is simple:
 
 > Build as the most senior, careful, pragmatic software engineer on the team would build.
 

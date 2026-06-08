@@ -17,7 +17,7 @@ A change is complete when:
 - bug fixes include regression tests;
 - tests pass, or any inability to run them is clearly documented;
 - weak, shallow, or unvalidated generated tests are not accepted as sufficient evidence;
-- architecture and code quality meet the senior engineering standard defined by the framework;
+- architecture and code quality meet the senior engineering standard defined by Arey AI;
 - formatting, linting/static analysis, type checking where applicable, and relevant dynamic analysis have passed or are explicitly blocked with evidence;
 - if the project lacks required quality tooling, tooling selection/configuration has been discussed with the user and captured as follow-up or implementation work;
 - specs, tests, and code agree;

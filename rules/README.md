@@ -1,6 +1,6 @@
-# Framework Rules
+# Arey AI Rules
 
-These documents define the operating policies of Pi Framework.
+These documents define the operating policies of Arey AI.
 
 They are intentionally normative: agents should treat them as project delivery rules, not optional documentation.
 
@@ -8,7 +8,7 @@ They are intentionally normative: agents should treat them as project delivery r
 
 ```txt
 rules/
-├── core/          # framework invariants, work modes, DoD, conflict handling
+├── core/          # Arey AI invariants, work modes, DoD, conflict handling
 ├── specs/         # canonical specs, Gherkin, DBML, spec sync, language style
 ├── engineering/   # TDD, test quality, code/architecture quality, tooling, rebuildability
 ├── architecture/  # architecture memory and ADR expectations
@@ -20,7 +20,7 @@ rules/
 
 ### Core
 
-- `core/framework-principles.md`
+- `core/principles.md`
 - `core/change-modes.md`
 - `core/definition-of-done.md`
 - `core/conflict-resolution.md`

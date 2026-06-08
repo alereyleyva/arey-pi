@@ -2,19 +2,19 @@
 
 ## Purpose
 
-This framework defines a software delivery model for projects that must remain understandable, testable, and rebuildable over time.
+Arey AI defines a software delivery model for projects that must remain understandable, testable, and rebuildable over time.
 
 Its central premise is:
 
 > Specs are durable. Tests are executable truth. Code is disposable.
 
-The framework optimizes for preserving intent outside the current implementation so that code can be refactored, replaced, or fully rewritten without losing product or domain knowledge.
+Arey AI optimises for preserving intent outside the current implementation so that code can be refactored, replaced, or fully rewritten without losing product or domain knowledge.
 
-Rebuildability never lowers the quality bar. Pi Framework expects architecture and code to be designed and written at an exceptional senior engineering standard.
+Rebuildability never lowers the quality bar. Arey AI expects architecture and code to be designed and written at an exceptional senior engineering standard.
 
 ## Core Model
 
-A project using this framework is governed by three synchronised layers:
+A project using Arey AI is governed by three synchronised layers:
 
 1. **Canonical specs** define intended behaviour and durable project knowledge.
 2. **Tests** execute and verify the intended behaviour.
@@ -49,7 +49,7 @@ Every completed change must preserve these guarantees:
 
 ## Work Modes
 
-The framework supports two work modes:
+Arey AI supports two work modes:
 
 - **Spec-Driven Mode** for non-trivial, ambiguous, product, domain, API, or architectural work.
 - **Direct Change Mode** for small, local, obvious, or mechanical changes.

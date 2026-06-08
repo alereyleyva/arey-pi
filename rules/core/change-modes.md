@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The framework supports both full Spec-Driven Development and direct changes. The goal is to avoid unnecessary ceremony while preserving TDD, spec sync, and rebuildability.
+Arey AI supports both full Spec-Driven Development and direct changes. The goal is to avoid unnecessary ceremony while preserving TDD, spec sync, and rebuildability.
 
 ## Spec-Driven Mode
 

@@ -6,7 +6,7 @@ This policy defines how agents should collaborate without corrupting the worktre
 
 ## Core Roles
 
-The framework may define agents such as:
+Arey AI may define agents such as:
 
 - spec author;
 - test designer;

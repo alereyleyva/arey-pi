@@ -4,7 +4,7 @@
 
 Projects with a database must persist their data model as a canonical spec.
 
-Pi Framework uses DBML as the default canonical format for database structure because it is readable, diffable, tool-friendly, and independent of a specific ORM or migration tool.
+Arey AI uses DBML as the default canonical format for database structure because it is readable, diffable, tool-friendly, and independent of a specific ORM or migration tool.
 
 ## Core Rule
 
@@ -127,7 +127,7 @@ Possible validation includes:
 
 Before completing database-related work, agents must inspect relevant DBML specs when they exist.
 
-If database code exists but DBML specs are missing, agents must surface the gap and propose adding DBML. For database-affecting work, adding the initial DBML spec should be treated as part of making the project framework-aligned unless the user explicitly defers it.
+If database code exists but DBML specs are missing, agents must surface the gap and propose adding DBML. For database-affecting work, adding the initial DBML spec should be treated as part of making the project Arey AI-aligned unless the user explicitly defers it.
 
 Agents must not silently make schema changes without DBML synchronisation.
 

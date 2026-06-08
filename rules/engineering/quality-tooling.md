@@ -4,7 +4,7 @@
 
 Code quality includes style, formatting, static analysis, and dynamic validation.
 
-Pi Framework requires projects to define and use quality tooling as part of the normal validation and Definition of Done. Tooling is not optional polish; it is part of engineering quality.
+Arey AI requires projects to define and use quality tooling as part of the normal validation and Definition of Done. Tooling is not optional polish; it is part of engineering quality.
 
 ## Core Rule
 
@@ -38,7 +38,7 @@ Preferred examples:
 - **Go:** `gofmt`, `go vet`, relevant linters when configured.
 - **Java/Kotlin:** project formatter/linter plus build tool checks.
 
-These are defaults, not universal mandates. Existing project standards win unless they conflict with the framework's quality guarantees.
+These are defaults, not universal mandates. Existing project standards win unless they conflict with Arey AI's quality guarantees.
 
 ## Missing Tooling
 

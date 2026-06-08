@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Pi Framework projects should communicate in the language style expected by their users, customers, and maintainers.
+Arey AI projects should communicate in the language style expected by their users, customers, and maintainers.
 
-For this framework, the default written English standard is UK English.
+For Arey AI, the default written English standard is UK English.
 
 ## Core Rule
 

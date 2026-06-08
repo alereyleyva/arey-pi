@@ -18,7 +18,7 @@ A coherent unit may be:
 - refactor after green tests;
 - spec sync updates;
 - architecture/ADR updates;
-- framework policy or agent definition changes.
+- Arey AI policy or agent definition changes.
 
 ## Conventional Commits
 
