@@ -1,14 +1,57 @@
 // Canonical database specification.
-// Keep this DBML synchronised with migrations, ORM models, SQL DDL, constraints, indexes, and relationships.
+// Keep this DBML synchronised with migrations,
+// ORM models,
+// SQL DDL,
+// constraints,
+// indexes,
+// relationships,
+// and persistence tests.
 
 Project project_name {
   database_type: 'PostgreSQL'
-  Note: 'Replace this starter DBML with the canonical project schema.'
+  Note: '''
+    Replace this starter DBML with the canonical project schema.
+    Document the database engine,
+    important extensions,
+    ownership boundaries,
+    and migration constraints here.
+  '''
+}
+
+Enum example_status {
+  active
+  archived
 }
 
 Table example_entities {
   id uuid [pk, note: 'Primary identifier']
-  name varchar [not null]
+  name varchar [not null, unique, note: 'Human-readable unique name']
+  status example_status [not null, default: 'active']
   created_at timestamptz [not null]
   updated_at timestamptz [not null]
+
+  indexes {
+    name [unique, name: 'idx_example_entities_name_unique']
+    status [name: 'idx_example_entities_status']
+  }
+
+  Note: '''
+    Replace this example table with canonical project tables.
+    Include constraints,
+    indexes,
+    relationship intent,
+    and relevant domain notes.
+  '''
+}
+
+Table example_events {
+  id uuid [pk]
+  entity_id uuid [not null, ref: > example_entities.id]
+  event_type varchar [not null]
+  occurred_at timestamptz [not null]
+  payload jsonb [not null, default: '{}']
+
+  indexes {
+    (entity_id, occurred_at) [name: 'idx_example_events_entity_time']
+  }
 }

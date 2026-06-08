@@ -143,7 +143,12 @@ Arey Pi includes a polished extension-backed workflow:
 The goal is that users can either speak naturally or use explicit commands,
 while Arey Pi handles the disciplined workflow behind the scenes.
 
-See `docs/commands.md` for detailed command behaviour, options, and examples.
+See:
+
+- `docs/commands.md` for detailed command behaviour, options, and examples;
+- `docs/adoption.md` for adopting Arey Pi in an existing repository;
+- `docs/workflows.md` for workflow expectations;
+- `docs/templates.md` for bootstrap template details.
 
 ## Development
 

@@ -4,6 +4,16 @@
 
 Proposed
 
+Accepted values:
+Proposed,
+Accepted,
+Superseded,
+Deprecated.
+
+## Date
+
+YYYY-MM-DD
+
 ## Context
 
 Describe the forces,
@@ -11,13 +21,27 @@ constraints,
 requirements,
 and tradeoffs that make this decision necessary.
 
-## Decision
+Include:
 
-State the decision clearly.
+- the problem being solved;
+- relevant canonical specs or ADRs;
+- operational constraints;
+- security,
+  privacy,
+  performance,
+  reliability,
+  or maintainability concerns;
+- what happens if no decision is made.
+
+## Decision Drivers
+
+- Driver 1
+- Driver 2
+- Driver 3
 
 ## Options Considered
 
-### Option 1
+### Option 1: Name
 
 Summary.
 
@@ -29,7 +53,7 @@ Cons:
 
 - ...
 
-### Option 2
+### Option 2: Name
 
 Summary.
 
@@ -40,21 +64,66 @@ Pros:
 Cons:
 
 - ...
+
+## Decision
+
+State the chosen option clearly.
+
+Explain why it best satisfies the decision drivers.
 
 ## Consequences
 
-Describe expected consequences,
-including risks,
-costs,
-follow-up work,
-and operational impact.
+Expected positive consequences:
+
+- ...
+
+Expected negative consequences or costs:
+
+- ...
+
+Operational impact:
+
+- ...
+
+Follow-up work:
+
+- ...
+
+## Validation
+
+Describe how the decision will be validated.
+
+Examples:
+
+- tests;
+- operational metrics;
+- migration checks;
+- architecture review;
+- project readiness assessment.
 
 ## Supersession and Relationships
 
-Record whether this ADR supersedes,
-is superseded by,
-or overlaps with other ADRs.
+Supersedes:
+
+- None
+
+Superseded by:
+
+- None
+
+Related ADRs:
+
+- None
+
+Overlapping decisions:
+
+- None
 
 ## Revisit Conditions
 
-List conditions that should trigger review of this decision.
+Revisit this decision if:
+
+- a listed constraint changes;
+- implementation cost differs materially from expectations;
+- operational evidence contradicts assumptions;
+- a simpler option becomes viable.
