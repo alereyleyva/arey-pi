@@ -2,7 +2,7 @@
 
 Arey Pi ships a Pi extension that registers native setup slash commands.
 Development workflows are intentionally natural-language first:
-the extension detects Arey Pi requests and injects quiet harness guidance automatically.
+the extension recognises explicit Arey Pi opt-in and injects quiet harness guidance automatically.
 
 ## Command overview
 
@@ -162,22 +162,22 @@ Revisa el current diff contra Arey Pi
 Evalúa este repo contra Arey Pi
 ```
 
-The extension starts a quiet harness workflow automatically before the agent turn.
+The extension injects quiet harness context automatically before the agent turn.
 The harness is not meant to add ceremony for the user.
-It injects sequencing guidance,
-persists lightweight session state,
-and gives the TUI an optional checklist widget when available.
+It asks the agent to infer whether the request is a feature,
+bugfix,
+sync,
+review,
+assessment,
+or mixed task,
+then apply the corresponding Arey Pi posture.
 The agent should continue conversationally and report evidence naturally.
 
-While a workflow is active,
-Arey Pi applies tool-call guardrails:
+While Arey Pi is active,
+Arey Pi applies simple tool-call guardrails:
 
-- writes or edits to protected paths such as `.env`, `.git/`, and `node_modules/` are blocked;
-- feature workflows warn when production files are edited before specs and Red-test phases are complete;
-- bugfix workflows warn when production files are edited before reproduction and regression Red-test phases are complete.
+- writes or edits to protected paths such as `.env`, `.git/`, and `node_modules/` are blocked.
 
-The production-edit guardrails warn instead of blocking because real repositories vary,
-but they make missing evidence visible at the exact moment the harness observes risky edits.
 
 ## Prompt templates and skills
 

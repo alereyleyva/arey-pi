@@ -3,15 +3,11 @@ import { join } from "node:path";
 import { describe, expect, test } from "bun:test";
 import {
   buildDoctorReport,
-  buildWorkflowReport,
-  completeWorkflowPhase,
-  createWorkflowState,
-  detectAutoWorkflowIntent,
   docsScaffoldFiles,
   parseBootstrapFlags,
   specScaffoldFiles,
-  workflowHarnessMessage,
-  workflowMessage,
+  areyPiHarnessContext,
+  shouldActivateAreyPiHarness,
 } from "../extensions/arey-pi/core.ts";
 
 const repoRoot = join(import.meta.dir, "..");
@@ -75,98 +71,20 @@ describe("scaffold file plans", () => {
   });
 });
 
-describe("harness workflow state", () => {
-  test("creates a feature checklist with active first phase and guardrails", () => {
-    const state = createWorkflowState("feature", "add password reset", new Date("2026-01-01T00:00:00.000Z"));
-
-    expect(state.id).toBe("arey-feature-1767225600000");
-    expect(state.target).toBe("add password reset");
-    expect(state.phases[0]).toMatchObject({ id: "scope", status: "active" });
-    expect(state.phases.map((phase) => phase.id)).toEqual([
-      "scope",
-      "specs",
-      "red",
-      "green",
-      "refactor",
-      "sync",
-      "review",
-      "evidence",
-    ]);
-    expect(state.guardrails).toContain("Keep one writer in the active worktree at a time.");
+describe("natural-language harness activation", () => {
+  test("activates only when the user opts into Arey Pi", () => {
+    expect(shouldActivateAreyPiHarness("Implementa password reset siguiendo Arey Pi")).toBe(true);
+    expect(shouldActivateAreyPiHarness("Implementa password reset")).toBe(false);
   });
 
-  test("completes a phase and activates the next pending phase", () => {
-    const state = createWorkflowState("bugfix", "session bypass", new Date("2026-01-01T00:00:00.000Z"));
-    const updated = completeWorkflowPhase(state, "reproduce");
+  test("injects universal guidance and lets the agent infer work mode", () => {
+    const context = areyPiHarnessContext("Corrige el bug de sesiones con Arey Pi");
 
-    expect(updated.phases[0]).toMatchObject({ id: "reproduce", status: "done" });
-    expect(updated.phases[1]).toMatchObject({ id: "red", status: "active" });
-  });
-
-  test("renders workflow reports and harness prompts", () => {
-    const state = createWorkflowState("sync", "current diff", new Date("2026-01-01T00:00:00.000Z"));
-    const report = buildWorkflowReport(state);
-    const prompt = workflowHarnessMessage(state);
-
-    expect(report).toContain("# Arey Pi Harness Workflow");
-    expect(report).toContain("- [ ] inspect: Requested scope and current diff inspected ← active");
-    expect(report).toContain("The user should not need workflow commands");
-    expect(prompt).toContain("Treat the checklist as the controlling delivery state");
-  });
-});
-
-describe("natural-language workflow detection", () => {
-  test("detects Arey Pi feature requests without slash commands", () => {
-    expect(detectAutoWorkflowIntent("Implementa password reset siguiendo Arey Pi")).toMatchObject({
-      kind: "feature",
-      target: "Implementa password reset siguiendo Arey Pi",
-    });
-  });
-
-  test("detects Arey Pi bugfix requests", () => {
-    expect(detectAutoWorkflowIntent("Corrige el bug de sesiones con Arey Pi")).toMatchObject({ kind: "bugfix" });
-  });
-
-  test("ignores ordinary prompts that do not opt into Arey Pi", () => {
-    expect(detectAutoWorkflowIntent("Implementa password reset")).toBeUndefined();
-  });
-});
-
-describe("workflowMessage", () => {
-  test("builds feature workflow messages with target, execution contract, and evidence requirements", () => {
-    const message = workflowMessage("feature", "add password reset");
-
-    expect(message).toContain("Act as the Arey Pi tech lead");
-    expect(message).toContain("Run the Arey Pi feature workflow for: add password reset");
-    expect(message).toContain("Execution contract:");
-    expect(message).toContain("arey-pi.spec-author");
-    expect(message).toContain("arey-pi.tdd-implementer");
-    expect(message).toContain("arey-pi.spec-syncer");
-    expect(message).toContain("Final evidence format:");
-    expect(message).toContain("Keep orchestration authority in the parent session");
-  });
-
-  test("builds bugfix workflow messages with regression-test-first guardrails", () => {
-    const message = workflowMessage("bugfix", "session refresh bypasses verification");
-
-    expect(message).toContain("Run the Arey Pi bugfix workflow for: session refresh bypasses verification");
-    expect(message).toContain("Regression test first");
-    expect(message).toContain("If a failing regression test cannot be demonstrated");
-    expect(message).toContain("Final evidence format:");
-  });
-
-  test("builds sync workflow messages with drift classification and final statuses", () => {
-    const message = workflowMessage("sync", "current diff");
-
-    expect(message).toContain("Run Arey Pi spec and documentation sync for: current diff");
-    expect(message).toContain("Classify drift as blocking, recommended, or unaffected");
-    expect(message).toContain("README files");
-    expect(message).toContain("`Specs updated` or `Specs unaffected`");
-    expect(message).toContain("`Docs updated` or `Docs unaffected`");
-  });
-
-  test("uses a default target when args are empty", () => {
-    expect(workflowMessage("review", "   ")).toContain("the current repository/task");
+    expect(context).toContain("Arey Pi harness is active");
+    expect(context).toContain("Infer the user's intent yourself");
+    expect(context).toContain("Feature or behaviour change");
+    expect(context).toContain("Bugfix");
+    expect(context).toContain("Final evidence format:");
   });
 });
 

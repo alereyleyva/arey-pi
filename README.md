@@ -146,10 +146,10 @@ Arey Pi includes a polished extension-backed workflow:
 ```
 
 The goal is that users work naturally without development commands.
-Requests such as `Implementa password reset siguiendo Arey Pi` automatically activate a quiet harness workflow behind the scenes.
-Arey Pi keeps lightweight session state,
-adds optional visible phase guidance in the TUI,
-and applies event-based guardrails for protected paths and premature production edits.
+Requests such as `Implementa password reset siguiendo Arey Pi` automatically activate quiet harness context behind the scenes.
+Arey Pi lets the agent infer the work mode,
+injects the relevant delivery guidance,
+and applies simple event-based guardrails for protected paths.
 
 See:
 
@@ -197,14 +197,13 @@ The policy layer,
 readiness workflow,
 documentation sync rule,
 core subagent role definitions,
-and professional extension commands exist.
+and professional setup extension commands exist.
 
-Arey Pi now includes stronger workflow command contracts,
+Arey Pi now includes natural-language harness activation,
 focused prompts,
 TDD/spec-sync/review skills,
 and extension-core tests.
 
-Next improvements include guided interactive workflows,
-stronger bootstrap scaffolding,
+Next improvements include stronger bootstrap scaffolding,
 custom Arey Pi tools,
 and deeper enforcement through Pi extension events.
