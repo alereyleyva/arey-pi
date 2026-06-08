@@ -148,6 +148,7 @@ See:
 - `docs/commands.md` for detailed command behaviour, options, and examples;
 - `docs/adoption.md` for adopting Arey Pi in an existing repository;
 - `docs/workflows.md` for workflow expectations;
+- `docs/workflow-diagram.md` for the visual framework workflow;
 - `docs/pi-subagents.md` for optimised `pi-subagents` usage;
 - `docs/templates.md` for bootstrap template details.
 

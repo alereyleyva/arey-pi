@@ -1,5 +1,7 @@
 # Arey Pi Workflows
 
+See `docs/workflow-diagram.md` for a visual overview of the framework workflow.
+
 Arey Pi workflows can be started with slash commands or natural language.
 
 The slash commands make the intended process explicit.
