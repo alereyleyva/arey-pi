@@ -89,8 +89,8 @@ do not publish the GitHub release yet.
 
 ## Latest Release
 
-`v0.3.0` has been published to npm and GitHub.
+`v0.4.0` has been published to npm and GitHub.
 
-- npm package: `arey-pi@0.3.0`
-- git tag: `v0.3.0`
-- GitHub release: <https://github.com/alereyleyva/arey-pi/releases/tag/v0.3.0>
+- npm package: `arey-pi@0.4.0`
+- git tag: `v0.4.0`
+- GitHub release: <https://github.com/alereyleyva/arey-pi/releases/tag/v0.4.0>
