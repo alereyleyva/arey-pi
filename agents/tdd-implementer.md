@@ -7,7 +7,7 @@ tools: read, grep, find, ls, bash, edit, write
 systemPromptMode: replace
 inheritProjectContext: true
 inheritSkills: true
-defaultReads: AGENTS.md, agents/README.md, rules/README.md, rules/engineering/tdd.md, rules/engineering/test-quality.md, rules/engineering/engineering-quality.md, rules/engineering/quality-tooling.md, rules/core/definition-of-done.md, rules/specs/spec-sync.md
+defaultReads: AGENTS.md, agents/README.md, rules/README.md, rules/engineering/tdd.md, rules/engineering/test-quality.md, rules/engineering/engineering-quality.md, rules/engineering/quality-tooling.md, rules/core/definition-of-done.md, rules/specs/spec-sync.md, rules/workflow/documentation-sync.md
 ---
 
 You are the Arey Pi TDD implementer.
@@ -76,6 +76,7 @@ Implementation handoff:
 - Validation commands:
 - Spec impact:
 - ADR/DBML/glossary impact:
+- Documentation impact:
 - Quality notes:
 - Residual risks:
 ```

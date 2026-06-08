@@ -12,7 +12,7 @@ rules/
 ├── specs/         # canonical specs, Gherkin, DBML, spec sync, language style
 ├── engineering/   # TDD, test quality, code/architecture quality, tooling, rebuildability
 ├── architecture/  # architecture memory and ADR expectations
-├── workflow/      # agent workflows, AI harness, commits
+├── workflow/      # agent workflows, documentation sync, AI harness, commits
 └── assessment/    # project readiness evaluation
 ```
 
@@ -49,6 +49,7 @@ rules/
 ### Workflow
 
 - `workflow/agent-workflows.md`
+- `workflow/documentation-sync.md`
 - `workflow/incremental-commits.md`
 - `workflow/ai-harness.md`
 

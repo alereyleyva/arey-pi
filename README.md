@@ -125,7 +125,7 @@ Arey Pi includes a polished extension-backed workflow:
 /arey-bootstrap   # install project-local Arey Pi agents and starter harness files
 /arey-feature     # run spec → TDD → sync → review for a feature
 /arey-bugfix      # run regression-test-first bug fixing
-/arey-sync        # verify specs, tests, code, DBML, ADRs, and glossary alignment
+/arey-sync        # verify specs, docs, tests, code, DBML, ADRs, and glossary alignment
 /arey-review      # run adversarial engineering review
 /arey-assess      # assess project readiness against Arey Pi rules
 ```

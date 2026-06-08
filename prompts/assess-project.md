@@ -17,7 +17,7 @@ Evaluate alignment with Arey Pi rules:
 - test quality, coverage, mutation testing readiness
 - formatter/linter/static analysis/typecheck/dynamic validation
 - architecture and code quality signals
-- spec sync and Definition of Done
+- spec sync, documentation sync, and Definition of Done
 - DBML database specs when the project uses a database
 - rebuildability and architecture memory
 - Conventional Commits / incremental process
@@ -29,6 +29,7 @@ Read and apply these policies when present:
 
 - `rules/assessment/project-readiness.md`
 - `rules/workflow/ai-harness.md`
+- `rules/workflow/documentation-sync.md`
 - `rules/specs/database-specs.md`
 - `rules/core/definition-of-done.md`
 - `rules/engineering/test-quality.md`

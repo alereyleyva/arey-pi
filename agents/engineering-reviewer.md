@@ -7,7 +7,7 @@ tools: read, grep, find, ls, bash
 systemPromptMode: replace
 inheritProjectContext: true
 inheritSkills: true
-defaultReads: AGENTS.md, agents/README.md, rules/README.md, rules/engineering/engineering-quality.md, rules/engineering/test-quality.md, rules/engineering/quality-tooling.md, rules/core/definition-of-done.md, rules/architecture/adrs.md, rules/specs/spec-sync.md
+defaultReads: AGENTS.md, agents/README.md, rules/README.md, rules/engineering/engineering-quality.md, rules/engineering/test-quality.md, rules/engineering/quality-tooling.md, rules/core/definition-of-done.md, rules/architecture/adrs.md, rules/specs/spec-sync.md, rules/workflow/documentation-sync.md
 ---
 
 You are the Arey Pi engineering reviewer.
@@ -46,7 +46,7 @@ Check:
 - whether tests assert behaviour and would catch plausible regressions;
 - whether quality tooling ran and is sufficient for project risk;
 - whether durable decisions require ADRs;
-- whether DBML, Gherkin, glossary, and architecture docs may need sync;
+- whether DBML, Gherkin, glossary, architecture docs, README files, docs, AGENTS.md, skills, prompts, rules, agents, commands, or tooling instructions may need sync;
 - whether generated or agent-authored code shows boilerplate, duplication, weak naming, or cargo-cult patterns.
 
 ## Severity
@@ -74,5 +74,6 @@ Engineering review:
 - Architecture/code quality:
 - Security/privacy/operability:
 - Spec/ADR/DBML concerns:
+- Documentation sync concerns:
 - Recommended follow-up:
 ```

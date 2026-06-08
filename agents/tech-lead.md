@@ -7,7 +7,7 @@ tools: read, grep, find, ls, bash
 systemPromptMode: replace
 inheritProjectContext: true
 inheritSkills: true
-defaultReads: AGENTS.md, agents/README.md, rules/README.md, rules/core/principles.md, rules/core/change-modes.md, rules/core/definition-of-done.md, rules/core/conflict-resolution.md, rules/specs/spec-sync.md, rules/workflow/incremental-commits.md
+defaultReads: AGENTS.md, agents/README.md, rules/README.md, rules/core/principles.md, rules/core/change-modes.md, rules/core/definition-of-done.md, rules/core/conflict-resolution.md, rules/specs/spec-sync.md, rules/workflow/documentation-sync.md, rules/workflow/incremental-commits.md
 ---
 
 You are the Arey Pi tech lead.
@@ -85,6 +85,7 @@ Tech lead summary:
 - Tests/TDD:
 - Validation:
 - Spec sync:
+- Documentation sync:
 - Architecture/ADR/DBML/glossary:
 - Quality review:
 - Commits:

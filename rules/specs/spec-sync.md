@@ -32,6 +32,7 @@ At task completion, agents must consider each canonical dimension:
 - **Database/DBML:** Did migrations, ORM models, SQL DDL, schema definitions, indexes, constraints, relationships, or persistence contracts change?
 - **ADRs:** Was a meaningful technical decision made that future agents/developers need to understand, and is it important enough for a high-quality ADR rather than process noise?
 - **Glossary:** Was a new domain term introduced or an existing meaning changed?
+- **Documentation:** Did README files, docs, AGENTS.md, skills, prompts, rules, agents, examples, templates, commands, or tooling instructions change or need to change?
 
 ## Required Behaviour
 
@@ -43,7 +44,9 @@ If database structure changed, update the canonical DBML spec precisely.
 
 If durable domain language changed, update the glossary.
 
-If only implementation changed and behaviour stayed the same, explain why specs are unaffected and name the coverage relied on where practical.
+If usage, setup, commands, agent instructions, tooling, or project workflow changed, update documentation or explicitly confirm docs are unaffected.
+
+If only implementation changed and behaviour stayed the same, explain why specs and docs are unaffected and name the coverage relied on where practical.
 
 ## Conflict Handling
 
@@ -66,5 +69,6 @@ Spec sync:
 - Architecture/ADR:
 - Database/DBML:
 - Glossary:
+- Documentation:
 - Status:
 ```

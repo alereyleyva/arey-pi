@@ -24,6 +24,7 @@ A change is complete when:
 - architecture docs or high-quality ADRs are updated when durable decisions changed;
 - DBML database specs exist and are precisely synchronised when the project has a database and the change touches schema, migrations, ORM models, or persistence contracts;
 - glossary is updated when domain language changed;
+- README files, docs, AGENTS.md, skills, prompts, rules, agents, examples, templates, commands, and tooling instructions are updated when affected or explicitly confirmed unaffected;
 - code changes are scoped and minimal for the intended behaviour;
 - project-facing prose follows the configured language style, UK English by default;
 - specs use semantic line breaks, and touched documentation preserves or improves semantic line breaks;
@@ -45,6 +46,7 @@ A change is not done if:
 - the project lacks quality tooling and the gap has not been surfaced to the user;
 - significant technical decisions exist only in chat, implementation comments, or low-value ADRs that do not explain context, options, tradeoffs, and consequences;
 - project-facing prose mixes language styles without reason;
+- usage, setup, workflow, command, tooling, or agent documentation is stale after the change;
 - specs or touched docs ignore semantic line break conventions;
 - unrelated cleanup is mixed into the change without approval.
 
@@ -59,6 +61,7 @@ Done summary:
 - Validation:
 - Quality tooling:
 - Spec sync:
+- Documentation sync:
 - Architecture/code quality:
 - Architecture/ADR/glossary:
 - Database/DBML:

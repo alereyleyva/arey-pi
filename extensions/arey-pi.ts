@@ -102,7 +102,7 @@ function workflowMessage(kind: string, args: string): string {
     case "bugfix":
       return `${common}\n\nRun the Arey Pi bugfix workflow for: ${target}\n\nStart with a regression test that fails for the bug, then implement the minimal high-quality fix, synchronise specs, and review engineering quality.`;
     case "sync":
-      return `${common}\n\nRun Arey Pi spec sync for: ${target}\n\nVerify Gherkin, tests, code, DBML, ADRs, glossary, and architecture docs. End with either \`Specs updated\` or \`Specs unaffected: <reason>\`.`;
+      return `${common}\n\nRun Arey Pi spec and documentation sync for: ${target}\n\nVerify Gherkin, tests, code, DBML, ADRs, glossary, architecture docs, README files, docs, AGENTS.md, skills, prompts, rules, agents, commands, and tooling instructions. End with both a spec status and a documentation status.`;
     case "review":
       return `${common}\n\nRun an Arey Pi engineering review for: ${target}\n\nReview architecture, code quality, test quality, quality tooling, security, privacy, operability, maintainability, and spec/ADR/DBML concerns. Classify findings by severity.`;
     case "assess":

@@ -68,6 +68,7 @@ Produce:
 - Quality Tooling
 - Engineering Quality
 - Spec Sync
+- Documentation Sync
 - Database Specs, when applicable
 - Rebuildability
 - Architecture Memory
@@ -90,6 +91,7 @@ Only after user approval, implement selected improvements such as:
 - adding spec directory skeletons;
 - adding initial DBML skeletons for database projects;
 - adding Arey Pi prompts or skills;
+- updating stale README/docs/AGENTS.md instructions;
 - documenting quality tooling;
 - adding ADR/glossary structure.
 

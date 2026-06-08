@@ -81,7 +81,7 @@ Check whether:
 - the implementation reflects senior engineering standards;
 - generated or agent-authored code has been reviewed for quality.
 
-### Spec Sync
+### Spec and Documentation Sync
 
 Check whether:
 
@@ -89,6 +89,7 @@ Check whether:
 - behaviour changes have corresponding Gherkin updates or no-impact reasoning;
 - database changes have precise DBML updates or no-impact reasoning;
 - architecture/ADR/glossary updates exist when durable knowledge changed;
+- README files, docs, AGENTS.md, skills, prompts, rules, agents, examples, templates, commands, and tooling instructions are updated when affected;
 - Definition of Done expectations are documented.
 
 ### Database Specs

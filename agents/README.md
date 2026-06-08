@@ -182,12 +182,12 @@ For meaningful feature or bug-fix work, use this sequence:
 1. tech-lead classifies change mode and scope
 2. spec-author writes or confirms canonical specs
 3. tdd-implementer performs Red → Green → Refactor
-4. spec-syncer verifies specs/tests/code alignment
+4. spec-syncer verifies specs/tests/code and documentation alignment
 5. engineering-reviewer performs adversarial review
 6. tech-lead finalises evidence, risks, and commits
 ```
 
-Small direct changes may skip specialised agents only when the tech lead can explicitly justify that specs, tests, architecture, DBML, and ADRs are unaffected.
+Small direct changes may skip specialised agents only when the tech lead can explicitly justify that specs, tests, architecture, DBML, ADRs, and documentation are unaffected.
 
 ## Handoff Contracts
 
@@ -217,6 +217,7 @@ Implementation handoff:
 - Validation commands:
 - Spec impact:
 - ADR/DBML/glossary impact:
+- Documentation impact:
 - Residual risks:
 ```
 
@@ -231,6 +232,7 @@ Spec sync:
 - Architecture/ADR:
 - Database/DBML:
 - Glossary:
+- Documentation:
 - Status:
 ```
 
@@ -282,7 +284,7 @@ Use `tdd-implementer` when:
 Use `spec-syncer` when:
 
 - work is near completion;
-- implementation touched behaviour, persistence, architecture, or domain language;
+- implementation touched behaviour, persistence, architecture, domain language, usage, commands, tooling, or agent workflow;
 - there is suspected drift;
 - final report needs sync evidence.
 
@@ -306,6 +308,7 @@ The orchestrating agent may finalise only when:
 
 - Definition of Done evidence is present;
 - spec sync is complete or explicitly unaffected;
+- documentation sync is complete or explicitly unaffected;
 - TDD evidence exists for behaviour changes;
 - quality tooling has run or blockers are documented;
 - high-impact decisions have ADRs or explicit no-ADR rationale;
